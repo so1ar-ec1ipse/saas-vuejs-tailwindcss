@@ -40,7 +40,7 @@ export default {
     },
     rounded: {
       type: String,
-      default: "medium",
+      default: "small",
     },
     type: {
       type: String,
@@ -73,10 +73,11 @@ export default {
       return {
         "base-spinner": this.loading === true,
         "cursor-not-allowed": this.disableButton === true,
-        "relative py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-theme-700 hover:bg-theme-600 focus:bg-theme-500 focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5 ": true,
+        "relative py-2 px-3 border border-transparent rounded-sm text-white font-semibold bg-theme-700 hover:bg-theme-600 focus:bg-theme-500 focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5 ": true,
 
+        "rounded-sm": this.rounded === "small",
         "rounded-lg": this.rounded === "medium",
-        "rounded-full": this.rounded === "large",
+        "rounded-sm": this.rounded === "large",
 
         "px-6 py-3": this.size === "normal",
         "px-4 py-2": this.size === "small",

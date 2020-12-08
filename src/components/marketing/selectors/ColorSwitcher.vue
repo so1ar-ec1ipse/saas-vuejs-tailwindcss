@@ -5,7 +5,11 @@
     <a
       v-for="(color, index) in colors"
       :key="index"
-      :class="' inline-flex cursor-pointer w-5 h-5 rounded-full mx-1 bg-'+color+'-500'"
+      :class="
+        ' inline-flex cursor-pointer w-5 h-5 rounded-sm mx-1 bg-' +
+          color +
+          '-500'
+      "
       class="border border-text transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150"
       @click="setColor(color)"
     ></a>
@@ -28,22 +32,32 @@ import { mapGetters } from "vuex";
 })
 export default class ColorSwitcherComponent extends Vue {
   colors = [
-    "indigo",
-    "blue",
     "red",
     "orange",
+    "amber",
     "yellow",
+    "lime",
     "green",
+    "emerald",
     "teal",
+    "cyan",
+    "lightBlue",
+    "blue",
+    "indigo",
+    "violet",
     "purple",
+    "fuchsia",
     "pink",
+    "rose",
     "gray",
-    "dark",
+    "blueGray",
+    "coolGray",
+    "trueGray",
+    "warmGray",
   ];
   setColor(color) {
     this.$store.commit("theme/marketingColor", "theme-" + color);
   }
 }
 </script>
-<style>
-</style>
+<style></style>

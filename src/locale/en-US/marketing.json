@@ -11,11 +11,91 @@
   },
   "product": {
     "pre-headline": "Sign up today!",
-    "headline1": "Your product solves",
-    "headline2": "<this thing> 🤩",
-    "subheadline": "Boldy state your unique selling point. Included your target audience in the the header or sub-header (tips from saaspages.xyz)",
-    "getStarted": "Start 14-day trial",
-    "learnMore": "Learn more"
+    "headline1": "Simple but powerful 💪",
+    "headline2": "codebase for your next SaaS",
+    "subheadline": "Boldy state your unique selling point. Included your target audience in the the header or sub-header.",
+    "getStarted": "📣 FULL STACK DEVS",
+    "cta1": "Sign up today",
+    "cta2": "Contact us",
+    "learnMore": "Learn more",
+    "generator": "NetcoreSaasDemo generator"
+  },
+  "features": {
+    "headline": "Built for developers",
+    "feature1": {
+      "headline": "Multi-organization",
+      "subheadline": "Each user can create its own organizations",
+      "feature1": "Owner",
+      "feature1Description": "The owner of the organization can update general settings",
+      "feature2": "Admin",
+      "feature2Description": "Can manage members and update subscription",
+      "feature3": "Member",
+      "feature3Description": "You decide!"
+    },
+    "feature2": {
+      "headline": "Multi-tenancy",
+      "subheadline": "Decide if you want only one database or one database per tenant",
+      "feature1": "Standalone App",
+      "feature1Description": "You only have one database, and a tenant column of your core models",
+      "feature2": "Database per Tenant",
+      "feature2Description": "Each tenant will have its own database for data isolation"
+    },
+    "feature3": {
+      "headline": "Multi-theme",
+      "subheadline": "Using the power of TailwindCSS you can customize your own themes or use a default",
+      "feature1": "11 pre-configured colors",
+      "feature1Description": "Tailwind based themes so you can focus on design right away",
+      "feature2": "Customization",
+      "feature2Description": "Files easy to configure to customize your own themes"
+    },
+    "feature4": {
+      "headline": "Multi-language",
+      "subheadline": "You can launch internationally by adding your language",
+      "feature1": "3 pre-configured languaged",
+      "feature1Description": "English, Spanish and Hindi",
+      "feature2": "Customization",
+      "feature2Description": "Files easy to configure to customize your own languages"
+    },
+    "feature5": {
+      "headline": "Multi-database",
+      "subheadline": "Entity Framework Core supported databases",
+      "feature1": "PostgreSQL",
+      "feature1Description": "",
+      "feature2": "MySQL",
+      "feature2Description": "",
+      "feature3": "SQL Server (comming soon)",
+      "feature3Description": ""
+    },
+    "feature6": {
+      "headline": "And more!",
+      "subheadline": "Features based on real world SaaS applications",
+      "feature1": "Member managment",
+      "feature1Description": "Manage your organization members",
+      "feature2": "Invitation link",
+      "feature2Description": "Invite users by email or send them an invitation link",
+      "feature3": "Resources",
+      "feature3Description": "Add resources and assign them to certain subscriptions and roles"
+    },
+    "feature7": {
+      "headline": "Clean Architecture",
+      "subheadline": "We've split the project into multiple 'layers'",
+      "feature1": "'Layers'",
+      "feature1Description": "Domain, Application, Infrastructure, WebApi, IntegrationTests, UnitTests",
+      "feature2": "Repositories",
+      "feature2Description": "Every entity has its own repository interface and implementation",
+      "feature3": "Unit of Work",
+      "feature3Description": "You can control if an entity belongs to a tenant or in the master database"
+    },
+    "feature8": {
+      "headline": "Unit and Integration Tests",
+      "subheadline": "Almost every controller method has its own integration test",
+      "feature1": "+130 Tests",
+      "feature1Description": "Tests for Authentication, Users, Tenants, Subscriptions, Transactions...",
+      "feature2": "Stripe customers",
+      "feature2Description": "Include your 'testing' keys, and each test will create new stripe customers",
+      "feature3": "Stripe products/subscriptions",
+      "feature3Description": "Test how your subscription mechanism will work against a real world API"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -32,6 +112,7 @@
     "buy": "Buy",
     "pay": "Pay",
     "payOnce": "Pay once",
+    "signUpFree": "Sign up free",
     "updateSubscription": "Update",
     "month": "Monthly",
     "year": "Yearly",
@@ -40,18 +121,32 @@
     "annuallyDiscount": "2 months free",
     "MonthlyShort": "month",
     "YearlyShort": "year",
+    "DailyShort": "day",
     "once": "once",
     "noCreditCardRequired": "No credit card required",
+    "learnMore": "Learn more",
     "features": {
       "maxNumberOfUsers": "Up to {0} users",
       "unlimitedUsers": "Unlimited users",
       "feature2": "Feature 2",
       "feature3": "Feature 3",
       "feature4": "Feature 4",
-      "feature5": "Feature 5"
+      "feature5": "Feature 5",
+      "upToProjects": "Up to {0} projects",
+      "upToDevelopers": "Up to {0} developers",
+      "1yearAccess": "1 year access to latest releases",
+      "prioritySupport": "Priority support",
+      "unlimitedDevelopers": "Unlimited developers!",
+      "unlimitedProjects": "Unlimited projects!",
+      "revenue": "{0} $50k USD annual revenue",
+      "vueFrontend": "VueJS Frontend",
+      "typescript": "TypeScript",
+      "tailwindcss": "TailwindCSS",
+      "frontendBackend": "VueJS frontend + .NET Core backend"
     },
     "badges": {
-      "recommended": "Recommended"
+      "recommended": "Recommended",
+      "mostPopular": "Most popular"
     }
   },
   "contact": {
@@ -87,6 +182,6 @@
   },
   "launching": {
     "launch": "Buy now!",
-    "getNotified": "Buy the SaaS Codebase Boilerplate"
+    "getNotified": "Buy the SaaS NetcoreSaasDemo Boilerplate"
   }
 }

@@ -36,6 +36,12 @@
     "lastName": "Apellido",
     "company": "Empresa",
     "organization": "Organización",
+    "applyCoupon": "Tengo un cupón",
+    "coupon": "Cupón",
+    "couponCode": "Código del cupón",
+    "invalidCoupon": "Cupón inválido",
+    "couponMaxRedeems": "El cupón ya llegó a su límite de usos",
+    "couponInactive": "Cupón inactivo",
     "termsAndConditions": "términos y condiciones",
     "privacyPolicy": "política de privacidad",
     "alreadyRegistered": "¿Ya estás registrado?",
@@ -49,7 +55,7 @@
     "headline": "Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña",
     "button": "Restablecer contraseña",
     "resetSuccess": "Contraseña restablecida",
-    "emailSent": "Por favor revisa tu correo electrónico, si no recibes ninguno por favor contacta a support@netcoresaas.com"
+    "emailSent": "Por favor revisa tu correo electrónico, si no recibes ninguno por favor contacta a support@demo.netcoresaas.com"
   },
   "newPassword": {
     "title": "Nueva contraseña",

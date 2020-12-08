@@ -33,10 +33,10 @@ const routes: RouteConfig[] = [
         path: "blog",
         component: require("@/views/marketing/Blog.vue").default,
       },
-      {
-        path: "blog/:slug",
-        component: require("@/views/marketing/BlogPost.vue").default,
-      },
+      // {
+      //   path: "blog/:slug",
+      //   component: require("@/views/marketing/BlogPost.vue").default,
+      // },
       {
         path: "es",
         redirect: "lang/es-MX",
@@ -64,8 +64,16 @@ const routes: RouteConfig[] = [
       accountRoutes,
     ],
   },
+  {
+    path: "/blog/v1-3-released-cleaner-saas-starter-codebase",
+    component: require("@/views/marketing/blog/BlogPost-v1.3.0.vue").default
+  },
   appRoutes,
   adminRoutes,
+  {
+    path: "/account/forgot",
+    component: require("@/views/account/Forgot.vue").default,
+  },
   {
     path: "/terms",
     component: require("@/views/marketing/Terms.vue").default,

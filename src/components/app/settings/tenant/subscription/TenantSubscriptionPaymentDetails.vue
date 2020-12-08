@@ -1,19 +1,23 @@
 <template>
   <div>
     <form @submit.prevent>
-      <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="shadow overflow-hidden sm:rounded-sm">
         <div class="px-4 py-5 bg-white sm:p-6">
-          <div class="grid grid-cols-6 gap-6">
+          <div class="grid grid-cols-6 gap-2">
             <div class="col-span-6 sm:col-span-6 w-full">
               <span
                 id="listbox-label"
                 class="block text-sm leading-5 font-medium text-gray-700 mb-4"
-              >{{ $t("settings.tenant.payment.title") }}</span>
-              <div class="text-theme-800 text-sm font-semibold" v-if="stripeCard && !editing">
-                {{ stripeCardHolder }}
-                <span class="uppercase">{{ stripeCard.brand }}</span>
+                >{{ $t("settings.tenant.payment.title") }}</span
+              >
+              <div
+                class="text-theme-800 text-sm font-semibold"
+                v-if="subscriptionCard && !editing"
+              >
+                {{ subscriptionCardHolder }}
+                <span class="uppercase">{{ subscriptionCard.brand }}</span>
                 {{ $t("settings.tenant.payment.ending") }} ****
-                {{ stripeCardLast4 }} - {{ stripeCardExpDesc }}
+                {{ subscriptionCardLast4 }} - {{ subscriptionCardExpDesc }}
               </div>
               <div v-else>
                 <div v-if="editing" id="card-element">
@@ -26,7 +30,9 @@
                     @change="complete = $event.complete"
                   />
                 </div>
-                <div v-else class="text-red-500 text-sm">{{ $t("settings.tenant.payment.notset") }}</div>
+                <div v-else class="text-red-500 text-sm">
+                  {{ $t("settings.tenant.payment.notset") }}
+                </div>
               </div>
             </div>
           </div>
@@ -34,21 +40,20 @@
         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
           <button
             @click="editing = !editing"
-            class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-800 bg-gray-200 shadow-sm hover:bg-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-600 transition duration-150 ease-in-out"
+            class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-sm text-gray-800 bg-gray-200 shadow-sm hover:bg-gray-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-600 transition duration-150 ease-in-out"
           >
             <span>
-              {{
-              !editing ? $t("shared.edit") : $t("shared.cancel")
-              }}
+              {{ !editing ? $t("shared.edit") : $t("shared.cancel") }}
             </span>
           </button>
 
           <loading-button
-            class="ml-3 py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
+            class="ml-3 py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-sm text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
             @click="updatePaymentDetails"
             v-if="editing"
             ref="loadingButton"
-          >{{ $t("shared.save") }}</loading-button>
+            >{{ $t("shared.save") }}</loading-button
+          >
         </div>
       </div>
     </form>
@@ -66,12 +71,13 @@ import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
 import Stripe from "stripe";
 import { Card, createToken } from "vue-stripe-elements-plus";
 import { mapGetters } from "vuex";
+import { SubscriptionCardDto } from "../../../../../application/dtos/master/subscriptions/SubscriptionCardDto";
 
 @Component({
   components: { SuccessModal, ErrorModal, Card },
   computed: {
     ...mapGetters("tenant", {
-      stripeCard: "defaultStripeCard",
+      subscriptionCard: "defaultSubscriptionCard",
     }),
   },
 })
@@ -80,10 +86,10 @@ export default class TenantSubscriptionPaymentDetails extends BaseComponent {
   private stripeKey!: string;
   private stripeOptions!: any;
   private complete: boolean = false;
-  private stripeCard!: Stripe.Card;
+  private subscriptionCard!: SubscriptionCardDto;
   created() {
     // @ts-ignore
-    this.stripeKey = process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY.toString();
+    this.stripeKey = process.env.VUE_APP_SUBSCRIPTION_PUBLIC_KEY.toString();
     this.stripeOptions = {
       showCardHolderName: true,
       hidePostalCode: false,
@@ -101,25 +107,29 @@ export default class TenantSubscriptionPaymentDetails extends BaseComponent {
         if (data.error) {
           // @ts-ignore
           this.$refs["error-modal"].show(data.error.message);
+          // @ts-ignore
+          this.$refs.loadingButton.stop();
         } else {
           if (data.token.id && data.token.id !== "") {
-            this.updateCard(data.token.id);
+            this.updateCardToken(data.token.id);
           }
         }
       })
       .catch((error) => {
         // @ts-ignore
         this.$refs["error-modal"].show(error);
+      })
+      .finally(() => {
         // @ts-ignore
         this.$refs.loadingButton.stop();
         this.editing = false;
       });
   }
-  updateCard(token: string) {
-    this.services.stripe
-      .updateCard(token)
+  updateCardToken(token: string) {
+    this.services.subscriptionManager
+      .updateCardToken(token)
       .then((response) => {
-        this.services.stripe.getCurrentCustomer();
+        this.services.subscriptionManager.getCurrentSubscription();
         // @ts-ignore
         this.$refs["success-modal"].show(
           this.$t("settings.tenant.payment.updated")
@@ -136,17 +146,17 @@ export default class TenantSubscriptionPaymentDetails extends BaseComponent {
       });
   }
 
-  get stripeCardLast4() {
-    return this.stripeCard?.last4;
+  get subscriptionCardLast4() {
+    return this.subscriptionCard?.lastFourDigits;
   }
-  get stripeCardHolder() {
-    return this.stripeCard?.name;
+  get subscriptionCardHolder() {
+    return this.subscriptionCard?.brand;
   }
-  get stripeCardExpDesc() {
+  get subscriptionCardExpDesc() {
     return (
-      ("0" + this.stripeCard?.exp_month).slice(-2) +
+      ("0" + this.subscriptionCard?.expiryMonth).slice(-2) +
       " / " +
-      this.stripeCard?.exp_year
+      this.subscriptionCard?.expiryYear
     );
   }
 }

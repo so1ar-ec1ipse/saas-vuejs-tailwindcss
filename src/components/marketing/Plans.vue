@@ -9,30 +9,30 @@
       </span>
 
       <div class="relative">
-        <span class="inline-block w-full rounded-md shadow-sm">
+        <span class="inline-block w-full rounded-sm shadow-sm">
           <button
             v-on:click="droppedDown = !droppedDown"
             type="button"
             aria-haspopup="listbox"
             aria-expanded="true"
             aria-labelledby="listbox-label"
-            class="text-gray-800 cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+            class="text-gray-800 cursor-default relative w-full rounded-sm border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
           >
             <span v-if="selectedPrice" class="block truncate">
-              {{ selectedProductName }} - ${{
-              selectedPrice ? selectedPrice.price : ""
+              {{ selectedProductTitle }} - ${{
+                selectedPrice ? selectedPrice.price : ""
               }}
-              <span
-                class="uppercase"
-              >{{ selectedPrice.currency }}</span>
+              <span class="uppercase">{{ selectedPrice.currency }}</span>
               {{
-              selectedBillingPeriod !== "once"
-              ? "/ " + $t("marketing.pricing." + selectedBillingPeriod)
-              : $t("marketing.pricing." + selectedBillingPeriod)
+                selectedBillingPeriod !== "once"
+                  ? "/ " + $t("marketing.pricing." + selectedBillingPeriod)
+                  : $t("marketing.pricing." + selectedBillingPeriod)
               }}
             </span>
             <span v-else class="block truncate">{{ $t("shared.select") }}</span>
-            <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <span
+              class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+            >
               <svg
                 class="h-5 w-5 text-gray-400"
                 viewBox="0 0 20 20"
@@ -52,14 +52,13 @@
         <!-- Select popover, show/hide based on select state. -->
         <div
           v-if="droppedDown"
-          class="flow-root z-30 absolute mt-1 w-full rounded-md bg-white shadow-lg"
+          class="flow-root z-30 absolute mt-1 w-full rounded-sm bg-white shadow-lg"
         >
           <ul
             tabindex="-1"
             role="listbox"
             aria-labelledby="listbox-label"
-            aria-activedescendant="listbox-item-3"
-            class="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+            class="max-h-60 rounded-sm py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
           >
             <!--
                         Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
@@ -78,11 +77,9 @@
                   <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                   <span class="font-normal block truncate">
                     {{ product.title }}&nbsp;&nbsp;-&nbsp;&nbsp; ${{
-                    currentPrice.price
+                      currentPrice.price
                     }}
-                    <span
-                      class="uppercase"
-                    >{{ currentPrice.currency }}</span>
+                    <span class="uppercase">{{ currentPrice.currency }}</span>
                     {{ billingPeriod(currentPrice) }}
                   </span>
 
@@ -95,7 +92,11 @@
                     v-if="isSelected(product, currentPrice)"
                     class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4"
                   >
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
                       <path
                         fill-rule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -117,21 +118,17 @@
 <script lang="ts">
 import Component from "vue-class-component";
 import BaseComponent from "../../components/shared/BaseComponent.vue";
-import { StripeProduct } from "../../app/models/subscription/StripeProduct";
-import Stripe from "stripe";
-import { Emit } from "vue-property-decorator";
 import BillingPeriodToggle from "../../components/marketing/toggles/BillingPeriodToggle.vue";
 import { mapGetters } from "vuex";
-import {
-  StripePrice,
-  BillingPeriod,
-} from "../../app/models/subscription/StripePrice";
+import { SubscriptionProductDto } from "../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { SubscriptionBillingPeriod } from "../../application/enum/master/SubscriptionBillingPeriod";
+import { SubscriptionPriceDto } from "../../application/dtos/master/subscriptions/SubscriptionPriceDto";
 
 @Component({
   components: { BillingPeriodToggle },
   computed: {
     ...mapGetters("pricing", {
-      selectedProductName: "selectedProductName",
+      selectedProductTitle: "selectedProductTitle",
       selectedPrice: "selectedPrice",
       selectedBillingPeriod: "selectedBillingPeriod",
     }),
@@ -141,7 +138,7 @@ export default class PlansComponent extends BaseComponent {
   public droppedDown: boolean = false;
   created() {
     if (this.$store.state.pricing.products.length === 0) {
-      this.services.stripe.getProducts(false, true);
+      this.services.subscriptionProducts.getProducts(false, true);
     }
   }
   // mounted() {
@@ -161,29 +158,34 @@ export default class PlansComponent extends BaseComponent {
   private closeDropdown() {
     this.droppedDown = false;
   }
-  private price(product: StripeProduct) {
+  private price(product: SubscriptionProductDto): SubscriptionPriceDto {
     return (
       product.prices.find(
         (f) => f.billingPeriod === this.$store.state.pricing.billingPeriod
       ) ?? product.prices[0]
     );
   }
-  private billingPeriod(price: StripePrice) {
-    if (price.billingPeriod === BillingPeriod.Once) {
-      return this.$t("marketing.pricing.once");
+  private billingPeriod(price: SubscriptionPriceDto): string {
+    if (price.billingPeriod === SubscriptionBillingPeriod.Once) {
+      return this.$t("marketing.pricing.once").toString();
     } else {
       return (
         "/ " +
         this.$t(
-          "marketing.pricing." + BillingPeriod[price.billingPeriod] + "Short"
+          "marketing.pricing." +
+            SubscriptionBillingPeriod[price.billingPeriod] +
+            "Short"
         )
       );
     }
   }
-  private isSelected(product: StripeProduct, currentPrice: StripePrice) {
+  private isSelected(
+    product: SubscriptionProductDto,
+    currentPrice: SubscriptionPriceDto
+  ) {
     if (this.selectedProduct?.title === product.title) {
       if (
-        currentPrice.billingPeriod === BillingPeriod.Once ||
+        currentPrice.billingPeriod === SubscriptionBillingPeriod.Once ||
         (this.$store.state.pricing.billingPeriod ===
           currentPrice.billingPeriod &&
           currentPrice.currency === this.$store.state.pricing.currency)
@@ -193,23 +195,20 @@ export default class PlansComponent extends BaseComponent {
     }
     return false;
   }
-  private prices(product: StripeProduct) {
+  private prices(product: SubscriptionProductDto) {
     return product.prices.filter(
       (f) => f.currency === this.$store.state.pricing.currency && f.active
     );
   }
   get products() {
-    return (this.$store.state.pricing.products as StripeProduct[])
+    return (this.$store.state.pricing.products as SubscriptionProductDto[])
       ?.filter((f) => f.active)
       .sort((x, y) => {
         return x.tier > y.tier ? 1 : -1;
       });
   }
-  get subscription() {
-    return this.$store.state.tenant.stripeSubscription as Stripe.Subscription;
-  }
-  get selectedProduct(): StripeProduct | undefined {
-    return this.$store.state.pricing.selectedProduct as StripeProduct;
+  get selectedProduct(): SubscriptionProductDto | undefined {
+    return this.$store.state.pricing.selectedProduct as SubscriptionProductDto;
   }
 }
 </script>

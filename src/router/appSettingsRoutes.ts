@@ -1,6 +1,5 @@
+import { TenantUserRole } from "@/application/enum/master/TenantUserRole";
 import { i18n } from "@/plugins/vue-i18n";
-import { TenantUserRole } from "@/app/models/system/account/ITenantDTO";
-import { UserType } from "@/app/models/system/account/IUserDTO";
 
 export const appSettingsRoutes = {
   path: "settings",

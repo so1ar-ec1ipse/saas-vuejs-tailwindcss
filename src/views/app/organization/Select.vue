@@ -13,6 +13,7 @@ import Component from "vue-class-component";
 import BaseComponent from "../../../components/shared/BaseComponent.vue";
 import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
+import { TenantDto } from "../../../application/dtos/master/tenants/TenantDto";
 
 @Component({
   components: { SuccessModal, ErrorModal },
@@ -20,11 +21,11 @@ import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 export default class SelectOrganizationComponent extends BaseComponent {
   mounted() {
     this.services.tenants
-      .getMyTenants()
-      .then((response: any) => {
-        if (response.data.length > 0) {
-          if (response.data.length === 1) {
-            this.selectTenant(response.data[0]);
+      .getAll()
+      .then((response: TenantDto[]) => {
+        if (response.length > 0) {
+          if (response.length === 1) {
+            this.selectTenant(response[0]);
           }
         }
       })

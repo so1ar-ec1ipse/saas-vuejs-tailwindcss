@@ -19,18 +19,21 @@
     ],
     "typeRoots": ["../node_modules/@types"],
     "paths": {
-      "@/*": ["./src/*", "./*"],
+      "@/*": ["./src/*", "./*", "src/*"],
     },
     "lib": [
       "esnext",
       "dom",
       "dom.iterable",
       "scripthost",
-      "es2015", "es2016", "dom", "es2018.promise"
+      "es2015", 
+      "es2016", 
+      "dom", 
+      "es2018.promise"
     ]
   },
   "paths": {
-    "@/*": ["./src/*", "./*"],
+    "@/*": ["./src/*", "./*", "src/*"],
   },
   "include": [
     "./src",
@@ -52,6 +55,6 @@
       "functions": "never",
       "typeLiterals": "ignore"
     }
-  }],
-  "no-var-requires": false
-}
+    }],
+    "no-var-requires": false
+  }

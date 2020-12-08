@@ -12,11 +12,11 @@
           </h2>
         </div>
         <div class="mt-0 flex lg:mt-0 lg:ml-4">
-          <span class="hidden sm:block ml-3 shadow-sm rounded-md">
+          <span class="hidden sm:block ml-3 shadow-sm rounded-sm">
             <button
               @click="reload"
               type="button"
-              class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+              class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
             >
               <i class="fa fa-redo -ml-1 mr-2 h-5 w-5 text-gray-500"></i>
               {{ $t("shared.reload") }}
@@ -25,74 +25,74 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col  mt-4 sm:mt-12">
+    <div class="flex flex-col mt-4 sm:mt-12 -mx-8">
       <div
-        class="shadow overflow-scroll border-b border-gray-200 sm:rounded-lg"
+        class="shadow overflow-scroll border-b border-gray-200 sm:rounded-sm"
       >
         <div v-if="loading">
           <table-row-skeleton></table-row-skeleton>
           <table-row-skeleton></table-row-skeleton>
           <table-row-skeleton></table-row-skeleton>
         </div>
-        <table v-else class="min-w-full divide-y divide-gray-200">
+        <table v-else class="min-w-full divide-y divide-gray-200 ">
           <thead>
             <tr>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.name") }}
               </th>
               <!-- <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >{{ $t("models.tenant.domain") }}</th>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >{{ $t("models.tenant.subdomain") }}</th>-->
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.icon") }}
               </th>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.logo") }}
               </th>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.logoDarkmode") }}
               </th>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.appTheme") }}
               </th>
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.tenant.appColor") }}
               </th>
 
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 {{ $t("models.user.plural") }}
               </th>
 
               <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
-                {{ $t("models.tenant.stripe") }}
+                {{ $t("models.tenant.subscription") }}
               </th>
 
-              <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+              <!-- <th
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >
                 ID
-              </th>
+              </th> -->
               <!-- <th
-                class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
               >{{ $t("shared.status") }}</th>-->
             </tr>
           </thead>
@@ -115,17 +115,17 @@
                 class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
               >{{ item.subdomain }}</td>-->
               <td
-                class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
+                class="truncate px-6 py-4  text-center text-sm leading-3 font-medium text-gray-900"
               >
                 <img
                   v-if="item.icon"
-                  class="h-8 w-8 rounded-md"
+                  class="h-8 w-8 rounded-sm max-h-8"
                   :src="item.icon"
                   @click="selectImage(item.icon, false)"
                 />
                 <span
                   v-else
-                  class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 shadow-xl"
+                  class="inline-flex items-center justify-center h-8 w-8 rounded-sm bg-gray-500 shadow-xl"
                 >
                   <span class="text-sm font-medium leading-none text-white">{{
                     "?"
@@ -133,11 +133,11 @@
                 </span>
               </td>
               <td
-                class="truncate px-6 py-4 text-lg leading-3 font-medium text-gray-900"
+                class="truncate px-6 py-4  text-center text-sm leading-3 font-medium text-gray-900"
               >
                 <img
                   v-if="item.logo"
-                  class="h-auto rounded-md"
+                  class="h-auto rounded-sm max-h-8"
                   :src="item.logo"
                   @click="selectImage(item.logo, false)"
                 />
@@ -151,11 +151,11 @@
                 </span>
               </td>
               <td
-                class="truncate px-6 py-4 text-lg leading-3 font-medium text-gray-900 bg-gray-800"
+                class="truncate px-6 py-4 text-center text-sm leading-3 font-medium text-gray-900 bg-gray-800"
               >
                 <img
                   v-if="item.logoDarkmode"
-                  class="h-auto rounded-md"
+                  class="h-auto rounded-sm max-h-8"
                   :src="item.logoDarkmode"
                   @click="selectImage(item.logoDarkmode, true)"
                 />
@@ -172,7 +172,7 @@
                 class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
               >
                 <span
-                  class="inline-flex items-center justify-center h-8 w-8 rounded-full shadow-xl"
+                  class="inline-flex items-center justify-center h-8 w-8 rounded-sm shadow-xl"
                   :class="appTheme(item)"
                 >
                   <span
@@ -184,7 +184,7 @@
                 class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
               >
                 <span
-                  class="inline-flex items-center justify-center h-8 w-8 rounded-full shadow-xl"
+                  class="inline-flex items-center justify-center h-8 w-8 rounded-sm shadow-xl"
                   :class="appColor(item)"
                 >
                   <span
@@ -196,37 +196,36 @@
               <td
                 class="pr-5 py-4 whitespace-no-wrap text-right text-sm leading-3 font-medium"
               >
-                <router-link
+                <span v-if="item && item.users">
+                  {{ item.users.length }}
+                </span>
+                <span v-else>
+                  0
+                </span>
+                <!-- <router-link
                   :to="{
-                    path: '/admin/users/' + item.name + '/' + item.apiKey,
+                    path: '/admin/users/' + item.id,
                   }"
                   class="text-theme-600 hover:text-theme-900"
                   >{{ $t("models.user.plural") }}</router-link
-                >
+                > -->
               </td>
               <td
                 class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
               >
-                <button
-                  :disabled="!item.stripeCustomerId"
-                  @click="window.open(customerLink(item))"
-                  class="cursor-pointer text-theme-600 hover:text-theme-500 disabled:opacity-75 disabled:cursor-not-allowed disabled:text-gray-500"
-                >
-                  {{ $t("models.tenant.stripeCustomerId") }}</button
-                >,
-                <button
-                  :disabled="!item.stripeSubscriptionId"
-                  @click="window.open(subscriptionOrProductLink(item))"
-                  class="cursor-pointer text-theme-600 hover:text-theme-500 ml-2 disabled:opacity-75 disabled:cursor-default"
-                >
-                  {{ $t("models.tenant.stripeSubscriptionId") }}
-                </button>
+                <div v-if="item.products && item.products.length">
+                  {{
+                    item.products
+                      .map((f) => f.subscriptionProduct.title)
+                      .join(", ")
+                  }}
+                </div>
               </td>
-              <td
+              <!-- <td
                 class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
               >
-                {{ item.apiKey }}
-              </td>
+                {{ item.id }}
+              </td> -->
             </tr>
           </tbody>
         </table>
@@ -241,53 +240,6 @@
         <img :src="selectedImage" class="w-64 h-auto mx-auto" />
       </div>
     </modal>
-
-    <div class="bg-theme-100 mb-2 rounded-md border border-theme-300 mt-8">
-      <div class="rounded-md bg-theme-50 p-4">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg
-              class="h-5 w-5 text-theme-400"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
-
-          <div class="ml-3">
-            <h3 class="text-sm leading-5 font-medium text-theme-800">
-              {{ $t("netcoresaas.backendNeeded") }}
-            </h3>
-            <div class="mt-2 text-sm leading-5 text-theme-700">
-              <p>{{ $t("netcoresaas.fakeData") }}</p>
-            </div>
-            <div class="text-sm leading-5 right-0 -ml-3 mt-2">
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://netcoresaas.com/product"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.getBackend") }}</a
-                >
-              </span>
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://demo.netcoresaas.com"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.demo") }}</a
-                >
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -295,14 +247,14 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import BaseComponent from "../../components/shared/BaseComponent.vue";
-import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
 import TenantMembers from "@/components/app/settings/tenant/TenantMembers.vue";
 import Modal from "@/components/shared/modals/Modal.vue";
 import TableRowSkeleton from "@/components/shared/skeletons/TableRowSkeleton.vue";
+import { TenantDto } from "../../application/dtos/master/tenants/TenantDto";
 
 @Component({ components: { TenantMembers, Modal, TableRowSkeleton } })
 export default class TenantsComponent extends BaseComponent {
-  private tenants?: ITenantDTO[] = [];
+  private tenants?: TenantDto[] = [];
   private selectedImage: string = "";
   private selectedImageIsDarkMode: boolean = false;
   mounted() {
@@ -311,10 +263,10 @@ export default class TenantsComponent extends BaseComponent {
   async reload() {
     this.loading = true;
     this.tenants = [];
-    this.services.admin
-      .getTenants()
-      .then((response: any) => {
-        this.tenants = response.data;
+    this.services.tenants
+      .adminGetAll()
+      .then((response: TenantDto[]) => {
+        this.tenants = response;
       })
       .catch((error) => {
         console.log(error);
@@ -323,14 +275,16 @@ export default class TenantsComponent extends BaseComponent {
         this.loading = false;
       });
   }
-  selectTenant(tenant: ITenantDTO) {
-    this.$router.push("/admin/users/" + tenant.apiKey);
+  selectTenant(tenant: TenantDto) {
+    this.$router.push("/admin/users/" + tenant.id);
   }
-  changeTenant(tenant: ITenantDTO) {
-    this.services.tenants.changeDefault(tenant.apiKey).then((response: any) => {
-      this.$store.commit("tenant/current", response.data.currentTenant);
-      this.$router.push("/app");
-    });
+  changeTenant(tenant: TenantDto) {
+    this.services.users
+      .updateDefaultTenant(tenant.id ?? "")
+      .then((response: TenantDto) => {
+        this.$store.commit("tenant/current", response);
+        this.$router.push("/app");
+      });
   }
   selectImage(image, isDarkmode) {
     this.selectedImage = image;
@@ -338,14 +292,14 @@ export default class TenantsComponent extends BaseComponent {
     // @ts-ignore
     this.$refs["image-modal"].show();
   }
-  appTheme(tenant: ITenantDTO) {
+  appTheme(tenant: TenantDto) {
     let theme: string = process.env.VUE_APP_THEME?.toString() || "";
     if (tenant.appTheme) {
       theme = tenant.appTheme;
     }
     return theme === "theme-bg-dark" ? "bg-gray-800" : "bg-gray-100";
   }
-  appColor(tenant: ITenantDTO) {
+  appColor(tenant: TenantDto) {
     let color: string = process?.env?.VUE_APP_COLOR?.toString() || "";
     if (tenant.appColor) {
       color = tenant.appColor;
@@ -353,7 +307,7 @@ export default class TenantsComponent extends BaseComponent {
     const current = color?.replace("theme", "");
     return "bg" + current + "-500";
   }
-  avatarText(tenant: ITenantDTO) {
+  avatarText(tenant: TenantDto) {
     if (tenant) {
       return tenant.name.substring(0, 2).toUpperCase();
     }
@@ -364,20 +318,20 @@ export default class TenantsComponent extends BaseComponent {
       ? "https://dashboard.stripe.com"
       : "https://dashboard.stripe.com/test";
   }
-  customerLink(tenant: ITenantDTO) {
-    return this.stripeUrl() + "/customers/" + tenant.stripeCustomerId;
+  customerLink(tenant: TenantDto) {
+    return this.stripeUrl() + "/customers/" + tenant.subscriptionCustomerId;
   }
-  subscriptionOrProductLink(tenant: ITenantDTO) {
+  subscriptionOrProductLink(tenant: TenantDto) {
     if (
-      tenant.stripeSubscriptionId &&
-      tenant.stripeSubscriptionId.includes("sub_")
+      tenant.subscriptionPlanId &&
+      tenant.subscriptionPlanId.includes("sub_")
     ) {
-      return this.stripeUrl() + "/subscriptions/" + tenant.stripeSubscriptionId;
+      return this.stripeUrl() + "/subscriptions/" + tenant.subscriptionPlanId;
     } else {
-      return this.stripeUrl() + "/payments/" + tenant.stripeSubscriptionId;
+      return this.stripeUrl() + "/payments/" + tenant.subscriptionPlanId;
     }
   }
-  get orderedItems() {
+  get orderedItems(): TenantDto[] {
     if (!this.tenants) {
       return [];
     }

@@ -13,9 +13,9 @@
     "logoDarkmode": "Darkmode",
     "appTheme": "Theme",
     "appColor": "Color",
-    "stripe": "Stripe",
-    "stripeCustomerId": "Customer",
-    "stripeSubscriptionId": "Subcription",
+    "subscription": "Subscription",
+    "subscriptionCustomerId": "Customer",
+    "subscriptionPlanId": "Plan",
     "member": "member",
     "members": "members"
   },
@@ -25,16 +25,20 @@
     "username": "Username",
     "email": "Email",
     "type": "Type",
+    "firstName": "First name",
+    "lastName": "Last name",
     "role": "Role",
     "loginType": "Login type",
     "token": "Token",
     "defaultTenant": "Default tenant",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "tenants": "Tenants",
+    "impersonate": "Impersonate"
   },
-  "expense": {
-    "object": "Expense",
-    "plural": "Expenses",
+  "transaction": {
+    "object": "Transaction",
+    "plural": "Transactions",
     "description": "Description",
     "quantity": "Quantity",
     "price": "Price",
@@ -42,11 +46,11 @@
     "date": "Date",
     "category": "Category"
   },
-  "stripeProduct": {
+  "subscriptionProduct": {
     "object": "Product",
     "plural": "Products",
     "objectDescription": "",
-    "stripeId": "Stripe ID",
+    "serviceId": "Service ID",
     "tier": "Tier",
     "title": "Title",
     "description": "Description",
@@ -54,26 +58,28 @@
     "active": "Active",
     "image": "Image",
     "maxUsers": "Max users",
-    "stripeIdLeaveEmpty": "Leave empty to create a price on Stripe"
+    "serviceIdLeaveEmpty": "Leave empty to create a product on your Subscription Provider"
   },
-  "stripePrice": {
+  "subscriptionPrice": {
     "object": "Price",
     "plural": "Prices",
-    "stripeId": "Stripe ID",
+    "serviceId": "Service ID",
     "type": "Type",
     "billingPeriod": "Billing period",
     "price": "Price",
     "currency": "Currency",
     "trialDays": "Trial days",
     "active": "Active",
-    "priceBefore": "Price before"
+    "priceBefore": "Price before",
+    "serviceIdLeaveEmpty": "Leave empty to create a price on your Subscription Provider"
   },
-  "stripeFeature": {
+  "subscriptionFeature": {
     "object": "Feature",
     "plural": "Features",
     "order": "Order",
     "key": "Name",
     "value": "Value",
+    "translateInFrontend": "Translate in frontend",
     "included": "Included"
   },
   "resource": {

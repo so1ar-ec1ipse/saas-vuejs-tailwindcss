@@ -1,75 +1,62 @@
-import Services from "@/services";
 import { Module } from "vuex";
 import { TenantState, RootState } from "@/types/stateTypes";
-import { Stripe } from "stripe";
 import store from "@/store";
-import {
-  ITenantDTO,
-  TenantUserRole,
-  ITenantUserDTO,
-} from "@/app/models/system/account/ITenantDTO";
-import { StripePrice } from "@/app/models/subscription/StripePrice";
+import { SubscriptionGetCurrentResponse } from "@/application/contracts/master/subscriptions/SubscriptionGetCurrentResponse";
+import { SubscriptionCardDto } from "@/application/dtos/master/subscriptions/SubscriptionCardDto";
+import { TenantProductDto } from "@/application/dtos/master/tenants/TenantProductDto";
+import { SubscriptionPriceDto } from "@/application/dtos/master/subscriptions/SubscriptionPriceDto";
+import { TenantDto } from "@/application/dtos/master/tenants/TenantDto";
+import { TenantUserDto } from "@/application/dtos/master/tenants/TenantUserDto";
+import { TenantUserRole } from "@/application/enum/master/TenantUserRole";
 
 export const state: TenantState = {
   tenants: [],
   current: null,
-  myProducts: [],
-  stripeCustomer: null,
-  stripeMyProducts: null,
-  stripeInvoices: null,
-  stripeCards: null,
-  stripePaymentMethods: null,
+  subscription: null,
   members: [],
 };
 export const tenant: Module<TenantState, RootState> = {
   namespaced: true,
   state,
   getters: {
-    defaultStripeCard: (state: TenantState) => {
-      const cards = state.stripePaymentMethods as Stripe.ApiList<
-        Stripe.PaymentMethod
-      >;
-      if (cards && cards.data && cards.data.length > 0) {
-        return cards.data[0].card;
+    defaultSubscriptionCard: (
+      state: TenantState
+    ): SubscriptionCardDto | undefined => {
+      if (state.subscription && state.subscription.paymentMethods && state.subscription.paymentMethods?.length > 0) {
+        return state.subscription?.paymentMethods[0].card;
+      }
+      return undefined;
+    },
+    activeProduct: (state: TenantState): TenantProductDto | null => {
+      if (state.subscription && state.subscription.myProducts?.length > 0) {
+        return state.subscription.myProducts[0];
       }
       return null;
     },
-    activeProduct: (state: TenantState) => {
-      if (state.myProducts && state.myProducts.length > 0) {
-        return state.myProducts[0].product;
-      } else {
-        return null;
+    activePrice: (state: TenantState): SubscriptionPriceDto | null => {
+      if (state.subscription && state.subscription.myProducts?.length > 0) {
+        return state.subscription.myProducts[0].subscriptionPrice || null;
       }
+      return null;
     },
-    activePrice: (state: TenantState) => {
-      if (state.myProducts && state.myProducts.length > 0) {
-        return state.myProducts[0];
-      } else {
-        return null;
-      }
-    },
-    subscription: (state: TenantState) => {
-      const stripeMyProducts = store.state.tenant.stripeMyProducts;
-      if (stripeMyProducts?.data) {
-        return stripeMyProducts;
-      }
-    },
+    // subscription: (state: TenantState): TenantProductDto | null => {
+    //   return state.subscription;
+    // },
     roleName: (state: TenantState) => {
-      if (state.current?.currentUser) {
-        return TenantUserRole[state.current?.currentUser.role];
-      }
-      return "--";
+      return state.current?.currentUser
+        ? TenantUserRole[state.current.currentUser.role]
+        : "--";
     },
     role: (state: TenantState) => {
-      if (state.current?.currentUser) {
-        return state.current?.currentUser.role;
-      }
-      return "--";
+      return state.current?.currentUser ? state.current.currentUser.role : "--";
     },
-    isOwnerOrAdmin: (state: TenantState) => {
+    isOwnerOrAdmin: (state: TenantState): boolean => {
+      if (!state.current?.currentUser) {
+        return false;
+      }
       return (
-        state.current?.currentUser?.role === TenantUserRole.Owner ||
-        state.current?.currentUser?.role === TenantUserRole.Admin
+        state.current.currentUser?.role === TenantUserRole.Owner ||
+        state.current.currentUser?.role === TenantUserRole.Admin
       );
     },
     memberCount: (state: TenantState) => {
@@ -80,18 +67,13 @@ export const tenant: Module<TenantState, RootState> = {
     reset(state: TenantState) {
       state.tenants = [];
       state.current = null;
-      state.myProducts = [];
-      state.stripeCustomer = null;
-      state.stripeMyProducts = null;
-      state.stripeInvoices = null;
-      state.stripeCards = null;
-      state.stripePaymentMethods = null;
+      state.subscription = null;
       state.members = [];
     },
-    myTenants: (state: TenantState, payload: ITenantDTO[]) => {
+    myTenants: (state: TenantState, payload: TenantDto[]) => {
       state.tenants = payload;
     },
-    current: (state: TenantState, payload: ITenantDTO) => {
+    current: (state: TenantState, payload: TenantDto) => {
       state.current = payload;
       if (payload) {
         store.commit("theme/appTheme", payload.appTheme);
@@ -109,28 +91,12 @@ export const tenant: Module<TenantState, RootState> = {
         }
       }
     },
-    stripe: (state: TenantState, payload: any) => {
-      const myProducts = payload.myProducts as StripePrice[];
-      const customer = payload.customer as Stripe.Customer;
-      const invoices = payload.invoices as Stripe.ApiList<Stripe.Invoice>;
-      const cards = payload.cards as Stripe.ApiList<Stripe.Card>;
-      const paymentMethods = payload.paymentMethods as Stripe.ApiList<
-        Stripe.PaymentMethod
-      >;
-      if (state.tenants && customer) {
-        state.tenants.forEach((tenant) => {
-          if (tenant.stripeCustomerId === customer.id) {
-            tenant.products = myProducts;
-          }
-        });
-      }
-
-      store.dispatch("pricing/myProducts", myProducts);
-      state.myProducts = myProducts;
-      state.stripeCustomer = customer;
-      state.stripeInvoices = invoices;
-      state.stripeCards = cards;
-      state.stripePaymentMethods = paymentMethods;
+    subscription: (
+      state: TenantState,
+      payload: SubscriptionGetCurrentResponse
+    ) => {
+      state.subscription = payload;
+      store.dispatch("pricing/myProducts", payload.myProducts);
     },
     appTheme(state: TenantState, payload: string) {
       if (state.current) {
@@ -142,18 +108,15 @@ export const tenant: Module<TenantState, RootState> = {
         state.current.appColor = payload;
       }
     },
-    members(state: TenantState, payload: ITenantUserDTO[]) {
+    members(state: TenantState, payload: TenantUserDto[]) {
       state.members = payload;
     },
-    settings(state: TenantState, payload: ITenantDTO) {
+    settings(state: TenantState, payload: TenantDto) {
       if (state.current) {
         state.current.name = payload.name;
         state.current.subdomain = payload.subdomain;
         state.current.appTheme = payload.appTheme;
         state.current.appColor = payload.appColor;
-        state.current.icon = payload.icon;
-        state.current.logo = payload.logo;
-        state.current.logoDarkmode = payload.logoDarkmode;
       }
     },
   },

@@ -39,12 +39,12 @@
                 v-model="requireAcceptance"
                 @change="changeLinkSettings($event)"
               />
-              <label>{{
-                $t("settings.tenant.members.requireAcceptance")
-              }}</label>
+              <label>
+                {{ $t("settings.tenant.members.requireAcceptance") }}
+              </label>
             </p>
             <div class="col-span-3 sm:col-span-2 mt-4 max-w-lg">
-              <div v-if="enableLink" class="mt-1 flex rounded-md shadow-sm">
+              <div v-if="enableLink" class="mt-1 flex rounded-sm shadow-sm">
                 <input
                   disabled
                   :value="urlLink"
@@ -354,7 +354,7 @@
                 </h4>
                 <router-link
                   to="/app/settings/organization/members/new"
-                  class="text-center px-4 py-2 border border-transparent text-sm leading-3 font-medium rounded-md text-white bg-theme-600 hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-theme-700 transition duration-150 ease-in-out"
+                  class="text-center px-4 py-2 border border-transparent text-sm leading-3 font-medium rounded-sm text-white bg-theme-600 hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-theme-700 transition duration-150 ease-in-out"
                 >
                   <svg
                     aria-hidden="true"
@@ -365,7 +365,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
                     class="md:relative mr-2 svg-inline--fa fa-plus fa-w-14 fa-sm"
-                    style="bottom: 1px;"
+                    style="bottom: 1px"
                   >
                     <path
                       fill="currentColor"
@@ -387,47 +387,47 @@
               <thead>
                 <tr>
                   <!-- <th
-                  class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                  class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                 >
                   ID
                   </th>-->
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("shared.avatar") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("settings.profile.role") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("account.shared.email") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("settings.profile.name") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("settings.profile.phone") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("shared.status") }}
                   </th>
                   <th
-                    class="px-2 py-1 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                    class="px-2 py-1 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {{ $t("settings.profile.joinedMethod") }}
                   </th>
 
-                  <th class="pr-5 py-2 bg-gray-200 w-10"></th>
+                  <th class="pr-5 py-2 bg-gray-50 w-10"></th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
@@ -435,16 +435,16 @@
                   <td
                     class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
                   >
-                    <!-- <img class="w-6 h-6 rounded-full" :src="item.avatar" /> -->
+                    <!-- <img class="w-6 h-6 rounded-sm" :src="item.avatar" /> -->
                     <img
                       v-if="item.user && item.user.avatar"
-                      class="h-auto xl:h-8 xl:w-8 rounded-md"
+                      class="h-auto xl:h-8 xl:w-8 rounded-sm"
                       :src="item.user.avatar"
                       alt
                     />
                     <span
                       v-else
-                      class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-theme-500 shadow-xl"
+                      class="inline-flex items-center justify-center h-8 w-8 rounded-sm bg-theme-500 shadow-xl"
                     >
                       <span
                         class="text-sm font-medium leading-none text-white"
@@ -456,7 +456,7 @@
                     class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
                   >
                     <span
-                      class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium leading-5"
+                      class="inline-flex items-center px-3 py-1 rounded-sm text-sm font-medium leading-5"
                       :class="getUserRoleClass(item)"
                       >{{ getUserRole(item) }}</span
                     >
@@ -481,7 +481,7 @@
                     class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
                   >
                     <span
-                      class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium leading-5"
+                      class="inline-flex items-center px-3 py-1 rounded-sm text-sm font-medium leading-5"
                       :class="getUserStatusClass(item)"
                       >{{ getUserStatus(item) }}</span
                     >
@@ -490,7 +490,7 @@
                     class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
                   >
                     <span
-                      class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium leading-5"
+                      class="inline-flex items-center px-3 py-1 rounded-sm text-sm font-medium leading-5"
                       :class="getUserJoinedClass(item)"
                       >{{ getUserJoined(item) }}</span
                     >
@@ -518,7 +518,7 @@
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap text-sm leading-3 text-gray-500">
                     <span
-                      class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-teal-100 text-teal-800"
+                      class="inline-flex items-center px-2 py-0.5 rounded-sm text-xs font-medium leading-4 bg-teal-100 text-teal-800"
                     >{{ item.category }}</span>
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap text-sm leading-3 text-gray-500">
@@ -535,13 +535,13 @@
                     <div v-if="pendingAcceptance(item) && isOwnerOrAdmin">
                       <button
                         @click="acceptUser(item, true)"
-                        class="bg-teal-500 p-2 text-gray-100 hover:text-teal-200 rounded-md mx-2"
+                        class="bg-teal-500 p-2 text-gray-100 hover:text-teal-200 rounded-sm mx-2"
                       >
                         {{ $t("shared.accept") }}
                       </button>
                       <button
                         @click="acceptUser(item, false)"
-                        class="bg-red-500 p-2 text-gray-100 hover:text-red-200 rounded-md mx-2"
+                        class="bg-red-500 p-2 text-gray-100 hover:text-red-200 rounded-sm mx-2"
                       >
                         {{ $t("shared.reject") }}
                       </button>
@@ -562,11 +562,13 @@
           </div>
         </div>
         <div v-if="maxNumberOfUsersReached">
-          <div class="bg-theme-50 border-l-4 border-theme-400 p-4 mt-8">
+          <div
+            class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-8 min-w-full"
+          >
             <div class="flex">
               <div class="flex-shrink-0">
                 <svg
-                  class="h-5 w-5 text-theme-400"
+                  class="h-5 w-5 text-yellow-400"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -578,11 +580,11 @@
                 </svg>
               </div>
               <div class="ml-3">
-                <p class="text-sm leading-5 text-theme-700">
+                <p class="text-sm leading-5 text-yellow-700">
                   {{ $t("settings.tenant.members.maxNumberOfUsers") }}
                   <router-link
                     to="/app/settings/organization/subscription"
-                    class="font-medium underline text-theme-700 hover:text-theme-600 transition ease-in-out duration-150"
+                    class="font-medium underline text-yellow-700 hover:text-yellow-600 transition ease-in-out duration-150"
                     >{{ $t("shared.upgrade") }}</router-link
                   >
                 </p>
@@ -592,52 +594,6 @@
         </div>
       </template>
     </object-list>
-    <div class="bg-theme-100 mb-2 rounded-md border border-theme-300 mt-8">
-      <div class="rounded-md bg-theme-50 p-4">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg
-              class="h-5 w-5 text-theme-400"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
-
-          <div class="ml-3">
-            <h3 class="text-sm leading-5 font-medium text-theme-800">
-              {{ $t("netcoresaas.backendNeeded") }}
-            </h3>
-            <div class="mt-2 text-sm leading-5 text-theme-700">
-              <p>{{ $t("netcoresaas.fakeData") }}</p>
-            </div>
-            <div class="text-sm leading-5 right-0 -ml-3 mt-2">
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://netcoresaas.com/product"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.getBackend") }}</a
-                >
-              </span>
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://demo.netcoresaas.com"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.demo") }}</a
-                >
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <error-modal ref="error-modal"></error-modal>
     <confirm-modal
       ref="confirm-upgrade"
@@ -654,16 +610,15 @@ import ConfirmModal from "@/components/shared/modals/ConfirmModal.vue";
 import ObjectList from "../../../../components/shared/forms/ObjectList.vue";
 import { report } from "process";
 import TableRowSkeleton from "@/components/shared/skeletons/TableRowSkeleton.vue";
-import { IUserDTO } from "../../../../app/models/system/account/IUserDTO";
-import {
-  TenantUserRole,
-  ITenantUserDTO,
-  TenantUserJoined,
-  TenantUserStatus,
-} from "../../../../app/models/system/account/ITenantDTO";
 import { Prop } from "vue-property-decorator";
 import { mapGetters } from "vuex";
-import { StripeProduct } from "../../../../app/models/subscription/StripeProduct";
+import { TenantUserDto } from "../../../../application/dtos/master/tenants/TenantUserDto";
+import { TenantJoinSettingsDto } from "../../../../application/dtos/master/tenants/TenantJoinSettingsDto";
+import { TenantUserRole } from "../../../../application/enum/master/TenantUserRole";
+import { TenantUserStatus } from "../../../../application/enum/master/TenantUserStatus";
+import { TenantUserJoined } from "../../../../application/enum/master/TenantUserJoined";
+import { SubscriptionProductDto } from "../../../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { TenantProductDto } from "../../../../application/dtos/master/tenants/TenantProductDto";
 
 @Component({
   components: { ObjectList, TableRowSkeleton, ConfirmModal },
@@ -679,18 +634,15 @@ import { StripeProduct } from "../../../../app/models/subscription/StripeProduct
   },
 })
 export default class TenantMembersComponent extends BaseComponent {
-  @Prop()
-  public propTenantApiKey!: string;
   @Prop({ default: "Users" }) readonly title!: string;
 
-  public tenantApiKey: string = "";
-  public items = [] as ITenantUserDTO[];
+  public items = [] as TenantUserDto[];
   private tenantJoinSettings: any = {};
   private enableLink: boolean = false;
   private enablePublicUrl: boolean = false;
   private requireAcceptance: boolean = false;
   private copiedUrlLink: boolean = false;
-  private activeProduct!: StripeProduct;
+  private activeProduct!: TenantProductDto;
   private memberCount!: number;
   private isOwnerOrAdmin!: boolean;
   private role!: TenantUserRole;
@@ -701,17 +653,24 @@ export default class TenantMembersComponent extends BaseComponent {
     this.eventBus.$on("user-saved", (data) => self.saved(data));
     this.eventBus.$on("user-deleted", (data) => self.deleted(data));
   }
-
+  destroy() {
+    this.eventBus.$off("user-canceled");
+    this.eventBus.$off("user-deleted");
+    this.eventBus.$off("user-added");
+    this.eventBus.$off("user-saved");
+  }
   mounted() {
     // SignalService.on("UserAdded", (user: User) => {
     //   this.items.push(user);
     // });
-    this.services.tenantUsers.getInvitationSettings().then((response: any) => {
-      this.tenantJoinSettings = response.data;
-      this.enableLink = this.tenantJoinSettings.linkActive;
-      this.enablePublicUrl = this.tenantJoinSettings.publicUrl;
-      this.requireAcceptance = this.tenantJoinSettings.requireAcceptance;
-    });
+    this.services.tenantUserInvitations
+      .getInvitationSettings()
+      .then((response: TenantJoinSettingsDto) => {
+        this.tenantJoinSettings = response;
+        this.enableLink = this.tenantJoinSettings.linkActive;
+        this.enablePublicUrl = this.tenantJoinSettings.publicUrl;
+        this.requireAcceptance = this.tenantJoinSettings.requireAcceptance;
+      });
     this.reload();
   }
   avatarText(user) {
@@ -733,9 +692,9 @@ export default class TenantMembersComponent extends BaseComponent {
     this.items = [];
     this.loading = true;
     this.services.tenantUsers
-      .getUsers(this.tenantApiKey)
-      .then((response: any) => {
-        response.data.forEach((element) => {
+      .getAll()
+      .then((response: TenantUserDto[]) => {
+        response.forEach((element) => {
           this.items.push(element);
         });
       })
@@ -750,13 +709,13 @@ export default class TenantMembersComponent extends BaseComponent {
   canceled() {
     console.log("canceled");
   }
-  added(data: ITenantUserDTO) {
+  added(data: TenantUserDto) {
     this.reload();
     // console.log("added data:" + JSON.stringify(data));
     // this.items.push(data);
     // // SignalService.invoke(
     //   "AddUser",
-    //   this.$store.state.tenant.current.apiKey,
+    //   this.$store.state.tenant.current.id,
     //   data
     // );
   }
@@ -769,15 +728,15 @@ export default class TenantMembersComponent extends BaseComponent {
     this.items = this.items.filter((f) => f.id !== data.id);
   }
   updateTenantJoinSettings(reset = false) {
-    this.services.tenantUsers
+    this.services.tenantUserInvitations
       .updateInvitationSettings({
         enableLink: this.enableLink,
         resetLink: reset,
         enablePublicUrl: this.enablePublicUrl,
         requireAcceptance: this.requireAcceptance,
       })
-      .then((response: any) => {
-        this.tenantJoinSettings = response.data;
+      .then((response: TenantJoinSettingsDto) => {
+        this.tenantJoinSettings = response;
         this.enableLink = this.tenantJoinSettings.linkActive;
         this.enablePublicUrl = this.tenantJoinSettings.publicUrl;
         this.requireAcceptance = this.tenantJoinSettings.requireAcceptance;
@@ -806,32 +765,32 @@ export default class TenantMembersComponent extends BaseComponent {
   yesUpdateSubscription() {
     this.$router.push({ path: "/app/settings/organization/subscription" });
   }
-  getUserRole(item: ITenantUserDTO) {
+  getUserRole(item: TenantUserDto) {
     return this.$t("settings.profile.roles." + TenantUserRole[item.role]);
   }
-  getUserJoined(item: ITenantUserDTO) {
+  getUserJoined(item: TenantUserDto) {
     if (item.status === TenantUserStatus.Active) {
       return this.$t(
         "settings.profile.joined." + TenantUserJoined[item.joined]
       );
     }
   }
-  getUserStatus(item: ITenantUserDTO) {
+  getUserStatus(item: TenantUserDto) {
     return this.$t("settings.profile.status." + TenantUserStatus[item.status]);
   }
-  getUserRoleClass(item: ITenantUserDTO) {
+  getUserRoleClass(item: TenantUserDto) {
     switch (item.role as TenantUserRole) {
       case TenantUserRole.Owner:
         return "bg-gray-800 text-gray-100";
       case TenantUserRole.Admin:
-        return "bg-theme-200";
+        return "bg-orange-200";
       case TenantUserRole.Member:
         return "bg-blue-200";
       case TenantUserRole.Guest:
-        return "bg-gray-200";
+        return "bg-gray-50";
     }
   }
-  getUserJoinedClass(item: ITenantUserDTO) {
+  getUserJoinedClass(item: TenantUserDto) {
     if (item.status === TenantUserStatus.Active) {
       switch (item.joined as TenantUserJoined) {
         case TenantUserJoined.Creator:
@@ -841,29 +800,29 @@ export default class TenantMembersComponent extends BaseComponent {
         case TenantUserJoined.JoinedByLink:
           return "bg-teal-200";
         case TenantUserJoined.JoinedByPublicUrl:
-          return "bg-theme-200";
+          return "bg-orange-200";
       }
     }
   }
-  getUserStatusClass(item: ITenantUserDTO) {
+  getUserStatusClass(item: TenantUserDto) {
     switch (item.status as TenantUserStatus) {
       case TenantUserStatus.PendingInvitation:
-        return "bg-theme-200";
+        return "bg-yellow-200";
       case TenantUserStatus.PendingAcceptance:
-        return "bg-theme-200";
+        return "bg-yellow-200";
       case TenantUserStatus.Active:
         return "bg-teal-200";
       case TenantUserStatus.Inactive:
         return "bg-red-200";
     }
   }
-  pendingAcceptance(item: ITenantUserDTO) {
+  pendingAcceptance(item: TenantUserDto) {
     return item.status === TenantUserStatus.PendingAcceptance;
   }
-  acceptUser(item: ITenantUserDTO, accept: boolean) {
+  acceptUser(item: TenantUserDto, accept: boolean) {
     if (this.isOwnerOrAdmin) {
       item.accepted = accept;
-      this.services.tenantUsers
+      this.services.tenantUserInvitations
         .acceptUser(item)
         .then((response) => {
           this.reload();
@@ -875,9 +834,11 @@ export default class TenantMembersComponent extends BaseComponent {
     }
   }
   get maxNumberOfUsers(): number {
-    return this.activeProduct && this.activeProduct.maxUsers
-      ? this.activeProduct.maxUsers
-      : 0;
+    return this.activeProduct &&
+      this.activeProduct.subscriptionProduct &&
+      this.activeProduct.subscriptionProduct.maxUsers
+      ? this.activeProduct.subscriptionProduct.maxUsers
+      : 1;
   }
   get maxNumberOfUsersReached() {
     // @ts-ignore

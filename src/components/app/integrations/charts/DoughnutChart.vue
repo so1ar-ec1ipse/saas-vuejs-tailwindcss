@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white overflow-hidden shadow rounded-lg p-4">
+  <div class="bg-white overflow-hidden shadow rounded-sm p-4">
     <div class="">
       <doughnut-chart :chart-data="datacollection"></doughnut-chart>
     </div>

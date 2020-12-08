@@ -1,5 +1,5 @@
 {
-  "free": "Free VueJS (with TypeScript) + TailwindCSS frontend",
+  "free": "Get the .NET 5 backend",
   "backend": "To get a working backend go to netcoresaas.com",
   "getBackend": "Get backend",
   "backendNeeded": "Needs backend",
@@ -7,6 +7,6 @@
   "demo": "Live demo",
   "fakeLoginAdmin": "Admin: admin@fake.com",
   "fakeLoginTenant": "Tenant: tenant@fake.com",
-  "fakeLoginPassword": "Any password",
+  "fakeLoginPassword": "Password: any password",
   "fakeRegister": "Use any fake information, or go to login page"
 }

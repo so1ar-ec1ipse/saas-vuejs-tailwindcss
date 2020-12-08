@@ -43,7 +43,7 @@
         </h2>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div class="bg-secondary py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div class="bg-secondary py-8 px-4 shadow sm:rounded-sm sm:px-10">
             <form @submit.prevent="accept">
               <div>
                 <label
@@ -51,14 +51,14 @@
                   class="block text-sm font-medium leading-5 text-primary"
                   >{{ $t("account.shared.email") }}</label
                 >
-                <div class="mt-1 rounded-md shadow-sm">
+                <div class="mt-1 rounded-sm shadow-sm">
                   <input
                     :disabled="true"
                     v-model="user.email"
                     id="email"
                     type="email"
                     required
-                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
               </div>
@@ -68,13 +68,13 @@
                   class="block text-sm font-medium leading-5 text-primary"
                   >{{ $t("account.shared.password") }}</label
                 >
-                <div class="mt-1 rounded-md shadow-sm">
+                <div class="mt-1 rounded-sm shadow-sm">
                   <input
                     v-model="user.password"
                     id="password"
                     type="password"
                     required
-                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
               </div>
@@ -84,19 +84,19 @@
                   class="block text-sm font-medium leading-5 text-primary"
                   >{{ $t("account.register.confirmPassword") }}</label
                 >
-                <div class="mt-1 rounded-md shadow-sm">
+                <div class="mt-1 rounded-sm shadow-sm">
                   <input
                     v-model="user.passwordConfirm"
                     id="confirmPassword"
                     type="password"
                     required
-                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
               </div>
 
               <div class="mt-6">
-                <span class="block w-full rounded-md shadow-sm">
+                <span class="block w-full rounded-sm shadow-sm">
                   <loading-button
                     class="w-full block"
                     type="submit"
@@ -121,10 +121,11 @@ import BaseComponent from "../../components/shared/BaseComponent.vue";
 import GoogleSignInButton from "vue-google-signin-button-directive";
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import MarketingLogo from "@/components/marketing/MarketingLogo.vue";
-import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
 import { mapGetters } from "vuex";
 import { defaultState } from "../../store/modules/theme";
-import { IVerifyDTO } from "../../app/models/system/account/IVerifyDTO";
+import { UserVerifyRequest } from "../../application/contracts/master/users/UserVerifyRequest";
+import { TenantInvitationResponse } from "../../application/contracts/master/tenants/TenantInvitationResponse";
+import { TenantDto } from "../../application/dtos/master/tenants/TenantDto";
 
 @Component({
   components: { ErrorModal, MarketingLogo },
@@ -140,9 +141,9 @@ import { IVerifyDTO } from "../../app/models/system/account/IVerifyDTO";
 })
 export default class InvitationComponent extends BaseComponent {
   public requirePassword: boolean = true;
-  public user = {} as IVerifyDTO;
+  public user = {} as UserVerifyRequest;
   public invitation = {} as any;
-  public tenant = {} as ITenantDTO;
+  public tenant = {} as TenantDto;
   private created() {
     this.user.token = this.$route.query.i ? this.$route.query.i.toString() : "";
     this.user.email = this.$route.query.e ? this.$route.query.e.toString() : "";
@@ -152,12 +153,12 @@ export default class InvitationComponent extends BaseComponent {
       this.loading = true;
       this.$store.commit("theme/marketingTheme", defaultState.marketingTheme);
       this.$store.commit("theme/marketingColor", defaultState.marketingColor);
-      this.services.tenantUsers
+      this.services.tenantUserInvitations
         .getInvitation(this.$route.query.i.toString())
-        .then((response: any) => {
-          this.invitation = response.data.invitation;
-          this.tenant = response.data.tenant;
-          this.requirePassword = response.data.requiresVerify;
+        .then((response: TenantInvitationResponse) => {
+          this.invitation = response.invitation;
+          this.tenant = response.tenant;
+          this.requirePassword = response.requiresVerify;
 
           if (this.tenant.appTheme) {
             this.$store.commit("theme/marketingTheme", this.tenant.appTheme);
@@ -178,9 +179,10 @@ export default class InvitationComponent extends BaseComponent {
 
     // @ts-ignore
     this.$refs.loadingButton.start();
-    this.services.tenantUsers
-      .acceptInvitation(this.user)
+    this.services.tenantUserInvitations
+      .acceptInvitation(this.$route.query.i.toString(), this.user)
       .catch((error) => {
+        console.log("error: " + error);
         // @ts-ignore
         this.$refs["error-modal"].show(error);
       })

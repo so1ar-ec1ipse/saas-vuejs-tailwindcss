@@ -40,11 +40,11 @@
             <div class="absolute top-0 right-0 -mr-14 p-1">
               <button
                 @click="sidebarOpen = !sidebarOpen"
-                class="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
+                class="flex items-center justify-center h-12 w-12 rounded-sm focus:outline-none focus:bg-gray-600"
                 aria-label="Close sidebar"
               >
                 <svg
-                  class="h-6 w-6 text-primary"
+                  class="h-5 w-5 text-primary"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -67,7 +67,7 @@
                       :src="currentTenant.logo"
                       alt="logo"
                     />
-                    <img v-else src="@/assets/img/logo.png" alt="logo" />
+                    <img v-else src="@/assets/img/logo-light.png" alt="logo" />
                   </div>
                   <div v-else>
                     <img
@@ -86,14 +86,14 @@
                   class="relative shadow-2xl mb-4"
                   v-click-outside="closeDropdownTenant"
                 >
-                  <span class="inline-block w-full rounded-md shadow-sm">
+                  <span class="inline-block w-full rounded-sm shadow-sm">
                     <button
                       v-on:click="dropDownTenantMobile = !dropDownTenantMobile"
                       type="button"
                       aria-haspopup="listbox"
                       aria-expanded="true"
                       aria-labelledby="listbox-label"
-                      class="text-secondary cursor-default relative w-full border-gray-300 pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:bg-secondary rounded-md"
+                      class="text-secondary cursor-default relative w-full border-gray-300 pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:bg-secondary rounded-sm"
                     >
                       <span class="font-bold">{{ currentTenant.name }}</span>
                       <span
@@ -121,7 +121,7 @@
                     class="transition-all duration-1000"
                     :class="
                       dropDownTenantMobile
-                        ? 'z-40 absolute object-top mt-1 w-full rounded-md bg-gray-100 shadow-lg'
+                        ? 'z-40 absolute object-top mt-1 w-full rounded-sm bg-gray-100 shadow-lg'
                         : 'hidden'
                     "
                   >
@@ -130,7 +130,7 @@
                       role="listbox"
                       aria-labelledby="listbox-label"
                       aria-activedescendant="listbox-item-3"
-                      class="max-h-60 rounded-md py-1 text-sm leading-5 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+                      class="max-h-60 rounded-sm py-1 text-sm leading-5 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
                     >
                       <!--
                         Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
@@ -148,14 +148,14 @@
                         <div>
                           <img
                             v-if="tenant.icon"
-                            class="h-8 w-8 rounded-full overflow-hidden float-left mr-2 -ml-1 mt-1"
+                            class="h-8 w-8 rounded-sm overflow-hidden float-left mr-2 -ml-1 mt-1"
                             :src="tenant.icon"
                           />
                           <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                           <span class="font-medium">{{ tenant.name }}</span>
                           <span
-                            v-if="tenant.apiKey === currentTenant.apiKey"
-                            class="text-theme-600 absolute inset-y-0 right-0 flex items-center pr-4 -mt-4"
+                            v-if="tenant.id === currentTenant.id"
+                            class="text-theme-500 absolute inset-y-0 right-0 flex items-center pr-4 -mt-4"
                           >
                             <svg
                               class="h-5 w-5"
@@ -171,19 +171,19 @@
                           </span>
                           <p class="text-xs">
                             {{ getPlanFromTenant(tenant) }} - ({{
-                              tenant.memberCount
+                              tenant.users.length
                             }})
-                            <span v-if="tenant.memberCount === 1">
-                              {{ $t("models.tenant.member") }}
-                            </span>
-                            <span v-else>
-                              {{ $t("models.tenant.members") }}
-                            </span>
+                            <span v-if="tenant.users.length === 1">{{
+                              $t("models.tenant.member")
+                            }}</span>
+                            <span v-else>{{
+                              $t("models.tenant.members")
+                            }}</span>
                           </p>
                           <!--
                           Checkmark, only display for selected option.
 
-                          Highlighted: "text-primary", Not Highlighted: "text-theme-600"
+                          Highlighted: "text-primary", Not Highlighted: "text-theme-500"
                           -->
                         </div>
                       </li>
@@ -204,7 +204,7 @@
                 <div v-for="(group, index) in getMenu" :key="index">
                   <div class="mt-2">
                     <h3
-                      class="px-1 text-xs leading-4 font-semibold text-theme-600 uppercase tracking-wider"
+                      class="px-1 text-xs leading-4 font-semibold text-theme-500 uppercase tracking-wider"
                       id="Settings-headline"
                     >
                       {{ group.title }}
@@ -218,11 +218,11 @@
                       <router-link
                         @click.native="sidebarOpen = !sidebarOpen"
                         :to="menuItem.path"
-                        class="-mx-2 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                        class="-mx-2 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                         :class="
                           (menuItem.icon ? 'px-4 ' : '-ml-6 ') +
                             ($route.path === menuItem.path
-                              ? 'text-theme-200 bg-theme-600'
+                              ? 'text-primary bg-lighter'
                               : 'text-secondary')
                         "
                       >
@@ -254,7 +254,7 @@
                     <div v-else class="hover:-translate-y-1 hover:scale-150">
                       <div
                         v-on:click="toggleMenuItem(index)"
-                        class="cursor-pointer -mx-2 mt-1 group flex items-center px-4 py-2 text-sm leading-5 rounded-sm text-secondary hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                        class="cursor-pointer -mx-2 mt-1 group flex items-center px-4 py-2 text-sm leading-5 rounded-sm text-secondary hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                       >
                         <span
                           class="text-secondary mr-3 h-5 w-5 transition ease-in-out"
@@ -272,7 +272,7 @@
                               ? 'rotate-90 ml-auto h-3 w-3 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150'
                               : 'ml-auto h-3 w-3 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150'
                           "
-                          class="hover:bg-theme-900 ml-auto h-5 w-5 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150"
+                          class="hover:bg-darker ml-auto h-5 w-5 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150"
                           viewBox="0 0 20 20"
                         >
                           <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
@@ -285,11 +285,11 @@
                           v-for="(subItem, index) in menuItem.items"
                           :key="index"
                           :to="subItem.path"
-                          class="-mx-2 pl-12 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                          class="-mx-2 pl-12 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                           :class="
                             (subItem.icon ? 'px-4 ' : '-mx-6 ') +
                               ($route.path === subItem.path
-                                ? 'text-theme-200 bg-theme-600'
+                                ? 'text-primary bg-lighter'
                                 : 'text-secondary')
                           "
                         >
@@ -319,15 +319,15 @@
         :class="
           sidebarOpen
             ? 'hidden transition ease-in duration-1000'
-            : 'hidden md:flex md:flex-shrink-0 border-r-2 border-theme-300  transition ease-out duration-1000'
+            : 'hidden md:flex md:flex-shrink-0 border-r border-theme-200 shadow-sm transition ease-out duration-1000'
         "
       >
         <div class="flex flex-col w-64">
           <!-- Sidebar component, swap this element with another sidebar if you like -->
-          <div class="flex flex-col h-0 flex-1 shadow-md">
+          <div class="flex flex-col h-0 flex-1 shadow-md bg-lighter">
             <div
               v-if="currentTenant && currentTenant.logo"
-              class="flex items-center h-16 flex-shrink-0 px-4 bg-primary"
+              class="flex items-center h-16 flex-shrink-0 px-4"
             >
               <router-link to="/app">
                 <!-- <logo class="w-56 text-left mr-auto p-12"></logo> -->
@@ -338,7 +338,7 @@
                       :src="currentTenant.logo"
                       alt="logo"
                     />
-                    <img v-else src="@/assets/img/logo.png" alt="logo" />
+                    <img v-else src="@/assets/img/logo-light.png" alt="logo" />
                   </div>
                   <div v-else>
                     <img
@@ -352,14 +352,14 @@
               </router-link>
             </div>
             <div class="flex-1 flex flex-col overflow-y-auto">
-              <nav class="flex-1 px-2 py-4 bg-primary">
+              <nav class="flex-1 px-2 py-4 " :class="bgPrimary">
                 <div
                   class="relative shadow-2xl mb-4"
                   v-click-outside="closeDropdownTenantDesktop"
                 >
-                  <span class="inline-block w-full rounded-md shadow-sm">
+                  <span class="inline-block w-full rounded-sm shadow-sm">
                     <button
-                      class="bg-primary truncate text-secondary cursor-pointer w-full pl-3 py-2 text-left focus:outline-none hover:bg-gray-800 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:bg-secondary hover:text-primary rounded-md shadow-sm"
+                      class="bg-lighter hover:bg-darker truncate text-primary cursor-pointer w-full pl-3 py-2 text-left focus:outline-none transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:text-primary rounded-sm shadow-sm"
                       v-on:click="
                         dropDownTenantDesktop = !dropDownTenantDesktop
                       "
@@ -367,12 +367,12 @@
                       <span class="font-bold">
                         <img
                           v-if="currentTenant.icon"
-                          class="h-6 w-6 rounded-full overflow-hidden float-left mr-2 -ml-1"
+                          class="h-5 w-5 rounded-sm overflow-hidden float-left mr-2 -ml-1"
                           :src="currentTenant.icon"
                         />
-                        <span class="mt-4 text-xs">
-                          {{ currentTenant.name }}
-                        </span>
+                        <span class="mt-4 text-xs">{{
+                          currentTenant.name
+                        }}</span>
                       </span>
                       <span
                         class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
@@ -399,7 +399,7 @@
                     class="transition-all duration-1000"
                     :class="
                       dropDownTenantDesktop
-                        ? 'z-40 absolute object-top mt-1 w-full rounded-md bg-gray-100 shadow-lg'
+                        ? 'z-40 absolute object-top mt-1 w-full rounded-sm bg-gray-100 shadow-lg'
                         : 'hidden'
                     "
                   >
@@ -408,7 +408,7 @@
                       role="listbox"
                       aria-labelledby="listbox-label"
                       aria-activedescendant="listbox-item-3"
-                      class="max-h-60 rounded-md py-1 text-sm leading-5 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+                      class="max-h-60 rounded-sm py-1 text-sm leading-5 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
                     >
                       <!--
                         Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
@@ -426,14 +426,14 @@
                         <div>
                           <img
                             v-if="tenant.icon"
-                            class="h-8 w-8 rounded-full overflow-hidden float-left mr-2 -ml-1 mt-1"
+                            class="h-8 w-8 rounded-sm overflow-hidden float-left mr-2 -ml-1 mt-1"
                             :src="tenant.icon"
                           />
                           <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                           <span class="font-medium">{{ tenant.name }}</span>
                           <span
-                            v-if="tenant.apiKey === currentTenant.apiKey"
-                            class="text-theme-600 absolute inset-y-0 right-0 flex items-center pr-4 -mt-4"
+                            v-if="tenant.id === currentTenant.id"
+                            class="text-theme-500 absolute inset-y-0 right-0 flex items-center pr-4 -mt-4"
                           >
                             <svg
                               class="h-5 w-5"
@@ -449,19 +449,20 @@
                           </span>
                           <p class="text-xs">
                             {{ getPlanFromTenant(tenant) }} - ({{
-                              tenant.memberCount
+                              tenant.users ? tenant.users.length : 0
                             }})
-                            <span v-if="tenant.memberCount === 1">
-                              {{ $t("models.tenant.member") }}
-                            </span>
-                            <span v-else>
-                              {{ $t("models.tenant.members") }}
-                            </span>
+                            <span
+                              v-if="tenant.users && tenant.users.length === 1"
+                              >{{ $t("models.tenant.member") }}</span
+                            >
+                            <span v-else>{{
+                              $t("models.tenant.members")
+                            }}</span>
                           </p>
                           <!--
                           Checkmark, only display for selected option.
 
-                          Highlighted: "text-primary", Not Highlighted: "text-theme-600"
+                          Highlighted: "text-primary", Not Highlighted: "text-theme-500"
                           -->
                         </div>
                       </li>
@@ -482,7 +483,7 @@
                 <div v-for="(group, index) in getMenu" :key="index">
                   <div class="mt-2">
                     <h3
-                      class="px-1 text-xs leading-4 font-semibold text-theme-600 uppercase tracking-wider"
+                      class="px-1 text-xs leading-4 font-semibold text-theme-500 uppercase tracking-wider"
                       id="Settings-headline"
                     >
                       {{ group.title }}
@@ -495,11 +496,11 @@
                     >
                       <router-link
                         :to="menuItem.path"
-                        class="-mx-2 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                        class="-mx-2 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                         :class="
                           (menuItem.icon ? 'px-4 ' : '-ml-6 ') +
                             ($route.path === menuItem.path
-                              ? 'text-theme-200 bg-theme-600'
+                              ? 'text-primary bg-lighter'
                               : 'text-secondary')
                         "
                       >
@@ -531,7 +532,7 @@
                     <div v-else class="hover:-translate-y-1 hover:scale-150">
                       <div
                         v-on:click="toggleMenuItem(index)"
-                        class="cursor-pointer -mx-2 mt-1 group flex items-center px-4 py-2 text-sm leading-5 rounded-sm text-secondary hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                        class="cursor-pointer -mx-2 mt-1 group flex items-center px-4 py-2 text-sm leading-5 rounded-sm text-secondary hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                       >
                         <span
                           class="text-secondary mr-3 h-5 w-5 transition ease-in-out"
@@ -549,7 +550,7 @@
                               ? 'rotate-90 ml-auto h-3 w-3 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150'
                               : 'ml-auto h-3 w-3 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150'
                           "
-                          class="hover:bg-theme-900 ml-auto h-5 w-5 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150"
+                          class="hover:bg-darker ml-auto h-5 w-5 transform group-hover:text-gray-400 group-focus:text-gray-400 transition-colors ease-in-out duration-150"
                           viewBox="0 0 20 20"
                         >
                           <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
@@ -561,11 +562,11 @@
                           v-for="(subItem, index) in menuItem.items"
                           :key="index"
                           :to="subItem.path"
-                          class="-mx-2 pl-12 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-theme-100 hover:bg-theme-700 focus:outline-none focus:text-theme-200 focus:bg-theme-600 transition ease-in-out duration-150"
+                          class="-mx-2 pl-12 mt-1 group flex items-center py-2 text-sm leading-5 rounded-sm hover:text-primary hover:bg-darker focus:outline-none focus:text-primary focus:bg-lighter transition ease-in-out duration-150"
                           :class="
                             (subItem.icon ? 'px-4 ' : '-mx-6 ') +
                               ($route.path === subItem.path
-                                ? 'text-theme-200 bg-theme-600'
+                                ? 'text-primary bg-lighter'
                                 : 'text-secondary')
                           "
                         >
@@ -594,7 +595,7 @@
             aria-label="Open sidebar"
           >
             <svg
-              class="h-6 w-6"
+              class="h-5 w-5"
               stroke="currentColor"
               fill="none"
               viewBox="0 0 24 24"
@@ -630,20 +631,20 @@
                   >
                     <img
                       v-if="avatar"
-                      class="h-8 w-8 rounded-md"
+                      class="h-8 w-8 rounded-sm"
                       :src="avatar"
                       alt
                     />
                     <span
                       v-else
-                      class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-theme-500 shadow-xl"
+                      class="inline-flex items-center justify-center h-8 w-8 rounded-sm bg-blueGray-800 shadow-xl"
                     >
                       <span
                         class="text-sm font-medium leading-none text-white"
                         >{{ avatarText }}</span
                       >
                     </span>
-                    <!-- <i class="fa fa-user rounded-full" /> -->
+                    <!-- <i class="fa fa-user rounded-sm" /> -->
                   </button>
                 </div>
                 <!--
@@ -658,10 +659,10 @@
                 -->
                 <div
                   v-if="dropDownUser"
-                  class="z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                  class="z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-48 rounded-sm shadow-lg"
                 >
                   <div
-                    class="py-1 rounded-md bg-white shadow-xs"
+                    class="py-1 rounded-sm bg-white shadow-xs"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu"
@@ -692,9 +693,10 @@
                     <a
                       class="truncate group flex items-center px-4 py-2 text-sm text-gray-700 font-medium hover:bg-gray-100 transition ease-in-out duration-150"
                       role="menuitem"
-                      >{{ roleName }} {{ $t("shared.of") }}
-                      {{ currentTenant.name }}</a
                     >
+                      {{ roleName }} {{ $t("shared.of") }}
+                      {{ currentTenant.name }}
+                    </a>
                     <div class="border-t border-gray-300"></div>
 
                     <router-link
@@ -730,7 +732,7 @@
         <main class="flex-1 overflow-y-auto focus:outline-none" tabindex="0">
           <tenant-subscription-status></tenant-subscription-status>
           <div class="pt-2 pb-40 md:py-6">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="mx-auto px-4 sm:px-6 md:px-8">
               <!-- Replace with your content -->
 
               <slot></slot>
@@ -752,21 +754,21 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { mapGetters } from "vuex";
-import { appSidebar } from "../../app/sidebar/appSidebar";
-import { adminSidebar } from "../../app/sidebar/adminSidebar";
 import TenantNew from "@/components/app/settings/tenant/TenantNew.vue";
 import TenantSubscriptionStatus from "@/components/app/settings/tenant/subscription/TenantSubscriptionStatus.vue";
 import Breadcrumb from "./Breadcrumb.vue";
 import { SignalService } from "../../plugins/SignalR";
-import { UserType } from "../../app/models/system/account/IUserDTO";
 import { Prop } from "vue-property-decorator";
-import { SideBarItem } from "../../app/sidebar/SidebarItem";
 import routes from "../../router/routes";
 import { RouteConfig } from "vue-router";
-import { StripeProduct } from "../../app/models/subscription/StripeProduct";
 import { JsonHubProtocol } from "@aspnet/signalr";
-import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
-import { tenantService } from "../../services/system/TenantService";
+import { SideBarItem } from "../../application/sidebar/SidebarItem";
+import { adminSidebar } from "../../application/sidebar/adminSidebar";
+import { appSidebar } from "../../application/sidebar/appSidebar";
+import services from "../../services";
+import { TenantDto } from "../../application/dtos/master/tenants/TenantDto";
+import { SubscriptionProductDto } from "../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { UserType } from "../../application/enum/master/UserType";
 
 @Component({
   components: { TenantNew, TenantSubscriptionStatus, Breadcrumb },
@@ -798,6 +800,8 @@ export default class AppLayoutComponent extends Vue {
   private menu: SideBarItem[] = [];
   private expanded: number[] = [];
   private addingTenant: boolean = false;
+  private appTheme!: string;
+  private appColor!: string;
   mounted() {
     if (this.layout === "admin") {
       this.menu = adminSidebar;
@@ -805,8 +809,14 @@ export default class AppLayoutComponent extends Vue {
       this.$store.commit("theme/appColor", "theme-indigo");
     } else {
       this.menu = appSidebar;
-      this.$store.commit("theme/appTheme", this.$store.state.tenant.appTheme);
-      this.$store.commit("theme/appColor", this.$store.state.tenant.appColor);
+      this.$store.commit(
+        "theme/appTheme",
+        this.$store.state.tenant.current.appTheme
+      );
+      this.$store.commit(
+        "theme/appColor",
+        this.$store.state.tenant.current.appColor
+      );
     }
     this.menu.forEach((group) => {
       group.items?.forEach((element, index) => {
@@ -819,9 +829,7 @@ export default class AppLayoutComponent extends Vue {
     });
     this.showConversations();
 
-    if (!this.myTenants || this.myTenants.length === 0) {
-      tenantService.getMyTenants();
-    }
+    services.tenants.getAll();
 
     SignalService.on("UserConnected", (message) => {
       // alert(message);
@@ -853,12 +861,14 @@ export default class AppLayoutComponent extends Vue {
   logout() {
     this.$store.dispatch("auth/logout");
   }
-  changeTenant(tenant) {
+  changeTenant(tenant: TenantDto) {
     this.closeDropdownTenant();
-    tenantService.changeDefault(tenant.apiKey).then((response: any) => {
-      this.$store.commit("tenant/current", response.data.currentTenant);
-      this.$router.go(0);
-    });
+    services.users
+      .updateDefaultTenant(tenant.id)
+      .then((response: TenantDto) => {
+        this.$store.commit("tenant/current", response);
+        this.$router.go(0);
+      });
   }
   closeDropdownUser() {
     this.dropDownUser = false;
@@ -899,24 +909,24 @@ export default class AppLayoutComponent extends Vue {
 
   addPricesToAdminSidebar(prices: SideBarItem) {
     prices.items = [];
-    if (prices && this.products) {
-      this.products.forEach((element: StripeProduct) => {
-        const price: SideBarItem = {
-          title: element.title,
-          path: "/admin/products/" + element.uuid,
-        };
-        if (element.id && element.id > 0 && price) {
-          prices.items?.push(price);
-        }
-      });
-      if (prices.items.length > 0) {
-        prices.items.unshift({
-          title: this.$t("shared.all"),
-          path: "/admin/products",
-        });
-        prices.open = true;
-      }
-    }
+    // if (prices && this.products) {
+    //   this.products.forEach((element: SubscriptionProductDto) => {
+    //     const price: SideBarItem = {
+    //       title: element.title,
+    //       path: "/admin/products/" + element.id,
+    //     };
+    //     if (element.id && price) {
+    //       prices.items?.push(price);
+    //     }
+    //   });
+    //   if (prices.items.length > 0) {
+    //     prices.items.unshift({
+    //       title: this.$t("shared.all"),
+    //       path: "/admin/products",
+    //     });
+    //     prices.open = true;
+    //   }
+    // }
   }
   addToBreadcrumb(items: any, route: RouteConfig) {
     if (route.path !== this.$route.path) {
@@ -928,13 +938,14 @@ export default class AppLayoutComponent extends Vue {
       }
     }
   }
-  getPlanFromTenant(tenant: ITenantDTO): string {
+  getPlanFromTenant(tenant: TenantDto): string {
+    // console.log("getPlanFromTenant: " + JSON.stringify(tenant));
     if (
       tenant.products &&
       tenant.products.length > 0 &&
-      tenant.products[0].product
+      tenant.products[0].subscriptionProduct
     ) {
-      return tenant.products[0].product.title;
+      return tenant.products[0].subscriptionProduct.title;
     } else {
       if (tenant.subdomain === "admin") {
         return "Admin";
@@ -943,17 +954,24 @@ export default class AppLayoutComponent extends Vue {
       }
     }
   }
-  get products(): StripeProduct[] {
-    return this.$store.state.pricing.products as StripeProduct[];
+  get products(): SubscriptionProductDto[] {
+    return this.$store.state.pricing.products as SubscriptionProductDto[];
   }
-  get myTenants() {
+  get myTenants(): TenantDto[] {
     return this.$store.state.tenant.tenants;
   }
-  get currentTenant() {
+  get currentTenant(): TenantDto {
     return this.$store.state.tenant.current ?? { name: "Undefinded" };
   }
   get currentUserType(): UserType {
     return this.$store.state.account.user.type as UserType;
+  }
+  get bgPrimary() {
+    if (this.$store.state.theme.appTheme === "theme-bg-dynamic") {
+      return "bg-theme-900 text-theme-100";
+    } else {
+      return "bg-primary";
+    }
   }
   get getMenu() {
     if (this.layout === "admin" && this.menu.length > 0 && this.menu[0].items) {

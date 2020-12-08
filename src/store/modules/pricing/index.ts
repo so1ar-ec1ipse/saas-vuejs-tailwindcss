@@ -1,32 +1,31 @@
 import { Module } from "vuex";
 import { PricingState, RootState } from "@/types/stateTypes";
-import { StripeProduct } from "@/app/models/subscription/StripeProduct";
-import {
-  StripePrice,
-  BillingPeriod,
-} from "@/app/models/subscription/StripePrice";
+import {SubscriptionBillingPeriod} from "@/application/enum/master/SubscriptionBillingPeriod";
+import {SubscriptionPriceDto} from "@/application/dtos/master/subscriptions/SubscriptionPriceDto";
+import {SubscriptionProductDto} from "@/application/dtos/master/subscriptions/SubscriptionProductDto";
+import {SubscriptionPriceType} from "@/application/enum/master/SubscriptionPriceType";
 
 export const state: PricingState = {
   products: [],
   selectedProduct: null,
-  billingPeriod: BillingPeriod.Monthly,
+  billingPeriod: SubscriptionBillingPeriod.Monthly,
   currency: "usd",
 };
 export const pricing: Module<PricingState, RootState> = {
   namespaced: true,
   state,
   actions: {
-    myProducts({ commit }, prices: StripePrice[]) {
+    myProducts({ commit }, prices: SubscriptionPriceDto[]) {
       if (prices && prices.length > 0) {
         const productPrice = prices[0];
-        if (productPrice.billingPeriod === BillingPeriod.Once) {
+        if (productPrice.billingPeriod === SubscriptionBillingPeriod.Once) {
           commit("billingPeriod", productPrice.billingPeriod);
         } else {
-          commit("billingPeriod", BillingPeriod.Monthly);
+          commit("billingPeriod", SubscriptionBillingPeriod.Monthly);
         }
-        const selected = this.state.pricing.products.find((f: StripeProduct) =>
-          f.prices.find((x) => x.stripeId === productPrice.stripeId)
-        ) as StripeProduct;
+        const selected = this.state.pricing.products.find((f: SubscriptionProductDto) =>
+          f.prices.find((x) => x.serviceId === productPrice.serviceId)
+        ) as SubscriptionProductDto;
         // console.log("selected: " + JSON.stringify(selected));
         commit("select", {
           product: selected,
@@ -36,7 +35,7 @@ export const pricing: Module<PricingState, RootState> = {
     },
   },
   getters: {
-    selectedProductName: (state: PricingState) => {
+    selectedProductTitle: (state: PricingState) => {
       return state.selectedProduct?.title;
     },
     selectedProduct: (state: PricingState) => {
@@ -57,11 +56,11 @@ export const pricing: Module<PricingState, RootState> = {
     selectedBillingPeriod: (state: PricingState, getters) => {
       if (
         getters.selectedPrice &&
-        getters.selectedPrice.billingPeriod === BillingPeriod.Once
+        getters.selectedPrice.billingPeriod === SubscriptionBillingPeriod.Once
       ) {
         return "once";
       } else {
-        return BillingPeriod[state.billingPeriod] + "Short";
+        return SubscriptionBillingPeriod[state.billingPeriod] + "Short";
       }
     },
     productCount: (state: PricingState) => {
@@ -72,9 +71,9 @@ export const pricing: Module<PricingState, RootState> = {
     reset: (state) => {
       state.products = [];
       state.selectedProduct = null;
-      state.billingPeriod = BillingPeriod.Monthly;
+      state.billingPeriod = SubscriptionBillingPeriod.Monthly;
     },
-    products: (state: PricingState, payload: StripeProduct[]) => {
+    products: (state: PricingState, payload: SubscriptionProductDto[]) => {
       if (payload) {
         payload = payload.sort((x, y) => {
           return x.tier > y.tier ? 1 : -1;
@@ -82,17 +81,23 @@ export const pricing: Module<PricingState, RootState> = {
       }
       state.products = payload;
       if (payload.length > 0) {
-        if (payload[0].prices.length > 0) {
-          state.billingPeriod = payload[0].prices[0].billingPeriod;
-          state.currency = payload[0].prices[0].currency;
-        }
+        payload.forEach((product) => {
+          product.prices.forEach((price) => {
+            if (price.type === SubscriptionPriceType.Recurring) {
+              state.billingPeriod = price.billingPeriod;
+              if (!state.currency) {
+                state.currency = price.currency;
+              }
+            }
+          });
+        });
       }
     },
     select: (state: PricingState, payload) => {
       state.billingPeriod = payload.billingPeriod;
       state.selectedProduct = payload.product;
     },
-    billingPeriod: (state: PricingState, payload: BillingPeriod) => {
+    billingPeriod: (state: PricingState, payload: SubscriptionBillingPeriod) => {
       state.billingPeriod = payload;
     },
     currency: (state: PricingState, payload: string) => {

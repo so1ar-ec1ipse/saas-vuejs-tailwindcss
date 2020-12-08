@@ -2,13 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
 import routes from "./routes";
-import { StripeProduct } from "@/app/models/subscription/StripeProduct";
-import { TenantUserRole } from "@/app/models/system/account/ITenantDTO";
-import { UserType } from "@/app/models/system/account/IUserDTO";
 
 import VueMeta from "vue-meta";
+import { SubscriptionProductDto } from "@/application/dtos/master/subscriptions/SubscriptionProductDto";
+import { UserType } from "@/application/enum/master/UserType";
+import { TenantUserRole } from "@/application/enum/master/TenantUserRole";
+import { TenantProductDto } from '@/application/dtos/master/tenants/TenantProductDto';
 Vue.use(VueRouter);
 Vue.use(VueMeta);
+const debug = process.env.NODE_ENV !== "production";
 
 const router = new VueRouter({
   mode: "history",
@@ -20,6 +22,13 @@ function hasQueryParams(route) {
 }
 
 router.beforeEach((to, from, next) => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100);
+  if (to.path === "/") {
+    next({ path: "/product" });
+    return;
+  }
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!store.state.auth.authenticated) {
       next({
@@ -48,43 +57,17 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  // Subscription-based permissions
-  if (to.matched.some((record) => record.meta && record.meta.subscriptions)) {
-    // console.log("WILL CHECK SUBSCRIPTION PERMISSIONS");
-    if (store.state.tenant.myProducts.length === 0) {
-      next({
-        path: "/app/settings/organization/subscription",
-      });
-      return;
-    }
-
-    const subscriptionsAllowed = to.meta.subscriptions as StripeProduct[];
-    const currentSubscription = store.state.tenant.myProducts[0].product;
-    // console.log(
-    //   "SUBSCRIPTIONS ALLOWED:" + JSON.stringify(subscriptionsAllowed)
-    // );
-    // console.log("CURRENT SUBSCRIPTION:" + JSON.stringify(currentSubscription));
-    if (
-      subscriptionsAllowed.some((f) => f.tier === currentSubscription?.tier) ===
-      false
-    ) {
-      // console.log("unauthorized");
-      next({
-        path: "/app/unauthorized",
-      });
-      return;
-    }
-  }
-
   const userTypesAllowed = to.meta.userTypes as UserType[];
   if (
     to.matched.some((record) => record.meta && record.meta.userTypes) &&
     userTypesAllowed
   ) {
-    // console.log("WILL CHECK USER TYPES");
     const currentType = store.state.account.user?.type as UserType;
-    // console.log("USER TYPES ALLOWED:" + JSON.stringify(userTypesAllowed));
-    // console.log("CURRENT USER TYPE:" + JSON.stringify(currentType));
+    if (debug) {
+      // console.log("WILL CHECK USER TYPES");
+      // console.log("USER TYPES ALLOWED:" + JSON.stringify(userTypesAllowed));
+      // console.log("CURRENT USER TYPE:" + JSON.stringify(currentType));
+    }
     if (userTypesAllowed.some((f) => f === currentType) === false) {
       console.log("unauthorized");
       next({
@@ -99,13 +82,37 @@ router.beforeEach((to, from, next) => {
     to.matched.some((record) => record.meta && record.meta.roles) &&
     rolesAllowed
   ) {
-    // console.log("WILL CHECK ROLE PERMISSIONS");
-    const currentRole = store.state.tenant.current?.currentUser
-      ?.role as TenantUserRole;
-    // console.log("ROLES ALLOWED:" + JSON.stringify(rolesAllowed));
-    // console.log("CURRENT ROLE:" + JSON.stringify(currentRole));
+    const currentRole = store.state.tenant.current?.currentUser?.role as TenantUserRole;
+    if (debug) {
+      // console.log("WILL CHECK ROLE PERMISSIONS");
+      // console.log("ROLES ALLOWED:" + JSON.stringify(rolesAllowed));
+      // console.log("CURRENT ROLE:" + JSON.stringify(currentRole));
+    }
     if (rolesAllowed.some((f) => f === currentRole) === false) {
       // console.log("unauthorized");
+      next({
+        path: "/app/unauthorized",
+      });
+      return;
+    }
+  }
+
+  const productsAllowed = to.meta.subscriptions as SubscriptionProductDto[];
+  if (
+    to.matched.some((record) => record.meta && record.meta.subscriptions) &&
+    productsAllowed
+  ) {
+    const currentProduct = store.state.tenant.subscription?.activeProduct as TenantProductDto | undefined;
+    if (debug) {
+      console.log("WILL CHECK SUBSCRIPTION PERMISSIONS");
+      console.log("SUBSCRIPTIONS ALLOWED:" + JSON.stringify(productsAllowed.map(f => f.title)));
+      // tslint:disable-next-line: max-line-length
+      console.log("CURRENT SUBSCRIPTION:" + JSON.stringify(currentProduct && currentProduct.subscriptionProduct ? currentProduct.subscriptionProduct.title : 'NONE'));
+    }
+    if (!currentProduct || productsAllowed.some((f) => f.tier === currentProduct.subscriptionProduct.tier) === false) {
+      if (debug) {
+        console.log("unauthorized");
+      }
       next({
         path: "/app/unauthorized",
       });

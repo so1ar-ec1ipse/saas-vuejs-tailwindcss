@@ -10,7 +10,7 @@ class BlogService {
         version: "v3",
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
   async getPosts() {

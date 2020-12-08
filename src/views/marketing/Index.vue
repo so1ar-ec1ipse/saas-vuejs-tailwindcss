@@ -1,5 +1,8 @@
 <template>
-  <div :class="marketingTheme + ' ' + marketingColor + ''">
+  <div
+    :class="marketingTheme + ' ' + marketingColor + ' '"
+    class="pt-12 md:pt-0 background-pattern"
+  >
     <router-view></router-view>
   </div>
 </template>
@@ -19,17 +22,15 @@ import Header from "@/components/marketing/Header.vue";
   },
 })
 export default class MarketingComponent extends Vue {
-  private marketingTheme!: string;
-  private marketingColor!: string;
   mounted() {
     this.showConversations();
   }
   showConversations() {
     // @ts-ignore
-    if (this.$intercom) {
-      // @ts-ignore
-      // this.$intercom.show();
-    }
+    // if (this.$intercom) {
+    //   // @ts-ignore
+    //   this.$intercom.boot();
+    // }
 
     // @ts-ignore
     if (this.$drift) {

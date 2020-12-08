@@ -21,19 +21,19 @@
         </form>
       </template>
       <template v-slot:footer>
-        <span class="inline-flex rounded-md shadow-sm">
+        <span class="inline-flex rounded-sm shadow-sm">
           <button
             v-if="editing"
             @click="remove"
             type="button"
-            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-red-700 bg-red-200 hover:text-red-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-red-700 bg-red-200 hover:text-red-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
           >
             {{ $t("shared.delete") }}
           </button>
           <button
             @click="cancel"
             type="button"
-            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
           >
             {{ $t("shared.cancel") }}
           </button>
@@ -41,7 +41,7 @@
             :disabled="disabled"
             @click="save"
             type="submit"
-            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-md text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
           >
             {{ $t("shared.save") }}
           </button>
@@ -66,7 +66,7 @@ import VueFormGenerator, { validators } from "vue-form-generator";
 import "vue-form-generator/dist/vfg.css";
 import { Prop } from "vue-property-decorator";
 import dateInput from "@/components/shared/forms/DateInput.vue";
-import { ColumnType, ValueType } from "../../../app/models/ColumnType";
+import { ColumnType, ValueType } from "../../../application/dtos/ColumnType";
 Vue.component("fieldDateInput", dateInput);
 
 @Component({
@@ -85,6 +85,8 @@ export default class EntityFormComponent extends BaseComponent {
   public modelName!: string;
   @Prop()
   public columns!: ColumnType[];
+  @Prop({ default: true })
+  public confirmSave!: boolean;
 
   private model: any = null;
   private flagAllowEdit: boolean = true;
@@ -108,6 +110,9 @@ export default class EntityFormComponent extends BaseComponent {
     }
     this.disabled = false;
     this.generateSchemaFromColumns();
+    if (!this.model || !this.model.id) {
+      this.model = VueFormGenerator.schema.createDefaultObject(this.schema);
+    }
   }
   generateSchemaFromColumns() {
     this.schema.fields = [];
@@ -129,18 +134,19 @@ export default class EntityFormComponent extends BaseComponent {
         preview: true,
         hideInput: false,
         rows: 1,
-        onChange: (model, schema, event, instance) => {
-          console.log("model: " + model);
-          console.log("schema: " + schema);
-          console.log("event: " + event);
-          console.log("instance: " + instance);
-        },
       };
+      if (column.placeholder) {
+        field.placeholder = this.$t(
+          `models.${this.modelName}.${column.placeholder}`
+        );
+      }
       if (!column.valueType) {
         field.validator = "string";
       }
       if (column.valueType === ValueType.String) {
         field.validator = "string";
+      } else if (column.valueType === ValueType.Date) {
+        field.validator = validators.date;
       } else if (column.valueType === ValueType.Number) {
         field.validator = "number";
       } else if (column.valueType === ValueType.Bool) {
@@ -150,8 +156,8 @@ export default class EntityFormComponent extends BaseComponent {
       }
       if (
         column.valueType === ValueType.Number ||
-        column.valueType === ValueType.PriceType ||
-        column.valueType === ValueType.PriceBillingPeriod ||
+        column.valueType === ValueType.SubscriptionPriceType ||
+        column.valueType === ValueType.SubscriptionBillingPeriod ||
         column.valueType === ValueType.ResourceFileType
       ) {
         field.default = 0;
@@ -173,8 +179,6 @@ export default class EntityFormComponent extends BaseComponent {
   }
   cancel() {
     // @ts-ignore
-    this.eventBus.$emit(this.modelName + "-canceled", this.model);
-    // @ts-ignore
     this.$emit("canceled", this.model);
   }
   onValidated(isValid, errors) {
@@ -185,10 +189,14 @@ export default class EntityFormComponent extends BaseComponent {
   save() {
     // @ts-ignore
     if (this.$refs.vfg.validate()) {
-      // @ts-ignore
-      this.$refs["confirm-save"].show(
-        this.editing ? this.$t("shared.save?") : this.$t("shared.add?")
-      );
+      if (this.confirmSave) {
+        // @ts-ignore
+        this.$refs["confirm-save"].show(
+          this.editing ? this.$t("shared.save?") : this.$t("shared.add?")
+        );
+      } else {
+        this.yesSave();
+      }
     } else {
       // @ts-ignore
       this.$refs["error-modal"].show(this.$t("shared.invalidForm"));
@@ -196,10 +204,8 @@ export default class EntityFormComponent extends BaseComponent {
   }
   yesSave() {
     if (this.editing && this.flagAllowEdit) {
-      this.eventBus.$emit(this.modelName + "-saved", this.model);
       this.$emit("saved", this.model);
     } else if (!this.editing) {
-      this.eventBus.$emit(this.modelName + "-added", this.model);
       this.$emit("added", this.model);
     }
   }
@@ -209,7 +215,6 @@ export default class EntityFormComponent extends BaseComponent {
   }
   yesRemove() {
     if (this.editing) {
-      this.eventBus.$emit(this.modelName + "-deleted", this.model);
       this.$emit("deleted", this.model);
     }
   }

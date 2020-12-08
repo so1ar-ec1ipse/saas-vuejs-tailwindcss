@@ -30,14 +30,14 @@
                 name="EMAIL"
                 v-model="email"
                 requigray
-                class="appearance-none w-full px-5 py-3 border border-gray-400 text-base leading-6 rounded-md text-theme-900 bg-white placeholder-theme-500 focus:outline-none focus:placeholder-theme-400 transition duration-150 ease-in-out"
+                class="appearance-none w-full px-5 py-3 border border-gray-400 text-base leading-6 rounded-sm text-theme-900 bg-white placeholder-theme-500 focus:outline-none focus:placeholder-theme-400 transition duration-150 ease-in-out"
                 v-bind:placeholder="$t('marketing.newsletter.email')"
               />
               <div
-                class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0"
+                class="mt-3 rounded-sm shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0"
               >
                 <button
-                  class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-theme-700 hover:bg-theme-600 focus:outline-none focus:bg-theme-500 transition duration-150 ease-in-out"
+                  class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-sm text-white bg-theme-700 hover:bg-theme-600 focus:outline-none focus:bg-theme-500 transition duration-150 ease-in-out"
                 >
                   {{ $t("marketing.newsletter.subscribe") }}
                 </button>

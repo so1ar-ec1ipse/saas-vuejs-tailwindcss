@@ -30,8 +30,8 @@ export default class LangComponent extends Vue {
           break;
       }
 
-      console.log("changeLangTo: " + changeLangTo);
-      console.log("changeCurrencyTo: " + changeCurrencyTo);
+      // console.log("changeLangTo: " + changeLangTo);
+      // console.log("changeCurrencyTo: " + changeCurrencyTo);
       this.$i18n.locale = changeLangTo;
       this.$store.commit("locale/updateLocale", changeLangTo);
       this.$store.commit("pricing/currency", changeCurrencyTo);

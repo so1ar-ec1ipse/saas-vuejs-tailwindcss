@@ -5,7 +5,7 @@ exports.adminRoutes = void 0;
 
 var vue_i18n_1 = require("@/plugins/vue-i18n");
 
-var IUserDTO_1 = require("@/app/models/system/account/IUserDTO");
+var IUserDTO_1 = require("@/app/models/master/account/IUserDTO");
 
 exports.adminRoutes = {
   path: "/admin",
@@ -39,7 +39,7 @@ exports.adminRoutes = {
       userTypes: [IUserDTO_1.UserType.Admin]
     }
   }, {
-    path: "users/:tenant/:apiKey",
+    path: "users/:tenant/:uuid",
     name: "admin.users",
     component: require("@/views/admin/Users.vue")["default"],
     meta: {
@@ -52,7 +52,7 @@ exports.adminRoutes = {
   }, {
     path: "pricing",
     name: "admin.pricing",
-    component: require("@/views/admin/StripeProductsList.vue")["default"],
+    component: require("@/views/admin/SubscriptionProductsList.vue")["default"],
     meta: {
       title: vue_i18n_1.i18n.t("admin.pricing"),
       breadcrumb: [{
@@ -62,10 +62,10 @@ exports.adminRoutes = {
     },
     children: [{
       path: "new",
-      component: require("@/views/admin/StripeProductsForm.vue")["default"]
+      component: require("@/views/admin/SubscriptionProductsForm.vue")["default"]
     }, {
       path: "edit/:id",
-      component: require("@/views/admin/StripeProductsForm.vue")["default"]
+      component: require("@/views/admin/SubscriptionProductsForm.vue")["default"]
     }]
   }]
 };

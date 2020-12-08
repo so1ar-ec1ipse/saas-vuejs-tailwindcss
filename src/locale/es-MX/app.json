@@ -8,7 +8,7 @@
     },
     "sidebar": {
         "manage": "Administrar",
-        "catalogs": "Catálogos por cliente",
+        "catalogs": "Catálogos",
         "permissions": "Permisos",
         "integrations": "Integraciones"
     }

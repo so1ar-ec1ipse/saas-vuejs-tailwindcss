@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="showing">
-      <div class="fixed z-40 inset-x-0 px-4 pb-6 inset-0 p-0 flex items-center justify-center">
+      <div
+        class="fixed z-40 inset-x-0 px-4 pb-6 inset-0 p-0 flex items-center justify-center"
+      >
         <div class="fixed inset-0 transition-opacity">
           <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
@@ -14,7 +16,7 @@
         >
           <div>
             <div
-              class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 border border-yellow-300"
+              class="mx-auto flex items-center justify-center h-12 w-12 rounded-sm bg-yellow-100 border border-yellow-300"
             >
               <svg
                 class="h-6 w-6 text-yellow-600"
@@ -34,25 +36,31 @@
               <h3
                 class="text-lg leading-6 font-medium text-gray-900"
                 id="modal-headline"
-              >{{ question }}</h3>
+              >
+                {{ question }}
+              </h3>
               <!-- <div class="mt-2">
                 <p class="text-sm leading-5 text-gray-500">{{ question }}</p>
               </div>-->
             </div>
           </div>
           <div class="mt-5 sm:mt-6">
-            <span class="flex w-full rounded-md shadow-sm">
+            <span class="flex w-full rounded-sm shadow-sm">
               <button
                 v-on:click="yes"
                 type="button"
-                class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-              >{{ $t("shared.yes") }}</button>
+                class="inline-flex justify-center w-full rounded-sm border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+              >
+                {{ $t("shared.yes") }}
+              </button>
               <button
                 ref="close"
                 v-on:click="no"
                 type="button"
-                class="ml-2 inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-gray-100 text-base leading-6 font-medium text-gray-800 shadow-sm hover:bg-gray-200 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-              >{{ $t("shared.no") }}</button>
+                class="ml-2 inline-flex justify-center w-full rounded-sm border border-transparent px-4 py-2 bg-gray-100 text-base leading-6 font-medium text-gray-800 shadow-sm hover:bg-gray-200 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+              >
+                {{ $t("shared.no") }}
+              </button>
             </span>
           </div>
         </div>

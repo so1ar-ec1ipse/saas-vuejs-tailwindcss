@@ -1,14 +1,9 @@
-import Stripe from "stripe";
-import { IUserDTO } from "@/app/models/system/account/IUserDTO";
-import {
-  ITenantDTO,
-  ITenantUserDTO,
-} from "@/app/models/system/account/ITenantDTO";
-import { StripeProduct } from "@/app/models/subscription/StripeProduct";
-import {
-  StripePrice,
-  BillingPeriod,
-} from "@/app/models/subscription/StripePrice";
+import { SubscriptionGetCurrentResponse } from "@/application/contracts/master/subscriptions/SubscriptionGetCurrentResponse";
+import { TenantUserDto } from "@/application/dtos/master/tenants/TenantUserDto";
+import { TenantDto } from "@/application/dtos/master/tenants/TenantDto";
+import { SubscriptionProductDto } from "@/application/dtos/master/subscriptions/SubscriptionProductDto";
+import { SubscriptionBillingPeriod } from "@/application/enum/master/SubscriptionBillingPeriod";
+import { UserDto } from "@/application/dtos/master/users/UserDto";
 
 export interface RootState {
   appName: string;
@@ -30,23 +25,18 @@ export interface AuthState {
   token: string;
 }
 export interface TenantState {
-  tenants: ITenantDTO[];
-  current: ITenantDTO | null;
-  myProducts: StripePrice[];
-  stripeCustomer: Stripe.Customer | null;
-  stripeMyProducts: Stripe.ApiList<Stripe.Product> | null;
-  stripeInvoices: Stripe.ApiList<Stripe.Invoice> | null;
-  stripeCards: Stripe.ApiList<Stripe.Card> | null;
-  stripePaymentMethods: Stripe.ApiList<Stripe.PaymentMethod> | null;
-  members: ITenantUserDTO[];
+  tenants: TenantDto[];
+  current: TenantDto | null;
+  subscription: SubscriptionGetCurrentResponse | null;
+  members: TenantUserDto[];
 }
 export interface AccountState {
-  user: IUserDTO | null;
+  user: UserDto | null;
 }
 export interface PricingState {
-  products: StripeProduct[];
-  selectedProduct: StripeProduct | null;
-  billingPeriod: BillingPeriod;
+  products: SubscriptionProductDto[];
+  selectedProduct: SubscriptionProductDto | null;
+  billingPeriod: SubscriptionBillingPeriod;
   currency: string;
 }
 export interface ThemeState {

@@ -21,6 +21,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import LoadingButton from "@/components/shared/buttons/LoadingButton.vue";
 import services from "../../services";
+import { Services } from "../../services";
 
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
@@ -42,7 +43,7 @@ import TableRowSkeleton from "@/components/shared/skeletons/TableRowSkeleton.vue
 })
 export default class BaseComponent extends Vue {
   public loading: boolean = false;
-  public services = services;
+  public services: Services = services;
   public eventBus = EventBus;
   public pushToParent() {
     const pathArray = this.$route.path.split("/");

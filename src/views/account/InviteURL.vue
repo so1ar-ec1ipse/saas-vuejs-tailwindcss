@@ -12,7 +12,11 @@
               :src="tenant.logo"
               class="mx-auto h-16 w-auto"
             />
-            <img v-else :src="tenant.logoDarkmode" class="mx-auto h-16 w-auto" />
+            <img
+              v-else
+              :src="tenant.logoDarkmode"
+              class="mx-auto h-16 w-auto"
+            />
           </router-link>
         </div>
         <marketing-logo v-else></marketing-logo>
@@ -21,15 +25,19 @@
       <div v-if="requested">
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div
-            class="bg-secondary max-w-md w-full mx-auto shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-8"
+            class="bg-secondary max-w-md w-full mx-auto shadow-md rounded-sm px-8 pt-6 pb-8 mb-4 mt-8"
           >
             <h2
               class="mt-6 text-center text-3xl leading-9 font-bold text-secondary"
-            >{{ $t("account.invitation.successTitle") }}</h2>
+            >
+              {{ $t("account.invitation.successTitle") }}
+            </h2>
             <div class="my-4 leading-tight">
               <p
                 class="mt-2 text-center text-sm leading-5 text-secondary max-w"
-              >{{ $t("account.invitation.successText") }}</p>
+              >
+                {{ $t("account.invitation.successText") }}
+              </p>
             </div>
           </div>
         </div>
@@ -38,40 +46,44 @@
         <div v-if="loading">
           <!-- {{ $t("shared.loading") }} -->
         </div>
-        <div
-          v-else-if="!tenant"
-          class="text-red-500 text-center"
-        >{{ $t("shared.invalidInvitation") }}</div>
+        <div v-else-if="!tenant" class="text-red-500 text-center">
+          {{ $t("shared.invalidInvitation") }}
+        </div>
         <div v-if="tenant && tenant.name">
           <div v-if="emailDisabled">
             <p class="mt-2 text-center text-sm leading-5 text-secondary max-w">
               <button
                 @click="logout"
                 class="font-medium text-theme-500 hover:text-theme-400 focus:outline-none focus:underline transition ease-in-out duration-150"
-              >{{ $t("account.invitation.anotherEmail") }}</button>
+              >
+                {{ $t("account.invitation.anotherEmail") }}
+              </button>
             </p>
           </div>
-          <h2 class="mt-6 text-center text-2xl leading-9 font-bold text-primary">
+          <h2
+            class="mt-6 text-center text-2xl leading-9 font-bold text-primary"
+          >
             {{ $t("account.invitation.requestAccess") }}
             {{ tenant.name }}
           </h2>
 
           <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-secondary py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <div class="bg-secondary py-8 px-4 shadow sm:rounded-sm sm:px-10">
               <form @submit.prevent="accept">
                 <div>
                   <label
                     for="email"
                     class="block text-sm font-medium leading-5 text-primary"
-                  >{{ $t("account.shared.email") }}</label>
-                  <div class="mt-1 rounded-md shadow-sm">
+                    >{{ $t("account.shared.email") }}</label
+                  >
+                  <div class="mt-1 rounded-sm shadow-sm">
                     <input
                       :disabled="emailDisabled"
                       v-model="user.email"
                       id="email"
                       type="email"
                       required
-                      class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     />
                   </div>
                 </div>
@@ -80,14 +92,15 @@
                     <label
                       for="password"
                       class="block text-sm font-medium leading-5 text-primary"
-                    >{{ $t("account.shared.password") }}</label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                      >{{ $t("account.shared.password") }}</label
+                    >
+                    <div class="mt-1 rounded-sm shadow-sm">
                       <input
                         v-model="user.password"
                         id="password"
                         type="password"
                         required
-                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                   </div>
@@ -95,26 +108,28 @@
                     <label
                       for="confirmPassword"
                       class="block text-sm font-medium leading-5 text-primary"
-                    >{{ $t("account.register.confirmPassword") }}</label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                      >{{ $t("account.register.confirmPassword") }}</label
+                    >
+                    <div class="mt-1 rounded-sm shadow-sm">
                       <input
                         v-model="user.passwordConfirm"
                         id="confirmPassword"
                         type="password"
                         required
-                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div class="mt-6">
-                  <span class="block w-full rounded-md shadow-sm">
+                  <span class="block w-full rounded-sm shadow-sm">
                     <loading-button
                       class="w-full block"
                       type="submit"
                       ref="loadingButton"
-                    >{{ $t("shared.request") }}</loading-button>
+                      >{{ $t("shared.request") }}</loading-button
+                    >
                   </span>
                 </div>
               </form>
@@ -131,19 +146,16 @@
 import Component from "vue-class-component";
 import BaseComponent from "../../components/shared/BaseComponent.vue";
 import LoadingButton from "@/components/shared/buttons/LoadingButton.vue";
-import GoogleSignInButton from "vue-google-signin-button-directive";
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import MarketingLogo from "@/components/marketing/MarketingLogo.vue";
-import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
 import { mapGetters } from "vuex";
 import { defaultState } from "../../store/modules/theme";
-import { IVerifyDTO } from "../../app/models/system/account/IVerifyDTO";
+import { UserVerifyRequest } from "../../application/contracts/master/users/UserVerifyRequest";
+import { TenantDto } from "../../application/dtos/master/tenants/TenantDto";
+import { TenantUserDto } from "../../application/dtos/master/tenants/TenantUserDto";
 
 @Component({
   components: { ErrorModal, MarketingLogo, LoadingButton },
-  directives: {
-    GoogleSignInButton,
-  },
   computed: {
     ...mapGetters("theme", {
       marketingTheme: "marketingTheme",
@@ -156,9 +168,9 @@ import { IVerifyDTO } from "../../app/models/system/account/IVerifyDTO";
 })
 export default class InviteURLComponent extends BaseComponent {
   public requirePhone: boolean = true;
-  public user = {} as IVerifyDTO;
+  public user = {} as UserVerifyRequest;
   public emailDisabled: boolean = false;
-  public tenant = {} as ITenantDTO;
+  public tenant = {} as TenantDto;
   public email!: string;
   private requested: boolean = false;
   private created() {
@@ -175,10 +187,10 @@ export default class InviteURLComponent extends BaseComponent {
       this.loading = true;
       this.$store.commit("theme/marketingTheme", defaultState.marketingTheme);
       this.$store.commit("theme/marketingColor", defaultState.marketingColor);
-      this.services.tenantUsers
+      this.services.tenantUserInvitations
         .getInviteURL(this.$route.params.linkUrl)
-        .then((response: any) => {
-          this.tenant = response.data.tenant;
+        .then((response: TenantDto) => {
+          this.tenant = response;
 
           if (this.tenant.appTheme) {
             this.$store.commit("theme/marketingTheme", this.tenant.appTheme);
@@ -208,9 +220,9 @@ export default class InviteURLComponent extends BaseComponent {
     }
     // @ts-ignore
     this.$refs.loadingButton.start();
-    this.services.tenantUsers
-      .requestAccess(this.user)
-      .then((response: any) => {
+    this.services.tenantUserInvitations
+      .requestAccess(this.$route.params.linkUrl, this.user)
+      .then((response: TenantUserDto) => {
         this.requested = true;
       })
       .catch((error) => {

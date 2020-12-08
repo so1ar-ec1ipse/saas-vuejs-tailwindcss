@@ -1,10 +1,8 @@
 import { Module } from "vuex";
 import { AccountState, RootState } from "@/types/stateTypes";
-import {
-  IUserDTO,
-  LoginType,
-  UserType,
-} from "@/app/models/system/account/IUserDTO";
+import {UserType} from "@/application/enum/master/UserType";
+import {UserDto} from "@/application/dtos/master/users/UserDto";
+
 
 export const state: AccountState = {
   user: null,
@@ -75,7 +73,7 @@ export const account: Module<AccountState, RootState> = {
     reset(state: AccountState) {
       state.user = null;
     },
-    logged(state: AccountState, user: IUserDTO) {
+    logged(state: AccountState, user: UserDto) {
       state.user = user;
     },
   },

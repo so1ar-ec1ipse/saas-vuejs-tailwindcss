@@ -1,4 +1,3 @@
-import Services from "@/services";
 import store from "@/store";
 import router from "@/router";
 import { Module } from "vuex";
@@ -6,7 +5,9 @@ import { AuthState, RootState } from "@/types/stateTypes";
 import { SignalService } from "@/plugins/SignalR";
 import mixpanel from "mixpanel-browser";
 import LogRocket from "logrocket";
-import { IUserDTO, UserType } from "@/app/models/system/account/IUserDTO";
+import { UserDto } from "@/application/dtos/master/users/UserDto";
+import { UserType } from "@/application/enum/master/UserType";
+import { UserLoggedResponse } from "@/application/contracts/master/users/UserLoggedResponse";
 
 export const state: AuthState = {
   authenticated: false,
@@ -22,7 +23,7 @@ export const auth: Module<AuthState, RootState> = {
     },
   },
   mutations: {
-    login: (state: AuthState, payload) => {
+    login: (state: AuthState, payload: UserLoggedResponse) => {
       SignalService.startConnection();
 
       state.authenticated = true;
@@ -30,8 +31,8 @@ export const auth: Module<AuthState, RootState> = {
       localStorage.setItem("id_token", state.token);
 
       store.dispatch("account/logged", payload.user);
-      store.commit("tenant/myTenants", payload.myTenants);
-      store.commit("tenant/current", payload.currentTenant);
+      store.commit("tenant/myTenants", payload.user.tenants);
+      store.commit("tenant/current", payload.user.currentTenant);
 
       try {
         // @ts-ignore
@@ -42,20 +43,24 @@ export const auth: Module<AuthState, RootState> = {
             firstName: payload.user.firstName,
             lastName: payload.user.lastName,
             type: payload.user.type,
-            tenant: payload.currentTenant,
+            tenant: payload.user.currentTenant,
           });
         }
         if (mixpanel) {
-          mixpanel.identify(payload.user.Id);
-          if (mixpanel.people) {
-            mixpanel.people.set({
-              USER_ID: payload.user.Id,
-              $email: payload.user.email,
-              "First name": payload.user.firstName,
-              "Last name": payload.user.lastName,
-            });
+          try {
+            mixpanel.identify(payload.user.id);
+            if (mixpanel.people) {
+              mixpanel.people.set({
+                USER_ID: payload.user.id,
+                $email: payload.user.email,
+                "First name": payload.user.firstName,
+                "Last name": payload.user.lastName,
+              });
+            }
+            mixpanel.track("Login");
+          } catch (ex) {
+            // ignore
           }
-          mixpanel.track("Login");
         }
         if (LogRocket) {
           LogRocket.identify(payload.user.email, {
@@ -63,15 +68,16 @@ export const auth: Module<AuthState, RootState> = {
             firstName: payload.user.firstName,
             lastName: payload.user.lastName,
             email: payload.user.email,
-            stripeCustomerId: payload.currentTenant?.stripeCustomerId ?? "",
-            stripeSubscriptionId:
-              payload.currentTenant?.stripeSubscriptionId ?? "",
+            subscriptionCustomerId:
+              payload.user.currentTenant?.subscriptionCustomerId ?? "",
+            subscriptionPlanId:
+              payload.user.currentTenant?.subscriptionPlanId ?? "",
           });
         }
       } catch (ex) {
         // ignore
       }
-      if ((payload.user as IUserDTO).type === UserType.Admin) {
+      if ((payload.user as UserDto).type === UserType.Admin) {
         router.push("/admin/dashboard");
       } else {
         router.push("/app/dashboard");

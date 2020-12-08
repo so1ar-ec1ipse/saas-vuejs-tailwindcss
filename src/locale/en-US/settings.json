@@ -33,6 +33,7 @@
     "passwordConfirm": "Confirm password",
     "passwordCurrent": "Current password",
     "profileUpdated": "Profile saved",
+    "changePassword": "Change password",
     "errorText": "Could not save changes",
     "passwordMismatch": "Passwords don't match",
     "cannotChangePassword": "You signed up without a password, so you don't have one"
@@ -42,11 +43,21 @@
     "description": "Change your preferences!",
     "language": "Language"
   },
+  "danger": {
+    "title": "Danger zone",
+    "description": "Be careful",
+    "deleteAccount": "Delete account",
+    "delete": "Delete",
+    "confirmDelete": "We will delete your account and all your organizations",
+    "deleteYourAccount": "Delete your account",
+    "onceYouDelete": "Once you delete your account, you will lose all data associated with it"
+  },
   "tenant": {
     "title": "Organization",
     "domain": "Domain",
     "subdomain": "Subdomain",
     "general": "General settings",
+    "generalDescription": "Update your organization settings",
     "updated": "Organization updated",
     "create": "Create new organization",
     "createDescription": "Create a new organization to separate data",
@@ -55,7 +66,7 @@
     "subscription": {
       "title": "Subscription",
       "description": "Update your plan and payment details",
-      "notSubscribed": "No subscription",
+      "notSubscribed": "You don't have any active subscription",
       "notSubscribedDescription": "Please select a plan according to your needs",
       "updated": "Subscription updated",
       "alreadySubscribed": "You're already subscribed",
@@ -63,11 +74,11 @@
       "clickCancel": "Click here to cancel",
       "confirmCancel": "Are you sure you want to cancel your subscription?",
       "canceled": "Subscription canceled",
-      "trialing": "You're on trial until",
+      "trialing": "Trial until",
       "upcomingInvoice": "Upcoming invoice",
       "noUpcomingInvoices": "No upcoming invoices",
       "noInvoicesYet": "There are no invoices yet",
-      "openStripePortal": "Open subscription portal"
+      "openCustomerPortal": "Open subscription portal"
     },
     "payment": {
       "title": "Payment details",

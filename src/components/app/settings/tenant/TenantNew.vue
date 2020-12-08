@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div
+      class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    ></div>
 
     <div class="fixed inset-0 overflow-hidden">
       <div class="absolute inset-0 overflow-hidden">
@@ -16,20 +18,27 @@
           To: "translate-x-full"
           -->
           <div class="w-screen max-w-md">
-            <div class="h-full divide-y divide-gray-200 flex flex-col bg-primary shadow-2xl">
-              <div class="flex-1 h-0 overflow-y-auto bg-primary">
+            <div
+              class="h-full divide-y divide-gray-200 flex flex-col bg-secondary shadow-2xl"
+            >
+              <div class="flex-1 h-0 overflow-y-auto bg-secondary text-primary">
                 <header class="space-y-1 py-6 px-4 bg-theme-700 sm:px-6">
                   <div class="flex items-center justify-between space-x-3">
-                    <h2
-                      class="text-lg leading-7 font-medium text-white"
-                    >{{ $t("settings.tenant.create") }}</h2>
+                    <h2 class="text-lg leading-7 font-medium text-white">
+                      {{ $t("settings.tenant.create") }}
+                    </h2>
                     <div class="h-7 flex items-center">
                       <button
                         @click="close"
                         aria-label="Close panel"
                         class="text-theme-200 hover:text-white transition ease-in-out duration-150"
                       >
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg
+                          class="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -41,9 +50,9 @@
                     </div>
                   </div>
                   <div>
-                    <p
-                      class="text-sm leading-5 text-theme-300"
-                    >{{ $t("settings.tenant.createDescription") }}</p>
+                    <p class="text-sm leading-5 text-theme-300">
+                      {{ $t("settings.tenant.createDescription") }}
+                    </p>
                   </div>
                 </header>
                 <div class="flex-1 flex flex-col justify-between">
@@ -53,17 +62,20 @@
                         <label
                           for="name"
                           class="block text-sm font-medium leading-5 text-primary"
-                        >{{ $t("shared.name") }}</label>
-                        <div class="relative rounded-md shadow-sm">
+                          >{{ $t("shared.name") }}</label
+                        >
+                        <div class="relative rounded-sm shadow-sm">
                           <input
                             v-model="name"
                             id="name"
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                           />
                         </div>
                       </div>
                       <div>
-                        <currency-toggle class="w-full flex justify-center"></currency-toggle>
+                        <currency-toggle
+                          class="w-full flex justify-center"
+                        ></currency-toggle>
                       </div>
                       <div class="space-y-1">
                         <plans ref="plans"></plans>
@@ -72,17 +84,21 @@
 
                     <div class="space-y-4 pt-4 pb-6 text-right">
                       <div class="text-sm leading-5 right-0">
-                        <span class="inline-flex rounded-md shadow-sm">
+                        <span class="inline-flex rounded-sm shadow-sm">
                           <button
                             @click="close"
-                            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-500 bg-primary hover:bg-secondary focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
-                          >{{ $t("shared.cancel") }}</button>
+                            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-500 bg-primary hover:bg-secondary focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+                          >
+                            {{ $t("shared.cancel") }}
+                          </button>
                         </span>
-                        <span class="inline-flex rounded-md shadow-sm ml-2">
+                        <span class="inline-flex rounded-sm shadow-sm ml-2">
                           <button
                             @click="createTenant"
-                            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-md text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-theme-700 active:bg-theme-700 transition duration-150 ease-in-out"
-                          >{{ $t("shared.create") }}</button>
+                            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-theme-700 active:bg-theme-700 transition duration-150 ease-in-out"
+                          >
+                            {{ $t("shared.create") }}
+                          </button>
                         </span>
                       </div>
                     </div>
@@ -106,10 +122,12 @@
         />
 
         <button
-          class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-800 focus:outline-none focus:bg-theme-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+          class="inline-flex justify-center w-full rounded-sm border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-800 focus:outline-none focus:bg-theme-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
           @click="pay"
           :disabled="!complete"
-        >{{ getButtonText }}</button>
+        >
+          {{ getButtonText }}
+        </button>
       </div>
     </modal>
     <success-modal ref="success-modal"></success-modal>
@@ -126,10 +144,12 @@ import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import Modal from "@/components/shared/modals/Modal.vue";
 import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
 import Plans from "@/components/marketing/Plans.vue";
-import { StripeProduct } from "../../../../app/models/subscription/StripeProduct";
 import { Card, createToken } from "vue-stripe-elements-plus";
-import { BillingPeriod } from "../../../../app/models/subscription/StripePrice";
 import CurrencyToggle from "@/components/marketing/toggles/CurrencyToggle.vue";
+import { SubscriptionProductDto } from "../../../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { SubscriptionBillingPeriod } from "../../../../application/enum/master/SubscriptionBillingPeriod";
+import { SubscriptionPriceDto } from "../../../../application/dtos/master/subscriptions/SubscriptionPriceDto";
+import { TenantCreateRequest } from "../../../../application/contracts/master/tenants/TenantCreateRequest";
 
 @Component({
   components: {
@@ -149,7 +169,7 @@ export default class TenantNew extends BaseComponent {
   private complete: boolean = false;
   created() {
     // @ts-ignore
-    this.stripeKey = process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY.toString();
+    this.stripeKey = process.env.VUE_APP_SUBSCRIPTION_PUBLIC_KEY.toString();
     this.stripeOptions = {
       showCardHolderName: true,
       hidePostalCode: false,
@@ -161,7 +181,7 @@ export default class TenantNew extends BaseComponent {
     if (!this.selectedProduct) {
       this.$store.commit("pricing/select", {
         product: this.$store.state.pricing.products[0],
-        billingPeriod: BillingPeriod.Monthly,
+        billingPeriod: SubscriptionBillingPeriod.Monthly,
       });
     }
   }
@@ -177,16 +197,20 @@ export default class TenantNew extends BaseComponent {
     }
   }
   tryRegister() {
-    // if (this.selectedPrice?.trialDays === 0 && this.selectedPrice?.price > 0) {
+    // if (!this.selectedPrice || !this.selectedPrice.id) {
     //   // @ts-ignore
-    //   this.$refs["card-modal"].show(
-    //     this.$t("account.register.providePaymentDetails"),
-    //     this.$t("shared.cancel")
-    //   );
-    // } else {
-    //   this.register();
+    //   this.$refs["error-modal"].show("Select a product price");
+    //   return;
     // }
-    this.register();
+    if (this.selectedPrice?.trialDays === 0 && this.selectedPrice?.price > 0) {
+      // @ts-ignore
+      this.$refs["card-modal"].show(
+        this.$t("account.register.providePaymentDetails"),
+        this.$t("shared.cancel")
+      );
+    } else {
+      this.register();
+    }
   }
   pay() {
     createToken()
@@ -208,11 +232,16 @@ export default class TenantNew extends BaseComponent {
       });
   }
   register(stripeCardToken: string = "") {
-    if (!this.selectedPrice) {
-      return;
-    }
+    const tenantCreateRequest: TenantCreateRequest = {
+      name: this.name,
+      selectedSubscription: {
+        subscriptionPriceId: this.selectedPrice?.id ?? "",
+        subscriptionCardToken: stripeCardToken,
+        subscriptionCoupon: "",
+      },
+    };
     this.services.tenants
-      .create(this.name, this.selectedPrice, stripeCardToken)
+      .create(tenantCreateRequest)
       .then((response) => {
         // // @ts-ignore
         // this.$refs["success-modal"].show(this.$t("settings.tenant.created"));
@@ -225,12 +254,12 @@ export default class TenantNew extends BaseComponent {
       });
   }
   get selectedProduct() {
-    return this.$store.state.pricing.selectedProduct as StripeProduct;
+    return this.$store.state.pricing.selectedProduct as SubscriptionProductDto;
   }
   get getButtonText() {
     if (this.selectedPrice) {
       return (
-        (this.selectedPrice.billingPeriod === BillingPeriod.Once
+        (this.selectedPrice.billingPeriod === SubscriptionBillingPeriod.Once
           ? this.$t("marketing.pricing.pay")
           : this.$t("marketing.pricing.subscribe")) +
         " " +
@@ -238,7 +267,7 @@ export default class TenantNew extends BaseComponent {
       );
     }
   }
-  get selectedPrice() {
+  get selectedPrice(): SubscriptionPriceDto | undefined {
     if (this.selectedProduct) {
       return (
         this.selectedProduct.prices.find(
@@ -249,14 +278,16 @@ export default class TenantNew extends BaseComponent {
   }
   get billingPeriod() {
     if (this.selectedPrice) {
-      if (this.selectedPrice?.billingPeriod === BillingPeriod.Once) {
+      if (
+        this.selectedPrice?.billingPeriod === SubscriptionBillingPeriod.Once
+      ) {
         return this.$t("marketing.pricing.once");
       } else {
         return (
           "/ " +
           this.$t(
             "marketing.pricing." +
-              BillingPeriod[this.selectedPrice.billingPeriod] +
+              SubscriptionBillingPeriod[this.selectedPrice.billingPeriod] +
               "Short"
           )
         );

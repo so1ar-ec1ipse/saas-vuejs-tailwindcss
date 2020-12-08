@@ -1,45 +1,60 @@
 <template>
   <div>
-    <div class>
+    <div
+      class="flex items-center justify-between bg-white -m-4 sm:-m-8 p-8 pb-4 shadow-lg mb-4"
+    >
+      <div class="flex-1 min-w-0">
+        <h2
+          class="flex text-2xl font-bold leading-9 text-gray-800 sm:text-3xl sm:leading-9 sm:truncate"
+        >
+          {{ $t("settings.profile.profileTitle") }}
+        </h2>
+      </div>
+    </div>
+    <div class=" mt-4 sm:mt-12">
       <!-- Profile -->
-      <div class="md:grid lg:grid-cols-3 md:gap-6">
+      <div class="md:grid lg:grid-cols-3 md:gap-2">
         <div class="md:col-span-1">
           <div class="px-4 sm:px-0">
-            <h3
-              class="text-lg font-medium leading-6 text-gray-900"
-            >{{ $t("settings.profile.profileTitle") }}</h3>
-            <p class="mt-1 text-sm leading-5 text-gray-600">{{ $t("settings.profile.profileText") }}</p>
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              {{ $t("settings.profile.profileTitle") }}
+            </h3>
+            <p class="mt-1 text-sm leading-5 text-gray-600">
+              {{ $t("settings.profile.profileText") }}
+            </p>
           </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
           <form @submit.prevent="updateProfile()">
-            <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="shadow overflow-hidden sm:rounded-sm">
               <div class="px-4 py-5 bg-white sm:p-6">
-                <div class="grid grid-cols-6 gap-6">
+                <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-6 md:col-span-6">
                     <label
                       for="email_address"
                       class="block text-sm font-medium leading-5 text-gray-700"
-                    >{{ $t("account.shared.email") }}</label>
+                      >{{ $t("account.shared.email") }}</label
+                    >
                     <input
                       v-model="profile.email"
                       required
                       :disabled="true"
                       type="email"
                       id="email_address"
-                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     />
                   </div>
                   <div class="col-span-6 md:col-span-3">
                     <label
                       for="firstName"
                       class="block text-sm font-medium leading-5 text-gray-700"
-                    >{{ $t("settings.profile.firstName") }}</label>
+                      >{{ $t("settings.profile.firstName") }}</label
+                    >
                     <input
                       id="firstName"
                       required
                       v-model="profile.firstName"
-                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     />
                   </div>
 
@@ -47,23 +62,25 @@
                     <label
                       for="lastName"
                       class="block text-sm font-medium leading-5 text-gray-700"
-                    >{{ $t("settings.profile.lastName") }}</label>
+                      >{{ $t("settings.profile.lastName") }}</label
+                    >
                     <input
                       required
                       v-model="profile.lastName"
                       id="lastName"
-                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     />
                   </div>
                   <div class="col-span-6 md:col-span-3">
                     <label
                       for="phone"
                       class="block text-sm font-medium leading-5 text-gray-700"
-                    >{{ $t("settings.profile.phone") }}</label>
+                      >{{ $t("settings.profile.phone") }}</label
+                    >
                     <input
                       v-model="profile.phone"
                       id="phone"
-                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                     />
                   </div>
 
@@ -71,9 +88,12 @@
                     <label
                       for="photo"
                       class="block text-sm leading-5 font-medium text-gray-700"
-                    >{{ $t("shared.avatar") }}</label>
+                      >{{ $t("shared.avatar") }}</label
+                    >
                     <div class="mt-2 flex items-center">
-                      <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                      <span
+                        class="h-12 w-12 rounded-sm overflow-hidden bg-gray-100"
+                      >
                         <img v-if="avatar" :src="avatar" />
                         <svg
                           v-else
@@ -86,19 +106,23 @@
                           />
                         </svg>
                       </span>
-                      <span class="ml-5 rounded-md shadow-sm">
+                      <span class="ml-5 rounded-sm shadow-sm">
                         <button
                           @click="showUploadImage = true"
                           type="button"
-                          class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                        >{{ $t("shared.upload") }}</button>
+                          class="py-2 px-3 border border-gray-300 rounded-sm text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                        >
+                          {{ $t("shared.upload") }}
+                        </button>
                       </span>
-                      <span v-if="avatar" class="ml-2 rounded-md shadow-sm">
+                      <span v-if="avatar" class="ml-2 rounded-sm shadow-sm">
                         <button
                           @click="loadedImage(null)"
                           type="button"
-                          class="py-2 px-3 border bg-red-100 border-gray-300 rounded-md text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                        >{{ $t("shared.delete") }}</button>
+                          class="py-2 px-3 border bg-red-100 border-gray-300 rounded-sm text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                        >
+                          {{ $t("shared.delete") }}
+                        </button>
                       </span>
                     </div>
                   </div>
@@ -107,8 +131,10 @@
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button
                   type="submit"
-                  class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
-                >{{ $t("shared.save") }}</button>
+                  class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+                >
+                  {{ $t("shared.save") }}
+                </button>
               </div>
             </div>
           </form>
@@ -123,12 +149,12 @@
       </div>
 
       <!-- Security -->
-      <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:grid md:grid-cols-3 md:gap-2">
         <div class="md:col-span-1">
           <div class="px-4 sm:px-0">
-            <h3
-              class="text-lg font-medium leading-6 text-gray-900"
-            >{{ $t("settings.profile.securityTitle") }}</h3>
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              {{ $t("settings.profile.securityTitle") }}
+            </h3>
             <p class="mt-1 text-sm leading-5 text-gray-600">
               {{ $t("settings.profile.securityText") }}.
               {{ $t("account.login.forgot") }}
@@ -136,40 +162,43 @@
                 @click="logout"
                 class="text-theme-600 font-bold hover:text-theme-500"
                 :href="'/account/forgot?e=' + $store.state.account.user.email"
-              >{{ $t("account.reset.button") }}</a>
+                >{{ $t("account.reset.button") }}</a
+              >
             </p>
           </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
           <form @submit.prevent="updatePassword()">
-            <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="shadow overflow-hidden sm:rounded-sm">
               <div v-if="canChangePassword()">
                 <div class="px-4 py-5 bg-white sm:p-6">
-                  <div class="grid grid-cols-6 gap-6">
+                  <div class="grid grid-cols-6 gap-2">
                     <div class="col-span-6 sm:col-span-6">
                       <label
                         for="passwordCurrent"
                         class="block text-sm font-medium leading-5 text-gray-700"
-                      >{{ $t("settings.profile.passwordCurrent") }}</label>
+                        >{{ $t("settings.profile.passwordCurrent") }}</label
+                      >
                       <input
                         :required="profile.loginType == 'Password'"
                         type="password"
                         id="passwordCurrent"
-                        v-model="profile.passwordCurrent"
-                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        v-model="updatePasswordRequest.passwordCurrent"
+                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                     <div class="col-span-6 md:col-span-3">
                       <label
                         for="password"
                         class="block text-sm font-medium leading-5 text-gray-700"
-                      >{{ $t("settings.profile.password") }}</label>
+                        >{{ $t("settings.profile.password") }}</label
+                      >
                       <input
                         required
                         type="password"
                         id="password"
-                        v-model="profile.passwordNew"
-                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        v-model="updatePasswordRequest.passwordNew"
+                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
 
@@ -177,13 +206,14 @@
                       <label
                         for="passwordConfirm"
                         class="block text-sm font-medium leading-5 text-gray-700"
-                      >{{ $t("settings.profile.passwordConfirm") }}</label>
+                        >{{ $t("settings.profile.passwordConfirm") }}</label
+                      >
                       <input
                         required
                         type="password"
-                        v-model="profile.passwordConfirm"
+                        v-model="updatePasswordRequest.passwordConfirm"
                         id="passwordConfirm"
-                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                   </div>
@@ -191,14 +221,18 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
-                    class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
-                  >{{ $t("shared.save") }}</button>
+                    class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+                  >
+                    {{ $t("shared.save") }}
+                  </button>
                 </div>
               </div>
               <div
                 v-else
                 class="px-4 py-5 bg-white sm:p-6 block text-sm font-medium leading-5 text-gray-700"
-              >{{ $t("settings.profile.cannotChangePassword") }}</div>
+              >
+                {{ $t("settings.profile.cannotChangePassword") }}
+              </div>
             </div>
           </form>
         </div>
@@ -212,27 +246,28 @@
       </div>
 
       <!-- Preferences -->
-      <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:grid md:grid-cols-3 md:gap-2">
         <div class="md:col-span-1">
           <div class="px-4 sm:px-0">
-            <h3
-              class="text-lg font-medium leading-6 text-gray-900"
-            >{{ $t("settings.preferences.title") }}</h3>
-            <p
-              class="mt-1 text-sm leading-5 text-gray-600"
-            >{{ $t("settings.preferences.description") }}</p>
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              {{ $t("settings.preferences.title") }}
+            </h3>
+            <p class="mt-1 text-sm leading-5 text-gray-600">
+              {{ $t("settings.preferences.description") }}
+            </p>
           </div>
         </div>
         <div class="mt-5 md:mt-0 md:col-span-2">
           <form @submit.prevent>
-            <div class="shadow sm:rounded-md">
+            <div class="shadow sm:rounded-sm">
               <div class="px-4 py-5 bg-white sm:p-6">
-                <div class="grid grid-cols-6 gap-6">
+                <div class="grid grid-cols-6 gap-2">
                   <div class="col-span-6 sm:col-span-6">
                     <label
                       for="passwordCurrent"
                       class="block text-sm font-medium leading-5 text-gray-700"
-                    >{{ $t("settings.preferences.language") }}</label>
+                      >{{ $t("settings.preferences.language") }}</label
+                    >
                     <selector
                       :selected="selectedLocale"
                       :options="locales"
@@ -245,9 +280,51 @@
               <!-- <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button
                   type="submit"
-                  class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
+                  class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-sm text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
                 >{{ $t("shared.save") }}</button>
               </div>-->
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Separator -->
+      <div class="block">
+        <div class="py-5">
+          <div class="border-t border-gray-200"></div>
+        </div>
+      </div>
+      <!-- Danger -->
+      <div class="md:grid md:grid-cols-3 md:gap-2">
+        <div class="md:col-span-1">
+          <div class="px-4 sm:px-0">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              {{ $t("settings.danger.title") }}
+            </h3>
+            <p class="mt-1 text-sm leading-5 text-gray-600">
+              {{ $t("settings.danger.description") }}
+            </p>
+          </div>
+        </div>
+        <div class="mt-12 md:mt-0 md:col-span-2">
+          <form @submit.prevent>
+            <div class="bg-white shadow sm:rounded-sm">
+              <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                  {{ $t("settings.danger.deleteYourAccount") }}
+                </h3>
+                <div class="mt-2 max-w-xl text-sm leading-5 text-gray-500">
+                  <p>{{ $t("settings.danger.onceYouDelete") }}.</p>
+                </div>
+                <div class="mt-5">
+                  <button
+                    @click="deleteAccount"
+                    type="button"
+                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-sm text-red-700 bg-red-100 hover:bg-red-50 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                  >
+                    {{ $t("settings.danger.deleteAccount") }}
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -262,6 +339,7 @@
     ></upload-image>
     <success-modal ref="success-modal"></success-modal>
     <error-modal ref="error-modal"></error-modal>
+    <confirm-modal ref="confirm-modal" v-on:yes="confirmDelete"></confirm-modal>
   </div>
 </template>
 
@@ -273,20 +351,23 @@ import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import supportedLocales from "../../../locale/supportedLocales";
 import UploadImage from "@/components/shared/forms/UploadImage.vue";
-import {
-  IUserDTO,
-  LoginType,
-} from "../../../app/models/system/account/IUserDTO";
+import { UserUpdatePasswordRequest } from "../../../application/contracts/master/users/UserUpdatePasswordRequest";
+import { UserUpdateAvatarRequest } from "../../../application/contracts/master/users/UserUpdateAvatarRequest";
+import { UserDto } from "../../../application/dtos/master/users/UserDto";
+import { UserLoginType } from "../../../application/enum/master/UserLoginType";
+import { UserUpdateRequest } from "../../../application/contracts/master/users/UserUpdateRequest";
 
 @Component({
   components: { Selector, SuccessModal, ErrorModal, UploadImage },
 })
 export default class ProfileComponent extends BaseComponent {
-  private profile = {} as IUserDTO;
+  private profile = {} as UserDto;
+  private updatePasswordRequest = {} as UserUpdatePasswordRequest;
   private selectedLocale: string = "";
   private locales: string[] = [];
   private showUploadImage = false;
   created() {
+    this.profile.id = this.$store.state.account.user.id;
     this.profile.email = this.$store.state.account.user.email;
     this.profile.firstName = this.$store.state.account.user.firstName;
     this.profile.lastName = this.$store.state.account.user.lastName;
@@ -300,20 +381,25 @@ export default class ProfileComponent extends BaseComponent {
     });
   }
   canChangePassword() {
-    if (this.profile.loginType === LoginType.Password) {
+    if (this.profile.loginType === UserLoginType.Password) {
       return true;
     }
     return false;
   }
   changedLocale(value) {
-    console.log("changed locale :" + value);
+    // console.log("changed locale :" + value);
     this.$store.commit("locale/updateLocale", value);
     this.$i18n.locale = value;
     this.$router.go(0);
   }
   updateProfile() {
+    const updateRequest: UserUpdateRequest = {
+      firstName: this.profile.firstName,
+      lastName: this.profile.lastName,
+      phone: this.profile.phone,
+    };
     this.services.users
-      .updateProfile(this.profile)
+      .update(this.profile.id, updateRequest)
       .then((response) => {
         // @ts-ignore
         this.$refs["success-modal"].show(
@@ -330,15 +416,30 @@ export default class ProfileComponent extends BaseComponent {
   }
   updatePassword() {
     this.services.users
-      .updatePassword(this.profile)
+      .updatePassword(this.updatePasswordRequest)
       .then((response) => {
         // @ts-ignore
         this.$refs["success-modal"].show(
           this.$t("settings.profile.passwordUpdated")
         );
-        this.profile.passwordCurrent = "";
-        this.profile.passwordNew = "";
-        this.profile.passwordConfirm = "";
+        this.updatePasswordRequest.passwordCurrent = "";
+        this.updatePasswordRequest.passwordNew = "";
+        this.updatePasswordRequest.passwordConfirm = "";
+      })
+      .catch((error) => {
+        // @ts-ignore
+        this.$refs["error-modal"].show(error);
+      });
+  }
+  deleteAccount() {
+    // @ts-ignore
+    this.$refs["confirm-modal"].show(this.$t("settings.danger.confirmDelete"));
+  }
+  confirmDelete() {
+    this.services.users
+      .deleteMe()
+      .then((response) => {
+        // ignore
       })
       .catch((error) => {
         // @ts-ignore
@@ -346,13 +447,16 @@ export default class ProfileComponent extends BaseComponent {
       });
   }
   loadedImage(image) {
+    const updateAvatar: UserUpdateAvatarRequest = {
+      avatar: image,
+    };
     this.services.users
-      .uploadAvatar(image)
+      .updateAvatar(updateAvatar)
       .then((response) => {
         this.showUploadImage = false;
       })
       .catch((error) => {
-        console.error("Error: " + error);
+        console.error("Error: " + JSON.stringify(error));
       });
   }
 

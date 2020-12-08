@@ -17,19 +17,19 @@
         <!-- {{ JSON.stringify(model) }} -->
       </template>
       <template v-slot:footer>
-        <span class="inline-flex rounded-md shadow-sm">
+        <span class="inline-flex rounded-sm shadow-sm">
           <button
             v-if="editing"
             @click="remove"
             type="button"
-            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-red-700 bg-red-200 hover:text-red-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-red-700 bg-red-200 hover:text-red-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
           >
             {{ $t("shared.delete") }}
           </button>
           <button
             @click="cancel"
             type="button"
-            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
           >
             {{ $t("shared.cancel") }}
           </button>
@@ -37,7 +37,7 @@
             :disabled="disabled"
             @click="save"
             type="submit"
-            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-md text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+            class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
           >
             {{ $t("shared.save") }}
           </button>
@@ -64,12 +64,12 @@ import VueFormGenerator, { validators } from "vue-form-generator";
 import "vue-form-generator/dist/vfg.css";
 import { Prop } from "vue-property-decorator";
 import dateInput from "@/components/shared/forms/DateInput.vue";
-import {
-  TenantUserRole,
-  ITenantUserDTO,
-} from "../../../../app/models/system/account/ITenantDTO";
 import { mapGetters } from "vuex";
-import { StripeProduct } from "../../../../app/models/subscription/StripeProduct";
+import { SubscriptionProductDto } from "../../../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { TenantUserRole } from "../../../../application/enum/master/TenantUserRole";
+import { TenantUserDto } from "../../../../application/dtos/master/tenants/TenantUserDto";
+import { TenantProductDto } from "../../../../application/dtos/master/tenants/TenantProductDto";
+
 Vue.component("fieldDateInput", dateInput);
 
 @Component({
@@ -87,13 +87,10 @@ Vue.component("fieldDateInput", dateInput);
   },
 })
 export default class MembersForm extends BaseComponent {
-  @Prop()
-  public propTenantApiKey!: string;
-  public tenantApiKey: string = "";
   private editing: boolean = false;
   private isValid: boolean = false;
   private id: any = false;
-  private model = {} as ITenantUserDTO;
+  private model = {} as TenantUserDto;
   private disabled: boolean = true;
   private schema: any = {
     fields: [
@@ -116,6 +113,16 @@ export default class MembersForm extends BaseComponent {
         model: "firstName",
         required: true,
         placeholder: this.$t("settings.profile.firstName"),
+        validator: validators.string,
+      },
+      {
+        id: "lastName",
+        type: "input",
+        inputType: "text",
+        label: this.$t("settings.profile.lastName"),
+        model: "lastName",
+        required: true,
+        placeholder: this.$t("settings.profile.lastName"),
         validator: validators.string,
       },
       {
@@ -144,7 +151,7 @@ export default class MembersForm extends BaseComponent {
     ],
   };
   private role!: TenantUserRole;
-  private activeProduct!: StripeProduct;
+  private activeProduct!: TenantProductDto;
   private memberCount!: number;
   private isOwnerOrAdmin!: boolean;
   private formOptions: any = {
@@ -156,17 +163,14 @@ export default class MembersForm extends BaseComponent {
     this.configureSchema();
   }
   mounted() {
-    if (this.propTenantApiKey) {
-      this.tenantApiKey = this.propTenantApiKey;
-    }
     if (this.$route.params.id) {
       this.disabled = true;
       this.id = this.$route.params.id;
       this.editing = true;
       this.services.tenantUsers
-        .getUser(this.id)
-        .then((response: any) => {
-          this.model = response.data;
+        .get(this.id)
+        .then((response: TenantUserDto) => {
+          this.model = response;
           this.disabled = false;
         })
         .catch((error) => {
@@ -177,9 +181,11 @@ export default class MembersForm extends BaseComponent {
     } else {
       this.disabled = false;
       const maxNumberOfUsers: number =
-        this.activeProduct && this.activeProduct.maxUsers
-          ? this.activeProduct.maxUsers
-          : 0;
+        this.activeProduct &&
+        this.activeProduct.subscriptionProduct &&
+        this.activeProduct.subscriptionProduct.maxUsers
+          ? this.activeProduct.subscriptionProduct.maxUsers
+          : 1;
 
       // @ts-ignore
       if (maxNumberOfUsers > 0 && this.memberCount >= maxNumberOfUsers) {
@@ -231,7 +237,12 @@ export default class MembersForm extends BaseComponent {
   yesSave() {
     if (this.editing) {
       this.services.tenantUsers
-        .updateUser(this.model, this.tenantApiKey)
+        .update(this.model.id, {
+          role: this.model.role,
+          firstName: this.model.firstName ?? "",
+          lastName: this.model.lastName ?? "",
+          phone: this.model.phone ?? "",
+        })
         .then((response) => {
           this.eventBus.$emit("user-saved", this.model);
           this.$router.push({ path: "/app/settings/organization/members" });
@@ -241,10 +252,16 @@ export default class MembersForm extends BaseComponent {
           this.$refs["error-modal"].show(error);
         });
     } else {
-      this.services.tenantUsers
-        .inviteUser(this.model, this.tenantApiKey)
-        .then((response: any) => {
-          this.eventBus.$emit("user-added", response.data);
+      this.services.tenantUserInvitations
+        .inviteUser({
+          email: this.model.email ?? "",
+          firstName: this.model.firstName ?? "",
+          lastName: this.model.lastName ?? "",
+          phone: this.model.phone ?? "",
+          role: this.model.role,
+        })
+        .then((response: TenantUserDto) => {
+          this.eventBus.$emit("user-added", response);
           this.$router.push({ path: "/app/settings/organization/members" });
         })
         .catch((error) => {
@@ -270,7 +287,7 @@ export default class MembersForm extends BaseComponent {
         this.$refs["error-modal"].show(this.$t("account.tenant.onlyAdmin"));
       } else {
         this.services.tenantUsers
-          .deleteUser(this.model.id)
+          .delete(this.model.id)
           .then((response) => {
             this.eventBus.$emit("user-deleted", this.model);
             this.$router.push({ path: "/app/settings/organization/members" });

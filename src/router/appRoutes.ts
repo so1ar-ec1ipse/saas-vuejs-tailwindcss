@@ -2,6 +2,12 @@ import { appPermissionsRoutes } from "./appPermissionsRoutes";
 import { appSettingsRoutes } from "./appSettingsRoutes";
 import { appIntegrationsRoutes } from "./appIntegrationsRoutes";
 import { i18n } from "@/plugins/vue-i18n";
+import { defaultProductsDevelopment } from "@/store/modules/pricing/default-pricing.Development";
+import { defaultProducts } from "@/store/modules/pricing/default-pricing";
+const products =
+  process.env.NODE_ENV !== "production"
+    ? defaultProductsDevelopment
+    : defaultProducts;
 
 export const appRoutes = {
   path: "/app",
@@ -19,24 +25,33 @@ export const appRoutes = {
       },
     },
     {
-      path: "expenses",
-      component: require("@/views/app/transactions/Expenses.vue").default,
+      path: "transactions",
+      component: require("@/views/app/transactions/Transactions.vue").default,
       meta: {
         requiresAuth: true,
-        title: "Expenses",
+        title: "Transactions",
       },
       children: [
         {
           path: "new",
-          component: require("@/views/app/transactions/ExpensesForm.vue")
+          component: require("@/views/app/transactions/TransactionsForm.vue")
             .default,
         },
         {
           path: ":id/edit",
-          component: require("@/views/app/transactions/ExpensesForm.vue")
+          component: require("@/views/app/transactions/TransactionsForm.vue")
             .default,
         },
       ],
+    },
+    {
+      path: "transactions2",
+      component: require("@/views/app/transactions/TransactionsWithModelListTemplate.vue")
+        .default,
+      meta: {
+        requiresAuth: true,
+        title: "Expenses with Model List Template",
+      },
     },
     {
       path: "resources",

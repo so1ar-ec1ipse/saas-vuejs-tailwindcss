@@ -3,7 +3,7 @@
     <!-- <div v-if="loading">Loading</div>
     <div v-else>-->
     <div
-      class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+      class="min-h-screen bg-primary flex flex-col justify-center py-12 sm:px-6 lg:px-8"
     >
       <marketing-logo></marketing-logo>
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
@@ -23,7 +23,63 @@
       </div>
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-secondary py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div class="bg-theme-100 mb-2 rounded-sm border border-theme-300 mt-8">
+          <div class="rounded-sm bg-theme-50 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg
+                  class="h-5 w-5 text-theme-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+
+              <div class="ml-3">
+                <h3 class="text-sm leading-5 font-medium text-theme-800">
+                  {{ $t("netcoresaas.backendNeeded") }}
+                </h3>
+                <div class="mt-2 text-sm leading-5 text-theme-700">
+                  <p>{{ $t("netcoresaas.fakeLoginAdmin") }}</p>
+                  <p>{{ $t("netcoresaas.fakeLoginTenant") }}</p>
+                  <p>{{ $t("netcoresaas.fakeLoginPassword") }}</p>
+                </div>
+                <div class="text-sm leading-5 right-0 -ml-3 mt-2">
+                  <span class="inline-flex rounded-sm ml-2">
+                    <a
+                      href="https://netcoresaas.com/product"
+                      target="_blank"
+                      class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-sm text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
+                      >{{ $t("netcoresaas.getBackend") }}</a
+                    >
+                  </span>
+                  <span class="inline-flex rounded-sm ml-2">
+                    <a
+                      href="https://demo.netcoresaas.com"
+                      target="_blank"
+                      class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-sm text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
+                      >{{ $t("netcoresaas.demo") }}</a
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div v-else>{{tenant.name}}</div> -->
+          <!-- </div> -->
+          <error-modal
+            ref="errorModal"
+            :title="$t('shared.error')"
+            :text="$t('account.login.errorText')"
+            :closeText="$t('shared.close')"
+          ></error-modal>
+        </div>
+        <div class="bg-secondary py-8 px-4 shadow sm:rounded-sm sm:px-10">
           <form @submit.prevent="login()">
             <div>
               <label
@@ -31,7 +87,7 @@
                 class="block text-sm font-medium leading-5 text-primary"
                 >{{ $t("account.shared.email") }}</label
               >
-              <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="mt-1 relative rounded-sm shadow-sm">
                 <!-- <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                     <path
@@ -46,7 +102,7 @@
                   type="email"
                   required
                   :placeholder="$t('account.shared.email')"
-                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
               </div>
             </div>
@@ -57,7 +113,7 @@
                 class="block text-sm font-medium leading-5 text-primary"
                 >{{ $t("account.shared.password") }}</label
               >
-              <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="mt-1 relative rounded-sm shadow-sm">
                 <!-- <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                     <path
@@ -71,7 +127,7 @@
                   id="current-password"
                   type="password"
                   required
-                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:shadow-outline-theme focus:border-theme-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
               </div>
             </div>
@@ -96,7 +152,7 @@
             </div>
 
             <div class="mt-6">
-              <span class="block w-full rounded-md shadow-sm">
+              <span class="block w-full rounded-sm shadow-sm">
                 <loading-button
                   class="w-full block"
                   type="submit"
@@ -120,7 +176,7 @@
                 <!-- <button
                   type="submit"
                   :disabled="loading"
-                  class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-theme-700 hover:bg-theme-600 focus:bg-theme-500 focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5 disabled:cursor-not-allowed"
+                  class="relative block w-full py-2 px-3 border border-transparent rounded-sm text-white font-semibold bg-theme-700 hover:bg-theme-600 focus:bg-theme-500 focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5 disabled:cursor-not-allowed"
                 >
                   <span class="absolute left-0 inset-y pl-3">
                     <svg class="h-5 w-5 text-gray-200" fill="currentColor" viewBox="0 0 20 20">
@@ -137,7 +193,8 @@
             </div>
           </form>
 
-          <div class="mt-6">
+          <!-- Other Authentication Providers -->
+          <div v-if="false" class="mt-6">
             <div class="relative">
               <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-t border-gray-500"></div>
@@ -151,11 +208,11 @@
 
             <div class="mt-6">
               <div>
-                <span class="w-full inline-flex rounded-md shadow-sm">
+                <span class="w-full inline-flex rounded-sm shadow-sm">
                   <button
                     v-google-signin-button="googleClientId"
                     type="button"
-                    class="hover:border-gray-400 w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md bg-secondary text-sm leading-5 font-medium text-primary hover:text-gray-400 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray transition duration-150 ease-in-out"
+                    class="hover:border-gray-400 w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-sm bg-secondary text-sm leading-5 font-medium text-primary hover:text-gray-400 focus:outline-none focus:border-gray-300 focus:shadow-outline-gray transition duration-150 ease-in-out"
                     aria-label="Gmail"
                   >
                     <!-- Google Icon -->
@@ -182,68 +239,9 @@
               </div>
             </div>
           </div>
-          <div
-            class="bg-theme-100 mb-2 rounded-md border border-theme-300 mt-8"
-          >
-            <div class="rounded-md bg-theme-50 p-4">
-              <div class="flex">
-                <div class="flex-shrink-0">
-                  <svg
-                    class="h-5 w-5 text-theme-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-
-                <div class="ml-3">
-                  <h3 class="text-sm leading-5 font-medium text-theme-800">
-                    {{ $t("netcoresaas.backendNeeded") }}
-                  </h3>
-                  <div class="mt-2 text-sm leading-5 text-theme-700">
-                    <p>{{ $t("netcoresaas.fakeLoginAdmin") }}</p>
-                    <p>{{ $t("netcoresaas.fakeLoginTenant") }}</p>
-                    <p>{{ $t("netcoresaas.fakeLoginPassword") }}</p>
-                  </div>
-                  <div class="text-sm leading-5 right-0 -ml-3 mt-2">
-                    <span class="inline-flex rounded-md ml-2">
-                      <a
-                        href="https://netcoresaas.com/product"
-                        target="_blank"
-                        class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                        >{{ $t("netcoresaas.getBackend") }}</a
-                      >
-                    </span>
-                    <span class="inline-flex rounded-md ml-2">
-                      <a
-                        href="https://demo.netcoresaas.com"
-                        target="_blank"
-                        class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                        >{{ $t("netcoresaas.demo") }}</a
-                      >
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-
-    <!-- <div v-else>{{tenant.name}}</div> -->
-    <!-- </div> -->
-    <error-modal
-      ref="errorModal"
-      :title="$t('shared.error')"
-      :text="$t('account.login.errorText')"
-      :closeText="$t('shared.close')"
-    ></error-modal>
   </div>
 </template>
 
@@ -254,10 +252,10 @@ import LoadingButton from "../../components/shared/buttons/LoadingButton.vue";
 import GoogleSignInButton from "vue-google-signin-button-directive";
 import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import axios from "axios";
-import { ILoginDTO } from "../../app/models/system/account/ILoginDTO";
-import { LoginType } from "../../app/models/system/account/IUserDTO";
 import MarketingLogo from "@/components/marketing/MarketingLogo.vue";
-import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
+import { UserLoginRequest } from "../../application/contracts/master/users/UserLoginRequest";
+import { TenantDto } from "../../application/dtos/master/tenants/TenantDto";
+import { UserLoginType } from "../../application/enum/master/UserLoginType";
 
 @Component({
   components: { ErrorModal, MarketingLogo, LoadingButton },
@@ -267,25 +265,14 @@ import { ITenantDTO } from "../../app/models/system/account/ITenantDTO";
 })
 export default class LoginComponent extends BaseComponent {
   public googleClientId: any = "";
-  public user = {} as ILoginDTO;
+  public user = {} as UserLoginRequest;
   $refs!: {
     errorModal: HTMLFormElement;
   };
-  private tenant: ITenantDTO | undefined = undefined;
+  private tenant: TenantDto | undefined = undefined;
   created() {
     // @ts-ignore
     this.googleClientId = process.env.VUE_APP_GOOGLE_CLIENT_ID_OAUTH2;
-  }
-  mounted() {
-    // this.loading = true;
-    // this.services.tenants
-    //   .getFromURL()
-    //   .then((response: any) => {
-    //     this.tenant = response.data;
-    //   })
-    //   .finally(() => {
-    //     this.loading = false;
-    //   });
   }
   OnGoogleAuthSuccess(idToken) {
     axios
@@ -294,13 +281,13 @@ export default class LoginComponent extends BaseComponent {
         this.user.email = response.data.email;
         // @ts-ignore
         this.user.secretSignInKey = process.env.VUE_APP_SECRETSIGNINKEY?.toString();
-        this.login(LoginType.Gmail);
+        this.login(UserLoginType.Gmail);
       });
   }
   OnGoogleAuthFail(error) {
     console.error("Error: " + error);
   }
-  login(type: LoginType = LoginType.Password) {
+  login(type: UserLoginType = UserLoginType.Password) {
     // @ts-ignore
     this.$refs.loadingButton.start();
     this.loading = true;

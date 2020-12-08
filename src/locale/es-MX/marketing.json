@@ -11,11 +11,90 @@
   },
   "product": {
     "pre-headline": "¡Regístrate hoy!",
-    "headline1": "Tu producto soluciona",
-    "headline2": "<este problema> 🤩",
-    "subheadline": "Indica lo que diferencia a tu producto. Incluye a tu público objetivo en el encabezado o subencabezado (tips de saaspages.xyz)",
-    "getStarted": "Comenzar prueba",
+    "headline1": "Simple pero poderosa 💪",
+    "headline2": "plantilla para tu idea SaaS",
+    "subheadline": "Indica lo que diferencia a tu producto. Incluye a tu público objetivo en el encabezado o subencabezado.",
+    "getStarted": "📣 desarrolladores full stack",
+    "cta1": "Regístrate",
+    "cta2": "Contáctanos",
     "learnMore": "Ver más"
+  },
+  "features": {
+    "headline": "Hecho para desarrolladores",
+    "feature1": {
+      "headline": "Multi-organización",
+      "subheadline": "Cada usuario puede crear su propia organización",
+      "feature1": "Propietario",
+      "feature1Description": "El dueño o propietario puede actualizar ajustes generales",
+      "feature2": "Administrador",
+      "feature2Description": "Puede administrar miembros y la suscripción",
+      "feature3": "Miembro",
+      "feature3Description": "¡Tú decide!"
+    },
+    "feature2": {
+      "headline": "Multi-tenant",
+      "subheadline": "Decide si quieres una sola base de datos o una por cada organización",
+      "feature1": "Una sola base de datos",
+      "feature1Description": "Solamente hay una base de datos, con columnas de organización en el esquema",
+      "feature2": "Base de datos por Organización",
+      "feature2Description": "Cada organización tendrá su base de datos para separar los datos"
+    },
+    "feature3": {
+      "headline": "Multi-tema",
+      "subheadline": "Usando el poder de TailwindCSS puedes personalizar tus temas o usar los predeterminados",
+      "feature1": "11 colores pre-configurados",
+      "feature1Description": "Temas basados en Tailwind para que te enfoques en el diseño directamente",
+      "feature2": "Personalización",
+      "feature2Description": "Archivos fáciles de configurar para personalizar tus temas"
+    },
+    "feature4": {
+      "headline": "Multi-lenguaje",
+      "subheadline": "Puedes lanzar internacionalmente añadiendo más lenguajes",
+      "feature1": "3 lenguajes preconfigurados",
+      "feature1Description": "Inglés, Español e Hindú",
+      "feature2": "Personalización",
+      "feature2Description": "Archivos fáciles de configurar para añadir lenguajes"
+    },
+    "feature5": {
+      "headline": "Multi-BD",
+      "subheadline": "Bases de datos soportadas por Entity Framework Core",
+      "feature1": "PostgreSQL",
+      "feature1Description": "",
+      "feature2": "MySQL",
+      "feature2Description": "",
+      "feature3": "SQL Server (pronto)",
+      "feature3Description": ""
+    },
+    "feature6": {
+      "headline": "¡Y más!",
+      "subheadline": "Características basadas en aplicaciones SaaS del mundo real",
+      "feature1": "Administración de usuarios",
+      "feature1Description": "Administra los miembros de la organización",
+      "feature2": "Enlace de invitación",
+      "feature2Description": "Invita a usuarios con un correo o envíales el enlace de invitación",
+      "feature3": "Recursos",
+      "feature3Description": "Agrega recursos y asígnalos a ciertas subscripciones o roles"
+    },
+    "feature7": {
+      "headline": "Clean Architecture",
+      "subheadline": "Separamos el proyecto en varias 'capas'",
+      "feature1": "'Capas'",
+      "feature1Description": "Domain, Application, Infrastructure, WebApi, IntegrationTests, UnitTests",
+      "feature2": "Repositorios",
+      "feature2Description": "Cada entitdad tiene su propia interface e implementación",
+      "feature3": "Unit of Work",
+      "feature3Description": "Puedes controlar si una entidad corresponde You can control if an entity belongs to a tenant or in the master database"
+    },
+    "feature8": {
+      "headline": "Pruebas Unitarias y de Integración",
+      "subheadline": "Casi cada método de los controladores tiene su propia prueba de integración",
+      "feature1": "+130 Pruebas",
+      "feature1Description": "Pruebas para Autenticación, Usuarios, Organizaciones, Subscripciones, Transacciones...",
+      "feature2": "Clientes Stripe",
+      "feature2Description": "Incluye tus llaves para 'testing' y cada prueba creará su propio cliente en Stripe",
+      "feature3": "Productos/Subscripciones Stripe",
+      "feature3Description": "Prueba cómo tu mecanismo de subscripciones funcionará con una API del mundo real"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -32,6 +111,7 @@
     "buy": "Comprar",
     "pay": "Comprar",
     "payOnce": "Pagar una vez",
+    "signUpFree": "Regístrate gratis",
     "updateSubscription": "Actualizar",
     "recommended": "Recomenando",
     "month": "Mensual",
@@ -40,21 +120,35 @@
     "annually": "Anual",
     "annuallyDiscount": "2 meses gratis",
     "MonthlyShort": "mes",
+    "DailyShort": "día",
     "YearlyShort": "año",
     "once": "una vez",
     "monthInterval": "mes",
     "yearInterval": "año",
     "noCreditCardRequired": "No se necesita tarjeta de crédito",
+    "learnMore": "Saber más...",
     "features": {
       "maxNumberOfUsers": "Hasta {0} usuarios",
       "unlimitedUsers": "Usuarios ilimitados",
       "feature2": "Característica 2",
       "feature3": "Característica 3",
       "feature4": "Característica 4",
-      "feature5": "Característica 5"
+      "feature5": "Característica 5",
+      "upToProjects": "Hasta {0} proyectos",
+      "upToDevelopers": "Hasta {0} desarrolladores",
+      "1yearAccess": "1 año de acceso a la última versión",
+      "prioritySupport": "Soporte prioritario",
+      "unlimitedDevelopers": "¡Sin límite de desarrolladores!",
+      "unlimitedProjects": "¡Sin límite de proyectos!",
+      "revenue": "{0} $50k USD ingresos anuales",
+      "vueFrontend": "VueJS Frontend",
+      "typescript": "TypeScript",
+      "tailwindcss": "TailwindCSS",
+      "frontendBackend": "VueJS frontend + .NET Core backend"
     },
     "badges": {
-      "recommended": "Recomendado"
+      "recommended": "Recomendado",
+      "mostPopular": "Más popular"
     }
   },
   "contact": {

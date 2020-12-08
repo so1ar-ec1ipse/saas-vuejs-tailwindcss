@@ -1,24 +1,22 @@
 <template>
   <div>
-    <div class="flex items-center md:ml-6">
+    <div>
       <!-- Profile dropdown -->
       <div class="relative" v-click-outside="closeDropDownFlags">
         <div>
-          <div
-            v-if="!open"
-            v-on:click="dropDownFlags = !dropDownFlags"
-            class="cursor-pointer p-1 text-theme-600 hover:text-theme-500"
-          >
-            <span
-              v-if="!showFlagInsteadOfLocale"
-              class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-theme-500"
-            >
-              <span
-                class="text-xs font-normal leading-none text-white"
-              >{{ getCurrentLocale(false) }}</span>
+          <div v-if="!open" v-on:click="dropDownFlags = !dropDownFlags">
+            <span v-if="!showFlagInsteadOfLocale">
+              <span>
+                {{ $t("settings.preferences.language") }}
+                <!-- {{ getCurrentLocale(false) }} -->
+              </span>
             </span>
-            <country-flag v-else :country="getCurrentLocale(true)" size="normal" />
-            <!-- <i class="fa fa-user rounded-full" /> -->
+            <country-flag
+              v-else
+              :country="getCurrentLocale(true)"
+              size="normal"
+            />
+            <!-- <i class="fa fa-user rounded-sm" /> -->
           </div>
         </div>
         <!--
@@ -35,12 +33,12 @@
           v-if="dropDownFlags || open"
           :class="
             !open
-              ? 'z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-64 rounded-md '
-              : 'z-40 transition duration-500 ease-in-out  mt-2 w-64 rounded-md '
+              ? 'z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-64 rounded-sm '
+              : 'z-40 transition duration-500 ease-in-out  mt-2 w-64 rounded-sm '
           "
         >
           <div
-            class="py-1 rounded-lg bg-secondary"
+            class="py-1 rounded-lg bg-secondary border border-primary shadow-xl"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="user-menu"
@@ -49,7 +47,7 @@
               v-for="(language, index) in supportedLocales"
               v-on:click="changedLocale(language.lang)"
               :key="index"
-              class="cursor-pointer truncate group flex items-center px-2 text-sm text-primary font-medium hover:bg-primary transition ease-in-out duration-150"
+              class="cursor-pointer truncate group flex items-center px-2 text-sm text-primary font-medium hover:bg-primary transition ease-in-out duration-150 border-b border-primary"
               role="menuitem"
             >
               <country-flag :country="language.flag" size="normal" />
@@ -78,7 +76,7 @@ import { faLevelDownAlt } from "@fortawesome/free-solid-svg-icons";
 export default class FlagSelector extends Vue {
   @Prop() open!: boolean;
   dropDownFlags: boolean = false;
-  showFlagInsteadOfLocale: boolean = true;
+  showFlagInsteadOfLocale: boolean = false;
   supportedLocales = supportedLocales;
   mounted() {
     this.dropDownFlags = this.open;

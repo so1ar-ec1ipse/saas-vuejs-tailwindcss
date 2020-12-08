@@ -17,31 +17,35 @@
               class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
             >
               <div
-                class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                class="shadow overflow-hidden border-b border-gray-200 sm:rounded-sm"
               >
                 <table class="min-w-full divide-y divide-gray-200">
                   <thead>
                     <tr>
                       <th
                         v-if="enableDownload"
-                        class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                        class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                       >
                         {{ $t("shared.file") }}
                       </th>
                       <th
                         v-for="(column, idx) in columns"
                         :key="idx"
-                        class="px-6 py-2 bg-gray-200 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
+                        class="px-6 py-2 bg-gray-50 text-left text-xs leading-2 font-medium text-gray-500 uppercase tracking-wider"
                       >
                         {{ translateModelProperty(column.name) }}
                       </th>
                       <th
                         v-if="allowEdit"
-                        class="pr-5 py-2 bg-gray-200 w-10"
+                        class="pr-5 py-2 bg-gray-50 w-10"
+                      ></th>
+                      <th
+                        v-if="routerLinks && routerLinks.length > 0"
+                        class="pr-5 py-2 bg-gray-50 w-10"
                       ></th>
                       <th
                         v-if="enableUpload"
-                        class="pr-5 py-2 bg-gray-200 w-10"
+                        class="pr-5 py-2 bg-gray-50 w-10"
                       ></th>
                     </tr>
                   </thead>
@@ -131,6 +135,19 @@
                           {{ $t("shared.edit") }}
                         </button>
                       </td>
+
+                      <td
+                        v-if="routerLinks && routerLinks.length > 0"
+                        class="pr-5 py-4 whitespace-no-wrap text-right text-sm leading-3 font-medium"
+                      >
+                        <router-link
+                          v-for="(link, idx) in routerLinks"
+                          :key="idx"
+                          :to="getLinkTo(link, item)"
+                          class="text-theme-600 hover:text-theme-900"
+                          >{{ link.title }}</router-link
+                        >
+                      </td>
                       <td
                         v-if="enableUpload"
                         class="truncate px-6 py-4 text-sm leading-3 font-medium text-gray-900"
@@ -157,16 +174,15 @@
 import Component from "vue-class-component";
 import BaseComponent from "@/components/shared/BaseComponent.vue";
 import { Prop } from "vue-property-decorator";
-import { Entity, OrderedEntity } from "../../../app/models/Entity";
-import { ColumnType, ValueType } from "../../../app/models/ColumnType";
+import { EntityDto } from "../../../application/dtos/EntityDto";
+import { ColumnType, ValueType } from "../../../application/dtos/ColumnType";
+
 @Component({})
 export default class EntityTableListComponent extends BaseComponent {
   @Prop()
   public modelName!: string;
   @Prop()
-  public routeName!: string;
-  @Prop()
-  public items!: Entity[];
+  public items!: EntityDto[];
   @Prop()
   public columns!: ColumnType[];
   @Prop({ default: true })
@@ -175,12 +191,14 @@ export default class EntityTableListComponent extends BaseComponent {
   public enableDownload!: boolean;
   @Prop({ default: false })
   public enableUpload!: boolean;
+  @Prop()
+  public routerLinks!: any[];
 
   private files: FormData = new FormData();
-  edit(item: Entity) {
+  edit(item: EntityDto) {
     this.$emit("edit", item);
   }
-  downloadFile(item: Entity) {
+  downloadFile(item: EntityDto) {
     this.$emit("downloadFile", item);
   }
   uploadFile(fileList: any, item) {
@@ -190,13 +208,13 @@ export default class EntityTableListComponent extends BaseComponent {
     const translated = this.$t(`models.${this.modelName}.${columnName}`);
     return translated ?? columnName;
   }
-  convertedValue(item: Entity, column: ColumnType): string {
+  convertedValue(item: EntityDto, column: ColumnType): string {
     return ColumnType.convertValue(item, column);
   }
-  convertedArray(item: Entity, column: ColumnType): any {
+  convertedArray(item: EntityDto, column: ColumnType): any {
     if (
       column.valueType === ValueType.TenantUserRoles ||
-      column.valueType === ValueType.StripeProducts
+      column.valueType === ValueType.SubscriptionProducts
     ) {
       const values = ColumnType.getValues(column);
       const descriptions: any = [];
@@ -215,11 +233,20 @@ export default class EntityTableListComponent extends BaseComponent {
   isArray(column: ColumnType): boolean {
     return (
       column.valueType === ValueType.TenantUserRoles ||
-      column.valueType === ValueType.StripeProducts
+      column.valueType === ValueType.SubscriptionProducts
     );
   }
   isFile(column: ColumnType): boolean {
     return column.valueType === ValueType.File;
+  }
+  getLinkTo(link: any, item: EntityDto): string {
+    if (link.to.includes("{id}")) {
+      return link.to.replace("{id}", item.id);
+    }
+    // else if (link.to.includes("{uuid}")) {
+    //   return link.to.replace("{uuid}", item.id);
+    // }
+    return link.to;
   }
   get orderedItems() {
     if (!this.items) {

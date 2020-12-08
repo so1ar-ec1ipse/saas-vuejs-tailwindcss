@@ -3,11 +3,11 @@
     <page-title>
       <template v-slot:title>{{ $t("admin.resources.title") }}</template>
       <template v-slot:buttons>
-        <span class="hidden sm:block ml-3 shadow-sm rounded-md">
+        <span class="hidden sm:block ml-3 shadow-sm rounded-sm">
           <button
             @click="reload"
             type="button"
-            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+            class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
           >
             <i class="fa fa-redo -ml-1 mr-2 h-5 w-5 text-gray-500"></i>
             {{ $t("shared.reload") }}
@@ -37,52 +37,6 @@
         ></entity-table-list>
       </div>
     </div>
-    <div class="bg-theme-100 mb-2 rounded-md border border-theme-300 mt-8">
-      <div class="rounded-md bg-theme-50 p-4">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg
-              class="h-5 w-5 text-theme-400"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
-
-          <div class="ml-3">
-            <h3 class="text-sm leading-5 font-medium text-theme-800">
-              {{ $t("netcoresaas.backendNeeded") }}
-            </h3>
-            <div class="mt-2 text-sm leading-5 text-theme-700">
-              <p>{{ $t("netcoresaas.fakeData") }}</p>
-            </div>
-            <div class="text-sm leading-5 right-0 -ml-3 mt-2">
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://netcoresaas.com/product"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.getBackend") }}</a
-                >
-              </span>
-              <span class="inline-flex rounded-md ml-2">
-                <a
-                  href="https://demo.netcoresaas.com"
-                  target="_blank"
-                  class="flex items-center justify-center px-4 py-2 border border-transparent text-sm bg-theme-200 leading-5 font-medium rounded-md text-theme-800 bg-white hover:text-theme-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
-                  >{{ $t("netcoresaas.demo") }}</a
-                >
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <error-modal ref="error-modal"></error-modal>
   </div>
 </template>
@@ -90,12 +44,12 @@
 <script lang="ts">
 import Component from "vue-class-component";
 import BaseComponent from "../../../components/shared/BaseComponent.vue";
-import { ColumnType, ValueType } from "../../../app/models/ColumnType";
 import PageTitle from "@/components/shared/navigation/PageTitle.vue";
 import EntityTableList from "@/components/shared/entities/EntityTableList.vue";
 import EntityForm from "@/components/shared/entities/EntityForm.vue";
-import { TenantUserRole } from "../../../app/models/system/account/ITenantDTO";
-import { StripeProduct } from "../../../app/models/subscription/StripeProduct";
+import { ColumnType, ValueType } from "../../../application/dtos/ColumnType";
+import { ResourceDto } from "../../../application/dtos/master/common/ResourceDto";
+import { SubscriptionProductDto } from "../../../application/dtos/master/subscriptions/SubscriptionProductDto";
 const fileDownload = require("js-file-download");
 
 @Component({ components: { PageTitle, EntityTableList, EntityForm } })
@@ -110,7 +64,7 @@ export default class ResourcesListComponent extends BaseComponent {
     },
     {
       name: "tiers",
-      valueType: ValueType.StripeProducts,
+      valueType: ValueType.SubscriptionProducts,
     },
     {
       name: "roles",
@@ -128,8 +82,8 @@ export default class ResourcesListComponent extends BaseComponent {
     this.loading = true;
     this.services.resources
       .getMyResources()
-      .then((response: any) => {
-        this.items = response.data;
+      .then((response: ResourceDto[]) => {
+        this.items = response;
       })
       .finally(() => {
         this.loading = false;
@@ -168,11 +122,9 @@ export default class ResourcesListComponent extends BaseComponent {
       this.$refs["error-modal"].show(this.$t("shared.needsPermission"));
       return;
     }
-    // @ts-ignore
-    this.$refs["error-modal"].show(this.$t("netcoresaas.backendNeeded"));
-    return;
+
     this.services.resources
-      .download(item.uuid)
+      .download(item.id)
       .then((response: any) => {
         const disposition = response.headers["content-disposition"];
         let fileName = "";
@@ -205,13 +157,13 @@ export default class ResourcesListComponent extends BaseComponent {
       });
   }
   uploadFile(item: any, fileList: any) {
-    console.log("uploadFile: " + fileList);
+    // console.log("uploadFile: " + fileList);
     const files: FormData = new FormData();
     files.append("file", fileList[0], fileList[0].name);
     this.services.resources
-      .upload(item.uuid, files)
+      .upload(files, item.id)
       .then((response: any) => {
-        console.log("uploaded");
+        // console.log("uploaded");
       })
       .catch((error) => {
         // @ts-ignore
@@ -219,7 +171,7 @@ export default class ResourcesListComponent extends BaseComponent {
       });
   }
   added(data: any) {
-    console.log("added");
+    // console.log("added");
     this.services.resources.create(data).then((response) => {
       // @ts-ignore
       this.items.push(response.data);
@@ -228,28 +180,28 @@ export default class ResourcesListComponent extends BaseComponent {
     });
   }
   saved(data: any) {
-    console.log("saved");
-    this.services.resources.update(data.uuid, data).then((response) => {
+    // console.log("saved");
+    this.services.resources.update(data.id, data).then((response) => {
       // @ts-ignore
-      const idx = this.items.findIndex((f) => f.uuid === data.uuid);
+      const idx = this.items.findIndex((f) => f.id === data.id);
       this.items[idx] = data;
       this.closeForm(true);
     });
   }
   deleted(data: any) {
-    console.log("deleted");
-    this.services.resources.delete(data.uuid).then((response) => {
+    // console.log("deleted");
+    this.services.resources.delete(data.id).then((response) => {
       // @ts-ignore
-      this.items = this.items.filter((f) => f.uuid !== data.uuid);
+      this.items = this.items.filter((f) => f.id !== data.id);
       this.closeForm(true);
     });
   }
   canceled() {
-    console.log("canceled");
+    // console.log("canceled");
     this.closeForm();
   }
-  get products(): StripeProduct[] {
-    return this.$store.state.pricing.products as StripeProduct[];
+  get products(): SubscriptionProductDto[] {
+    return this.$store.state.pricing.products as SubscriptionProductDto[];
   }
 }
 </script>

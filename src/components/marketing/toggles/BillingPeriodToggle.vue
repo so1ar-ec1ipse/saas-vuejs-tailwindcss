@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="w-full flex justify-center mb-0">
-      <div class="rounded-lg bg-primary shadow-inner p-1 flex justify-center">
+      <div
+        class="rounded-lg bg-primary shadow-inner p-1 flex justify-center"
+        v-if="billingPeriods.length > 0"
+      >
         <!-- <a
           @click="changeToMonthly()"
           :class="isMonthly ? 'rounded-lg p-1 text-xs px-2 cursor-pointer hover:bg-focus mx-1':'rounded-lg p-1 text-xs px-2 cursor-pointer bg-focus mx-1'"
@@ -18,13 +21,18 @@
           :key="idx"
           @click.prevent="changeInterval(billingPeriod)"
           class="uppercase inline-flex pt-2 pb-1"
-          :class="$store.state.pricing.billingPeriod !== billingPeriod ? 'rounded-lg text-xs px-2 cursor-pointer hover:bg-focus mx-1':'rounded-lg text-xs px-2 cursor-pointer bg-focus mx-1'"
+          :class="
+            $store.state.pricing.billingPeriod !== billingPeriod
+              ? 'rounded-lg text-xs px-2 cursor-pointer hover:bg-focus mx-1'
+              : 'rounded-lg text-xs px-2 cursor-pointer bg-focus mx-1'
+          "
         >
-          {{billingPeriodName(billingPeriod)}}
+          {{ billingPeriodName(billingPeriod) }}
           <span
             v-if="isYearly(billingPeriod) && yearlyDiscount(billingPeriod)"
             class="-mt-1 bg-green-200 text-green-600 ml-1 flex content-center items-center justify-center rounded-lg p-1 text-xs px-2 cursor-pointer font-semibold"
-          >{{yearlyDiscount(billingPeriod)}}</span>
+            >{{ yearlyDiscount(billingPeriod) }}</span
+          >
         </a>
       </div>
     </div>
@@ -33,32 +41,37 @@
 
 <script lang="ts">
 import Component from "vue-class-component";
+import { SubscriptionPriceDto } from "../../../application/dtos/master/subscriptions/SubscriptionPriceDto";
+import { SubscriptionProductDto } from "../../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { SubscriptionBillingPeriod } from "../../../application/enum/master/SubscriptionBillingPeriod";
 import BaseComponent from "../../../components/shared/BaseComponent.vue";
-import {
-  BillingPeriod,
-  StripePrice,
-} from "../../../app/models/subscription/StripePrice";
-import { StripeProduct } from "../../../app/models/subscription/StripeProduct";
+
 @Component
 export default class BillingPeriodToggleComponent extends BaseComponent {
-  private changeInterval(billingPeriod: BillingPeriod) {
+  private changeInterval(billingPeriod: SubscriptionBillingPeriod) {
     this.$store.commit("pricing/billingPeriod", billingPeriod);
   }
   private changeToMonthly() {
-    this.changeInterval(BillingPeriod.Monthly);
+    this.changeInterval(SubscriptionBillingPeriod.Monthly);
   }
   private changeToYearly() {
-    this.changeInterval(BillingPeriod.Yearly);
+    this.changeInterval(SubscriptionBillingPeriod.Yearly);
   }
-  private billingPeriodName(billingPeriod: BillingPeriod): string {
-    return BillingPeriod[billingPeriod];
+  private billingPeriodName(billingPeriod: SubscriptionBillingPeriod): string {
+    return SubscriptionBillingPeriod[billingPeriod];
   }
-  private isYearly(billingPeriod: BillingPeriod): boolean {
-    return billingPeriod === BillingPeriod.Yearly;
+  private isYearly(billingPeriod: SubscriptionBillingPeriod): boolean {
+    return billingPeriod === SubscriptionBillingPeriod.Yearly;
   }
-  private yearlyDiscount(billingPeriod: BillingPeriod): string | undefined {
-    const priceYearly = this.getPriceWithInterval(BillingPeriod.Yearly);
-    const priceMonthly = this.getPriceWithInterval(BillingPeriod.Monthly);
+  private yearlyDiscount(
+    billingPeriod: SubscriptionBillingPeriod
+  ): string | undefined {
+    const priceYearly = this.getPriceWithInterval(
+      SubscriptionBillingPeriod.Yearly
+    );
+    const priceMonthly = this.getPriceWithInterval(
+      SubscriptionBillingPeriod.Monthly
+    );
     if (priceYearly && priceMonthly) {
       const discount =
         100 - (priceYearly.price * 100) / (priceMonthly.price * 12);
@@ -70,21 +83,28 @@ export default class BillingPeriodToggleComponent extends BaseComponent {
     return undefined;
   }
   private getPriceWithInterval(
-    billingPeriod: BillingPeriod
-  ): StripePrice | undefined {
+    billingPeriod: SubscriptionBillingPeriod
+  ): SubscriptionPriceDto | undefined {
+    let price: SubscriptionPriceDto | undefined;
     if (this.products && this.products.length > 0) {
-      return this.products[0].prices.find(
-        (f) =>
-          f.billingPeriod === billingPeriod &&
-          f.currency === this.$store.state.pricing.currency
-      );
+      this.products.forEach((product) => {
+        const prices = product.prices.find(
+          (f) =>
+            f.billingPeriod === billingPeriod &&
+            f.currency === this.$store.state.pricing.currency
+        );
+        if (prices) {
+          price = prices;
+        }
+      });
     }
+    return price;
   }
-  get products(): StripeProduct[] {
-    return this.$store.state.pricing.products as StripeProduct[];
+  get products(): SubscriptionProductDto[] {
+    return this.$store.state.pricing.products as SubscriptionProductDto[];
   }
   get billingPeriods() {
-    const allBillingPeriods: BillingPeriod[] = [];
+    const allBillingPeriods: SubscriptionBillingPeriod[] = [];
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     }
@@ -93,7 +113,7 @@ export default class BillingPeriodToggleComponent extends BaseComponent {
       element.prices.forEach((price) => {
         if (
           this.$store.state.pricing.currency === price.currency &&
-          price.billingPeriod !== BillingPeriod.Once
+          price.billingPeriod !== SubscriptionBillingPeriod.Once
         ) {
           allBillingPeriods.push(price.billingPeriod);
         }
@@ -102,10 +122,10 @@ export default class BillingPeriodToggleComponent extends BaseComponent {
     return allBillingPeriods.filter(onlyUnique);
   }
   get billingPeriod() {
-    return this.$store.state.pricing.billingPeriod as BillingPeriod;
+    return this.$store.state.pricing.billingPeriod as SubscriptionBillingPeriod;
   }
   get isMonthly() {
-    return this.billingPeriod !== BillingPeriod.Monthly;
+    return this.billingPeriod !== SubscriptionBillingPeriod.Monthly;
   }
 }
 </script>

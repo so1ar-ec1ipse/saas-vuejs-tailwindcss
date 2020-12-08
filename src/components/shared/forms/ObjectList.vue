@@ -15,7 +15,7 @@
           <slot name="extraButtons" />
 
           <span
-            class="hidden sm:block shadow-sm rounded-md"
+            class="hidden sm:block shadow-sm rounded-sm"
             v-if="allowDownload"
           >
             <json-excel
@@ -26,7 +26,7 @@
             >
               <button
                 type="button"
-                class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 transition duration-150 ease-in-out"
+                class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 transition duration-150 ease-in-out"
               >
                 <i
                   class="fa fa-file-excel -ml-1 mr-2 h-5 w-5 text-gray-500"
@@ -36,20 +36,20 @@
             </json-excel>
           </span>
 
-          <span class="hidden sm:block ml-3 shadow-sm rounded-md">
+          <span class="hidden sm:block ml-3 shadow-sm rounded-sm">
             <button
               @click="reload"
               type="button"
-              class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
+              class="h-8 inline-flex items-center px-4 py-2 border border-gray-300 text-xs leading-5 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-theme-900 active:bg-gray-50 active:text-theme-900 transition duration-150 ease-in-out"
             >
               <i class="fa fa-redo -ml-1 mr-2 h-5 w-5 text-gray-500"></i>
               {{ $t("shared.reload") }}
             </button>
           </span>
-          <span class="sm:ml-3 shadow-sm rounded-md">
+          <span class="sm:ml-3 shadow-sm rounded-sm">
             <router-link
               :to="routeNew"
-              class="h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-md text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+              class="h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
             >
               <i class="fa fa-plus -ml-1 mr-2 h-5 w-5 text-theme-700"></i>
               {{ $t("shared.new") }}

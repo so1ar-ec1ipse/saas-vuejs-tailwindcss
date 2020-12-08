@@ -2,9 +2,9 @@
   "shared": {
     "createTheFirst": "Create the first"
   },
-  "expense": {
+  "transaction": {
     "object": "व्यय",
-    "plural": "Expenses",
+    "plural": "Transactions",
     "description": "विवरण",
     "quantity": "मात्रा",
     "price": "कीमत",
@@ -14,10 +14,10 @@
     "member": "member",
     "members": "members"
   },
-  "stripeProduct": {
+  "subscriptionProduct": {
     "object": "Product",
     "plural": "Products",
-    "stripeId": "Stripe ID",
+    "serviceId": "Service ID",
     "tier": "Tier",
     "title": "Title",
     "description": "Description",
@@ -25,13 +25,13 @@
     "active": "Active",
     "image": "Image",
     "maxUsers": "Max users",
-    "stripeIdLeaveEmpty": "Leave empty to create a price on Stripe"
+    "serviceIdLeaveEmpty": "Leave empty to create a price on your subscription provider"
   },
-  "stripePrice": {
+  "subscriptionPrice": {
     "object": "Price",
     "plural": "Prices"
   },
-  "stripeFeature": {
+  "subscriptionFeature": {
     "object": "Feature",
     "plural": "Features",
     "order": "Order",

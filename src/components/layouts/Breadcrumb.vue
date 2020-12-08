@@ -20,12 +20,12 @@
           {{ $t("shared.back") }}
         </button>
       </nav>
-      <nav class="hidden sm:flex items-center text-lg leading-5 font-medium">
+      <nav class="hidden sm:flex items-center text-base leading-5 font-medium">
         <router-link
           v-for="(menuItem, idx) in breadcrumb"
           :key="idx"
           :to="menuItem.link"
-          class="inline-block text-theme-500 hover:text-theme-700 transition duration-150 ease-in-out"
+          class="inline-block text-gray-800 hover:text-gray-900 transition duration-150 ease-in-out"
         >
           {{ menuItem.name }}
           <svg

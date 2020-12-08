@@ -8,7 +8,7 @@
     },
     "sidebar": {
         "manage": "Manage",
-        "catalogs": "Tenant catalogs",
+        "catalogs": "Catalogs",
         "permissions": "Permissions",
         "integrations": "Integrations"
     }

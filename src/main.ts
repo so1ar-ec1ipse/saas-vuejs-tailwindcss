@@ -28,12 +28,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(faUserSecret);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-Vue.config.productionTip = true;
+Vue.config.productionTip = false;
 
-// Uncomment these lines to reset state
-// store.commit("auth/logout");
-// store.commit("tenant/reset");
-// store.commit("account/reset");
+// store.commit("pricing/reset");
 export const app = new Vue({
   i18n,
   router,

@@ -6,6 +6,16 @@
   "plan": "Plan",
   "you": "Tú",
   "me": "Yo",
+  "from": "de",
+  "next": "Siguiente",
+  "apply": "Aplicar",
+  "applied": "Aplicado",
+  "invalid": "Inválido",
+  "valid": "Válido",
+  "required": "Requerido",
+  "notRequired": "No requerido",
+  "previous": "Anterior",
+  "complete": "Completar",
   "product": "Producto",
   "close": "Cerrar",
   "success": "Éxito",
@@ -86,5 +96,6 @@
   "needsUpgrade": "Necesitas subir de subscripción para descargar esto",
   "needsPermission": "Necesitas permisos para descargar esto",
   "atLeast": "al menos",
-  "file": "Archivo"
+  "file": "Archivo",
+  "freeFrontend": "Frontend gratis"
 }

@@ -13,9 +13,9 @@
     "logoDarkmode": "Darkmode",
     "appTheme": "Theme",
     "appColor": "Color",
-    "stripe": "Stripe",
-    "stripeCustomerId": "Customer",
-    "stripeSubscriptionId": "Subcription",
+    "subscription": "Subscripción",
+    "subscriptionCustomerId": "Cliente",
+    "subscriptionPlanId": "Plan",
     "member": "miembro",
     "members": "miembros"
   },
@@ -30,9 +30,11 @@
     "token": "Token",
     "defaultTenant": "Default tenant",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "tenants": "Organizaciones",
+    "impersonate": "Simular"
   },
-  "expense": {
+  "transaction": {
     "object": "Gasto",
     "plural": "Gastos",
     "description": "Descripción",
@@ -42,10 +44,10 @@
     "date": "Fecha",
     "category": "Categoría"
   },
-  "stripeProduct": {
+  "subscriptionProduct": {
     "object": "Producto",
     "plural": "Productos",
-    "stripeId": "ID de Stripe",
+    "serviceId": "ID de Servicio",
     "tier": "Tier",
     "title": "Título",
     "description": "Descripción",
@@ -53,18 +55,28 @@
     "active": "Activo",
     "image": "Imagen",
     "maxUsers": "Límite de usuarios",
-    "stripeIdLeaveEmpty": "Dejar vacío para generar en Stripe"
+    "serviceIdLeaveEmpty": "Dejar vacío para generar en tu proveedor de Subscripciones"
   },
-  "stripePrice": {
+  "subscriptionPrice": {
     "object": "Precio",
-    "plural": "Precios"
+    "plural": "Precios",
+    "serviceId": "ID de Servicio",
+    "type": "Tipo",
+    "billingPeriod": "Periodo",
+    "price": "Precio",
+    "currency": "Moneda",
+    "trialDays": "Días de prueba",
+    "active": "Activo",
+    "priceBefore": "Precio anterior",
+    "serviceIdLeaveEmpty": "Dejar vacío para generar en tu proveedor de Subscripciones"
   },
-  "stripeFeature": {
+  "subscriptionFeature": {
     "object": "Característica",
     "plural": "Características",
     "order": "Orden",
     "key": "Nombre",
     "value": "Valor",
+    "translateInFrontend": "Traducir en frontend",
     "included": "Incluído"
   },
   "resource": {

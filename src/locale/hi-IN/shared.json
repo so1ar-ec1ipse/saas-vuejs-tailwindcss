@@ -76,5 +76,6 @@
   "needsUpgrade": "You need to upgrade to download this",
   "needsPermission": "You need permission to download this",
   "atLeast": "at least",
-  "file": "File"
+  "file": "File",
+  "freeFrontend": "Free frontend"
 }

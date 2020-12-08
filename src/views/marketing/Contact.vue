@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header></Header>
-    <section class="text-primary body-font relative">
+    <section class="text-primary body-font relative min-h-screen">
       <div class="container px-5 py-5 mx-auto">
         <div class="flex flex-col text-center w-full mb-6">
           <h1
@@ -19,7 +19,7 @@
               <input
                 name="name"
                 v-bind="form.name"
-                class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-theme-500 text-base px-4 py-2"
+                class="w-full bg-secondary text-secondary rounded-sm border border-gray-400 focus:outline-none focus:border-theme-500 text-base px-4 py-2"
                 v-bind:placeholder="$t('marketing.contact.name')"
                 type="text"
               />
@@ -28,7 +28,7 @@
               <input
                 name="_replyto"
                 v-bind="form.email"
-                class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-theme-500 text-base px-4 py-2"
+                class="w-full bg-secondary text-secondary rounded-sm border border-gray-400 focus:outline-none focus:border-theme-500 text-base px-4 py-2"
                 v-bind:placeholder="$t('marketing.contact.email')"
                 type="email"
               />
@@ -37,7 +37,7 @@
               <textarea
                 name="message"
                 v-bind="form.message"
-                class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-theme-500 text-base px-4 py-2 resize-none block"
+                class="w-full bg-secondary text-secondary rounded-sm border border-gray-400 focus:outline-none h-48 focus:border-theme-500 text-base px-4 py-2 resize-none block"
                 v-bind:placeholder="$t('marketing.contact.message')"
               ></textarea>
             </div>
@@ -45,7 +45,7 @@
               <button
                 :disabled="!actionURL"
                 type="submit"
-                class="flex ml-auto text-white bg-theme-500 border-0 py-2 px-8 focus:outline-none hover:bg-theme-600 rounded text-lg"
+                class="flex ml-auto text-white bg-theme-500 border-0 py-2 px-8 focus:outline-none hover:bg-theme-600 rounded-sm text-lg"
               >
                 {{ $t("marketing.contact.send") }}
               </button>

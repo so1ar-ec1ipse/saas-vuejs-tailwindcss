@@ -1,39 +1,39 @@
 <template>
   <div>
-    <span class="  rounded-md shadow-sm w-full ">
+    <span class="rounded-sm shadow-sm w-full">
       <div
-        class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 mb-4"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 mb-4"
       >
         <button
           @click="everyone()"
           type="button"
-          class=" w-full  mr-3  items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+          class="w-full mr-3 items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
         >
           Everyone
         </button>
       </div>
 
       <div
-        class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 mb-4"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 mb-4"
       >
         <div v-for="product in products" :key="product.id">
           <button
             @click="onlyTierAndUp(product)"
             type="button"
-            class=" w-full  mr-3  items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+            class="w-full mr-3 items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
           >
             {{ product.title }}
           </button>
         </div>
       </div>
       <div
-        class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2"
       >
         <div v-for="role in roleValues" :key="role">
           <button
             @click="onlyRole(role)"
             type="button"
-            class="w-full  mr-3  items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+            class="w-full mr-3 items-center px-2 py-2 border border-gray-300 text-lg leading-4 font-medium rounded-sm text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
           >
             {{ getRoleName(role) }}
           </button>
@@ -54,12 +54,12 @@
 import Component from "vue-class-component";
 import BaseComponent from "../../../components/shared/BaseComponent.vue";
 import { mapGetters } from "vuex";
-import { StripeProduct } from "../../../app/models/subscription/StripeProduct";
-import Stripe from "stripe";
 import { defaultProducts } from "../../../store/modules/pricing/default-pricing";
 import { defaultProductsDevelopment } from "../../../store/modules/pricing/default-pricing.Development";
-import { TenantUserRole } from "../../../app/models/system/account/ITenantDTO";
-import { toASCII } from "punycode";
+import { SubscriptionProductDto } from "../../../application/dtos/master/subscriptions/SubscriptionProductDto";
+import { SubscriptionGetCurrentResponse } from "../../../application/contracts/master/subscriptions/SubscriptionGetCurrentResponse";
+import { TenantUserRole } from "../../../application/enum/master/TenantUserRole";
+import { TenantProductDto } from "../../../application/dtos/master/tenants/TenantProductDto";
 
 @Component({
   components: {},
@@ -73,11 +73,11 @@ import { toASCII } from "punycode";
   },
 })
 export default class DemoActionsComponent extends BaseComponent {
-  public activeProduct!: StripeProduct;
+  public activeProduct!: TenantProductDto;
   public role!: TenantUserRole;
   public roleName!: string;
-  public subscription!: Stripe.Subscription;
-  public products: StripeProduct[] = [];
+  public subscription!: SubscriptionGetCurrentResponse;
+  public products: SubscriptionProductDto[] = [];
   public roleKeys: string[] = [];
   public roleValues: string[] = [];
   mounted() {
@@ -104,8 +104,8 @@ export default class DemoActionsComponent extends BaseComponent {
   //       this.showNotAllowed();
   //     }
   //   }
-  onlyTierAndUp(product: StripeProduct) {
-    if (this.activeProduct.tier >= product.tier) {
+  onlyTierAndUp(product: SubscriptionProductDto) {
+    if (this.activeProduct.subscriptionProduct.tier >= product.tier) {
       this.showAllowed();
     } else {
       this.showNotAllowed();
@@ -135,7 +135,9 @@ export default class DemoActionsComponent extends BaseComponent {
     this.$refs["confirm-modal"].show(this.$t("shared.upgrade"));
   }
   yesUpdateSubscription() {
-    this.$router.push({ path: "/app/settings/organization/subscription" });
+    this.$router.push({
+      path: "/app/settings/organization/subscription",
+    });
   }
 }
 </script>

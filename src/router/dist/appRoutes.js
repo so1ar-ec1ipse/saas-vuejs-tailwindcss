@@ -12,8 +12,7 @@ exports.appRoutes = {
         requiresAuth: true
     },
     redirect: "/app/dashboard",
-    children: [
-        {
+    children: [{
             path: "dashboard",
             component: require("@/views/app/dashboard/Index.vue")["default"],
             meta: {
@@ -21,20 +20,19 @@ exports.appRoutes = {
             }
         },
         {
-            path: "expenses",
-            component: require("@/views/app/transactions/Expenses.vue")["default"],
+            path: "transactions",
+            component: require("@/views/app/transactions/Transactions.vue")["default"],
             meta: {
                 requiresAuth: true,
-                title: "Expenses"
+                title: "Transactions"
             },
-            children: [
-                {
+            children: [{
                     path: "new",
-                    component: require("@/views/app/transactions/ExpensesForm.vue")["default"]
+                    component: require("@/views/app/transactions/TransactionsForm.vue")["default"]
                 },
                 {
                     path: ":id/edit",
-                    component: require("@/views/app/transactions/ExpensesForm.vue")["default"]
+                    component: require("@/views/app/transactions/TransactionsForm.vue")["default"]
                 },
             ]
         },

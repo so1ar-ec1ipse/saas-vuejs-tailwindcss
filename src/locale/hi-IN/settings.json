@@ -67,7 +67,7 @@
       "upcomingInvoice": "आगामी चालान",
       "noUpcomingInvoices": "कोई आगामी चालान नहीं",
       "noInvoicesYet": "अभी तक कोई चालान नहीं हुआ है",
-      "openStripePortal": "मेरा सदस्यता पोर्टल खोलें"
+      "openCustomerPortal": "मेरा सदस्यता पोर्टल खोलें"
     },
     "payment": {
       "title": "भुगतान विवरण",

@@ -1,5 +1,5 @@
+import { UserType } from "@/application/enum/master/UserType";
 import { i18n } from "@/plugins/vue-i18n";
-import { UserType } from "@/app/models/system/account/IUserDTO";
 
 export const adminRoutes = {
   path: "/admin",
@@ -27,22 +27,20 @@ export const adminRoutes = {
         title: i18n.t("admin.tenants"),
         userTypes: [UserType.Admin],
       },
-      children: [
-        {
-          path: "users/:tenant/:apiKey",
+    },
+    {
+      path: "users",
           name: "admin.users",
           component: require("@/views/admin/Users.vue").default,
           meta: {
             title: i18n.t("admin.users"),
             userTypes: [UserType.Admin],
           },
-        },
-      ],
     },
     {
       path: "products",
       name: "admin.pricing",
-      component: require("@/views/admin/pricing/StripeProductsList.vue")
+      component: require("@/views/admin/pricing/SubscriptionProductsList.vue")
         .default,
       meta: {
         title: i18n.t("admin.pricing.title"),
@@ -51,45 +49,47 @@ export const adminRoutes = {
       children: [
         {
           path: "new",
-          component: require("@/views/admin/pricing/StripeProductsForm.vue")
+          component: require("@/views/admin/pricing/SubscriptionProductsForm.vue")
             .default,
         },
       ],
     },
     {
-      path: "product/:uuid",
+      path: "products/:id",
       name: "admin.product",
-      component: require("@/views/admin/pricing/StripeProduct.vue").default,
+      component: require("@/views/admin/pricing/SubscriptionProduct.vue")
+        .default,
       children: [
         {
           path: "overview",
           name: "admin.product.overview",
-          component: require("@/views/admin/pricing/StripeProductOverview.vue")
+          component: require("@/views/admin/pricing/SubscriptionProductOverview.vue")
             .default,
           meta: {
-            title: i18n.t("models.stripeProduct.object"),
+            title: i18n.t("models.subscriptionProduct.object"),
           },
         },
-        // {
-        //   path: "edit",
-        //   name: "admin.product.edit",
-        //   component: require("@/views/admin/pricing/StripeProductsForm.vue")
-        //     .default,
-        //   meta: {
-        //     title: i18n.t("models.stripeProduct.object"),
-        //   },
-        // },
+        {
+          path: "edit",
+          name: "admin.product.edit",
+          component: require("@/views/admin/pricing/SubscriptionProductsForm.vue")
+            .default,
+          meta: {
+            title: i18n.t("models.subscriptionProduct.object"),
+          },
+        },
         {
           path: "prices",
           name: "admin.product.prices",
-          component: require("@/views/admin/pricing/StripePrices.vue").default,
+          component: require("@/views/admin/pricing/SubscriptionPrices.vue")
+            .default,
           meta: {
-            title: i18n.t("models.stripePrice.object"),
+            title: i18n.t("models.subscriptionPrice.object"),
           },
           children: [
             {
-              path: ":uuid/edit",
-              component: require("@/views/admin/pricing/StripePricesForm.vue")
+              path: ":id/edit",
+              component: require("@/views/admin/pricing/SubscriptionPricesForm.vue")
                 .default,
             },
           ],
@@ -97,10 +97,10 @@ export const adminRoutes = {
         {
           path: "features",
           name: "admin.product.features",
-          component: require("@/views/admin/pricing/StripeFeatures.vue")
+          component: require("@/views/admin/pricing/SubscriptionFeatures.vue")
             .default,
           meta: {
-            title: i18n.t("models.stripeFeature.object"),
+            title: i18n.t("models.subscriptionFeature.object"),
           },
         },
       ],
@@ -117,7 +117,7 @@ export const adminRoutes = {
       // children: [
       //   {
       //     path: "new",
-      //     component: require("@/views/admin/pricing/StripeProductsForm.vue")
+      //     component: require("@/views/admin/pricing/SubscriptionProductsForm.vue")
       //       .default,
       //   },
       // ],

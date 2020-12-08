@@ -1,13 +1,11 @@
 import { Module } from "vuex";
-import { ThemeState, RootState } from "../../../types/stateTypes";
-import { Stripe } from "stripe";
-import store from "@/store";
+import { ThemeState, RootState } from "@/types/stateTypes";
 
 export const defaultState: ThemeState = {
   marketingTheme: process.env.VUE_APP_THEME_MARKETING_THEME ?? "theme-bg-dark",
-  marketingColor: process.env.VUE_APP_THEME_MARKETING_COLOR ?? "theme-indigo",
+  marketingColor: process.env.VUE_APP_THEME_MARKETING_COLOR ?? "theme-violet",
   appTheme: process.env.VUE_APP_THEME ?? "theme-bg-dark",
-  appColor: process.env.VUE_APP_COLOR ?? "theme-yellow",
+  appColor: process.env.VUE_APP_COLOR ?? "theme-violet",
 };
 export const state: ThemeState = defaultState;
 export const theme: Module<ThemeState, RootState> = {

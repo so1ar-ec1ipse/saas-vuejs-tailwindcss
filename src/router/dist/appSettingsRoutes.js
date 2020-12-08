@@ -2,7 +2,7 @@
 exports.__esModule = true;
 exports.appSettingsRoutes = void 0;
 var vue_i18n_1 = require("@/plugins/vue-i18n");
-var ITenantDTO_1 = require("@/app/models/system/account/ITenantDTO");
+var ITenantDTO_1 = require("@/app/models/master/account/ITenantDTO");
 exports.appSettingsRoutes = {
     path: "settings",
     component: require("@/views/app/settings/Index.vue")["default"],

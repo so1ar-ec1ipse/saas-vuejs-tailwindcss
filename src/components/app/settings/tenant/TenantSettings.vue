@@ -1,50 +1,55 @@
 <template>
   <div>
-    <div class="md:grid lg:grid-cols-3 md:gap-6">
+    <div class="md:grid lg:grid-cols-3 md:gap-2">
       <div class="md:col-span-1">
         <div class="px-4 sm:px-0">
-          <h3
-            class="text-lg font-medium leading-6 text-gray-900"
-          >{{ $t("settings.tenant.general") }}</h3>
-          <p class="mt-1 text-sm leading-5 text-gray-600"></p>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">
+            {{ $t("settings.tenant.general") }}
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-600">
+            {{ $t("settings.tenant.generalDescription") }}
+          </p>
         </div>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
         <form @submit.prevent="updateTenant()" method="POST">
-          <div class="shadow overflow-hidden sm:rounded-md">
+          <div class="shadow overflow-hidden sm:rounded-sm">
             <div class="px-4 py-5 bg-white sm:p-6">
-              <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-6 sm:col-span-3">
+              <div class="grid grid-cols-6 gap-2">
+                <div class="col-span-6 sm:col-span-6">
                   <label
                     for="name"
                     class="block text-sm font-medium leading-5 text-gray-700"
-                  >{{ $t("shared.name") }}</label>
+                    >{{ $t("shared.name") }}</label
+                  >
                   <input
                     v-model="tenant.name"
                     required
                     id="name"
-                    class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
 
-                <div class="col-span-6 sm:col-span-3">
+                <!-- <div class="col-span-6 sm:col-span-3">
                   <label
                     for="subdomain"
                     class="block text-sm font-medium leading-5 text-gray-700"
-                  >{{ $t("settings.tenant.subdomain") }}</label>
+                    >{{ $t("settings.tenant.subdomain") }}</label
+                  >
                   <input
                     v-model="tenant.subdomain"
                     required
                     id="subdomain"
-                    class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
-                </div>
+                </div> -->
                 <div class="col-span-6 sm:col-span-3 text-left">
                   <label
                     for="appTheme"
                     class="block text-sm font-medium leading-5 text-gray-700"
-                  >{{ $t("shared.theme") }}</label>
-                  <div class="px-2 border border-gray-300 rounded-md shadow-sm">
+                    >{{ $t("shared.theme") }}</label
+                  >
+                  <div class="px-2 border border-gray-300 rounded-sm shadow-sm">
                     <select
                       v-model="tenant.appTheme"
                       @change="
@@ -59,7 +64,9 @@
                         :key="idx"
                         :value="appTheme.theme"
                         :selected="tenant.appTheme === appTheme.theme"
-                      >{{ appTheme.name }}</option>
+                      >
+                        {{ appTheme.name }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -67,8 +74,9 @@
                   <label
                     for="appColor"
                     class="block text-sm font-medium leading-5 text-gray-700"
-                  >Color</label>
-                  <div class="px-2 border border-gray-300 rounded-md shadow-sm">
+                    >Color</label
+                  >
+                  <div class="px-2 border border-gray-300 rounded-sm shadow-sm">
                     <select
                       v-model="tenant.appColor"
                       @change="
@@ -83,7 +91,14 @@
                         :key="idx"
                         :value="appColor.theme"
                         :selected="tenant.appColor === appColor.theme"
-                      >{{ appColor.name }}</option>
+                        :class="
+                          'text-' +
+                            appColor.theme.replace('theme-', '') +
+                            '-600'
+                        "
+                      >
+                        {{ appColor.name }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -92,9 +107,12 @@
                   <label
                     for="photo"
                     class="block text-sm leading-5 font-medium text-gray-700"
-                  >{{ $t("shared.icon") }}</label>
+                    >{{ $t("shared.icon") }}</label
+                  >
                   <div class="mt-2 flex items-center">
-                    <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                    <span
+                      class="h-12 w-12 rounded-sm overflow-hidden bg-gray-100"
+                    >
                       <img v-if="tenantIcon" :src="tenantIcon" />
                       <svg
                         v-else
@@ -107,19 +125,23 @@
                         />
                       </svg>
                     </span>
-                    <span class="ml-5 rounded-md shadow-sm">
+                    <span class="ml-5 rounded-sm shadow-sm">
                       <button
                         @click="uploadImage('icon')"
                         type="button"
-                        class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                      >{{ $t("shared.upload") }}</button>
+                        class="py-2 px-3 border border-gray-300 rounded-sm text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                      >
+                        {{ $t("shared.upload") }}
+                      </button>
                     </span>
-                    <span v-if="tenantIcon" class="ml-2 rounded-md shadow-sm">
+                    <span v-if="tenantIcon" class="ml-2 rounded-sm shadow-sm">
                       <button
                         @click="deleteImage('icon')"
                         type="button"
-                        class="py-2 px-3 border bg-red-100 border-gray-300 rounded-md text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                      >{{ $t("shared.delete") }}</button>
+                        class="py-2 px-3 border bg-red-100 border-gray-300 rounded-sm text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                      >
+                        {{ $t("shared.delete") }}
+                      </button>
                     </span>
                   </div>
                 </div>
@@ -128,27 +150,32 @@
                   <label
                     for="photo"
                     class="block text-sm leading-5 font-medium text-gray-700"
-                  >{{ $t("shared.logo") }}</label>
+                    >{{ $t("shared.logo") }}</label
+                  >
                   <div v-if="tenantLogo" class="mt-2 flex items-center">
                     <span
-                      class="h-auto w-30 overflow-hidden bg-gray-100 border border-gray-300 p-5 rounded-md shadow-md"
+                      class="h-auto w-30 overflow-hidden bg-gray-100 border border-gray-300 p-5 rounded-sm shadow-md"
                     >
                       <img :src="tenantLogo" />
                     </span>
                   </div>
-                  <span class="mt-2 rounded-md shadow-sm">
+                  <span class="mt-2 rounded-sm shadow-sm">
                     <button
                       @click="uploadImage('logo')"
                       type="button"
-                      class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                    >{{ $t("shared.upload") }}</button>
+                      class="py-2 px-3 border border-gray-300 rounded-sm text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                    >
+                      {{ $t("shared.upload") }}
+                    </button>
                   </span>
-                  <span v-if="tenantLogo" class="ml-2 rounded-md shadow-sm">
+                  <span v-if="tenantLogo" class="ml-2 rounded-sm shadow-sm">
                     <button
                       @click="deleteImage('logo')"
                       type="button"
-                      class="mt-2 py-2 px-3 border bg-red-100 border-gray-300 rounded-md text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                    >{{ $t("shared.delete") }}</button>
+                      class="mt-2 py-2 px-3 border bg-red-100 border-gray-300 rounded-sm text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                    >
+                      {{ $t("shared.delete") }}
+                    </button>
                   </span>
                 </div>
 
@@ -156,27 +183,35 @@
                   <label
                     for="photo"
                     class="block text-sm leading-5 font-medium text-gray-700"
-                  >{{ $t("shared.logoDarkmode") }}</label>
+                    >{{ $t("shared.logoDarkmode") }}</label
+                  >
                   <div v-if="tenantLogoDarkmode" class="mt-2 flex items-center">
                     <span
-                      class="h-auto w-30 overflow-hidden bg-gray-800 border border-gray-300 p-5 rounded-md shadow-md"
+                      class="h-auto w-30 overflow-hidden bg-gray-800 border border-gray-300 p-5 rounded-sm shadow-md"
                     >
                       <img :src="tenantLogoDarkmode" />
                     </span>
                   </div>
-                  <span class="mt-2 rounded-md shadow-sm">
+                  <span class="mt-2 rounded-sm shadow-sm">
                     <button
                       @click="uploadImage('logoDarkmode')"
                       type="button"
-                      class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                    >{{ $t("shared.upload") }}</button>
+                      class="py-2 px-3 border border-gray-300 rounded-sm text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                    >
+                      {{ $t("shared.upload") }}
+                    </button>
                   </span>
-                  <span v-if="tenantLogoDarkmode" class="ml-2 rounded-md shadow-sm">
+                  <span
+                    v-if="tenantLogoDarkmode"
+                    class="ml-2 rounded-sm shadow-sm"
+                  >
                     <button
                       @click="deleteImage('logoDarkmode')"
                       type="button"
-                      class="mt-2 py-2 px-3 border bg-red-100 border-gray-300 rounded-md text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                    >{{ $t("shared.delete") }}</button>
+                      class="mt-2 py-2 px-3 border bg-red-100 border-gray-300 rounded-sm text-sm leading-4 font-medium text-red-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+                    >
+                      {{ $t("shared.delete") }}
+                    </button>
                   </span>
                 </div>
               </div>
@@ -184,8 +219,10 @@
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button
                 type="submit"
-                class="py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-theme-600 shadow-sm hover:bg-theme-500 focus:outline-none focus:shadow-outline-blue active:bg-theme-600 transition duration-150 ease-in-out"
-              >{{ $t("shared.save") }}</button>
+                class="ml-1 h-8 inline-flex items-center px-4 py-2 border border-theme-200 text-xs leading-5 font-medium rounded-sm text-theme-700 bg-theme-100 hover:bg-theme-200 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out"
+              >
+                {{ $t("shared.save") }}
+              </button>
             </div>
           </div>
         </form>
@@ -210,21 +247,31 @@ import ErrorModal from "@/components/shared/modals/ErrorModal.vue";
 import SuccessModal from "@/components/shared/modals/SuccessModal.vue";
 import UploadImage from "@/components/shared/forms/UploadImage.vue";
 import Toggle from "@/components/shared/forms/Toggle.vue";
-import { ITenantDTO } from "../../../../app/models/system/account/ITenantDTO";
 import { appThemes, appColors } from "../../../../store/modules/theme/themes";
 import { Console } from "console";
 import { defaultState } from "../../../../store/modules/theme";
+import { TenantUpdateImageRequest } from "../../../../application/contracts/master/tenants/TenantUpdateImageRequest";
+import { mapGetters } from "vuex";
+import { TenantDto } from "../../../../application/dtos/master/tenants/TenantDto";
 
 @Component({
   components: { SuccessModal, ErrorModal, UploadImage, Toggle },
+  computed: {
+    ...mapGetters("theme", {
+      appTheme: "appTheme",
+      appColor: "appColor",
+    }),
+  },
 })
 export default class TenantSettingsComponent extends BaseComponent {
   imageType: string = "";
   imageCurrent: string = "";
-  tenant = {} as ITenantDTO;
+  tenant = {} as TenantDto;
   showUploadImage = false;
   appThemes = appThemes;
   appColors = appColors;
+  appTheme!: string;
+  appColor!: string;
   created() {
     this.getCurrentTenantInForm();
   }
@@ -232,16 +279,14 @@ export default class TenantSettingsComponent extends BaseComponent {
     this.tenant.name = this.$store.state.tenant.current.name;
     this.tenant.subdomain = this.$store.state.tenant.current.subdomain;
     this.tenant.domain = this.$store.state.tenant.current.domain;
-    this.tenant.appTheme =
-      this.$store.state.tenant.appTheme ?? defaultState.appTheme;
-    this.tenant.appColor =
-      this.$store.state.tenant.appColor ?? defaultState.appColor;
+    this.tenant.appTheme = this.appTheme;
+    this.tenant.appColor = this.appColor;
   }
   updateTenant() {
     this.services.tenants
       .update(this.tenant)
       .then((response) => {
-        this.services.tenants.getMyTenants().then(() => {
+        this.services.tenants.getAll().then(() => {
           this.getCurrentTenantInForm();
         });
         // @ts-ignore
@@ -268,17 +313,15 @@ export default class TenantSettingsComponent extends BaseComponent {
     this.loadedImage(null);
   }
   loadedImage(image) {
-    const payload: any = {};
-    if (this.imageType === "logo") {
-      payload.logo = image;
-    } else if (this.imageType === "icon") {
-      payload.icon = image;
-    } else if (this.imageType === "logoDarkmode") {
-      payload.logoDarkmode = image;
-    }
+    const payload: TenantUpdateImageRequest = {
+      type: this.imageType,
+      logo: this.imageType === "logo" ? image : "",
+      icon: this.imageType === "icon" ? image : "",
+      logoDarkmode: this.imageType === "logoDarkmode" ? image : "",
+    };
+    payload.type = this.imageType;
     this.services.tenants
-      // @ts-ignore
-      .uploadImage(payload, this.imageType)
+      .updateImage(payload)
       .then((response) => {
         this.$store.commit("tenant/currentImage", {
           imageType: this.imageType,

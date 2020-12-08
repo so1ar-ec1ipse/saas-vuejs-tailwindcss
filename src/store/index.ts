@@ -35,7 +35,10 @@ const store: StoreOptions<RootState> = {
     pricing,
     theme,
   },
-  strict: false,
-  plugins: debug ? [createPersistedState()] : [createPersistedState()],
+  strict: debug,
+  plugins: debug
+    ? [createLogger(), createPersistedState()]
+    : [createPersistedState()],
 };
+
 export default new Vuex.Store<RootState>(store);

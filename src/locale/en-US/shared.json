@@ -6,6 +6,16 @@
   "plan": "Plan",
   "you": "You",
   "me": "Me",
+  "from": "from",
+  "next": "Next",
+  "apply": "Apply",
+  "applied": "Applied",
+  "invalid": "Invalid",
+  "valid": "Valid",
+  "required": "Required",
+  "notRequired": "Not required",
+  "previous": "Previous",
+  "complete": "Complete",
   "product": "Product",
   "close": "Close",
   "success": "Success",
@@ -86,5 +96,6 @@
   "needsUpgrade": "You need to upgrade to download this",
   "needsPermission": "You need permission to download this",
   "atLeast": "at least",
-  "file": "File"
+  "file": "File",
+  "freeFrontend": "Free frontend"
 }

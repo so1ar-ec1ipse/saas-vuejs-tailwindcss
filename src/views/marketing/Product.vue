@@ -9,14 +9,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 import Header from "@/components/marketing/Header.vue";
 import Hero from "@/components/marketing/Hero.vue";
 import Features from "@/components/marketing/Features.vue";
 import Newsletter from "@/components/marketing/Newsletter.vue";
 import FAQ from "@/components/marketing/FAQ.vue";
 import Footer from "@/components/marketing/Footer.vue";
-export default {
+
+@Component({
   components: {
     Header,
     Hero,
@@ -25,5 +27,12 @@ export default {
     FAQ,
     Footer,
   },
-};
+})
+export default class MarketingProductComponent extends Vue {
+  closed = false;
+  mounted() {
+    this.$store.commit("theme/marketingTheme", "theme-bg-dark");
+    this.$store.commit("theme/marketingColor", "theme-violet");
+  }
+}
 </script>

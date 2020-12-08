@@ -7,7 +7,7 @@ var products = process.env.NODE_ENV !== "production"
     ? default_pricing_Development_1.defaultProductsDevelopment
     : default_pricing_1.defaultProducts;
 var vue_i18n_1 = require("@/plugins/vue-i18n");
-var ITenantDTO_1 = require("@/app/models/system/account/ITenantDTO");
+var ITenantDTO_1 = require("@/app/models/master/account/ITenantDTO");
 exports.permissionsRoutes = {
     path: "permissions",
     component: require("@/views/app/permissions/Index.vue")["default"],
@@ -50,7 +50,7 @@ exports.permissionsRoutes = {
                     path: "owner",
                     component: require("@/views/app/permissions/roles/RoleOwner.vue")["default"],
                     meta: {
-                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.owner") }],
+                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.Owner") }],
                         roles: [ITenantDTO_1.TenantUserRole.Owner]
                     }
                 },
@@ -58,7 +58,7 @@ exports.permissionsRoutes = {
                     path: "admin",
                     component: require("@/views/app/permissions/roles/RoleAdmin.vue")["default"],
                     meta: {
-                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.admin") }],
+                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.Admin") }],
                         roles: [ITenantDTO_1.TenantUserRole.Owner, ITenantDTO_1.TenantUserRole.Admin]
                     }
                 },
@@ -66,7 +66,7 @@ exports.permissionsRoutes = {
                     path: "member",
                     component: require("@/views/app/permissions/roles/RoleMember.vue")["default"],
                     meta: {
-                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.member") }],
+                        breadcrumb: [{ name: vue_i18n_1.i18n.t("settings.profile.roles.Member") }],
                         roles: [
                             ITenantDTO_1.TenantUserRole.Owner,
                             ITenantDTO_1.TenantUserRole.Admin,

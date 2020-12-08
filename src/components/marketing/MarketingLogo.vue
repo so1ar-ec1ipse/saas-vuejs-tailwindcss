@@ -2,12 +2,17 @@
   <div>
     <router-link to="/product">
       <img
-        v-if="$store.state.theme.marketingTheme==='theme-bg-light'"
+        v-if="$store.state.theme.marketingTheme === 'theme-bg-light'"
         class="mx-auto h-16 w-auto"
-        src="@/assets/img/logo.png"
+        src="@/assets/img/logo-light.png"
         alt="logo"
       />
-      <img v-else class="mx-auto h-16 w-auto" src="@/assets/img/logo-dark.png" alt="logo" />
+      <img
+        v-else
+        class="mx-auto h-16 w-auto"
+        src="@/assets/img/logo-dark.png"
+        alt="logo"
+      />
     </router-link>
   </div>
 </template>
@@ -16,5 +21,4 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

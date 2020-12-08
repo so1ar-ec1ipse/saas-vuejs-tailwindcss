@@ -5,7 +5,7 @@ const products =
     ? defaultProductsDevelopment
     : defaultProducts;
 import { i18n } from "@/plugins/vue-i18n";
-import { TenantUserRole } from "@/app/models/system/account/ITenantDTO";
+import { TenantUserRole } from '@/application/enum/master/TenantUserRole';
 
 export const appPermissionsRoutes = {
   path: "permissions",
@@ -18,19 +18,20 @@ export const appPermissionsRoutes = {
       path: "subscriptions",
       children: [
         {
-          path: "standard",
+          path: "starter",
           component: require("@/views/app/permissions/subscriptions/TierStandard.vue")
             .default,
           meta: {
             title: i18n.t("shared.permissions"),
+            subscriptions: [products[1], products[2]],
           },
         },
         {
-          path: "enterprise",
+          path: "pro",
           component: require("@/views/app/permissions/subscriptions/TierEnterprise.vue")
             .default,
           meta: {
-            title: "Enterprise",
+            title: "Pro",
             subscriptions: [products[1], products[2]],
           },
         },

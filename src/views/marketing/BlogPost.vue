@@ -100,4 +100,4 @@ export default class BlogPostComponent extends Vue {
 }
 </script>
 
-<style src="@/assets/css/ghost.css" scoped></style>
+// <style src="@/assets/css/ghost.css" scoped></style>

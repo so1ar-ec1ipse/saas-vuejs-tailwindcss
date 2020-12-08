@@ -16,7 +16,7 @@
         >
           <div>
             <div
-              class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 border border-green-300"
+              class="mx-auto flex items-center justify-center h-12 w-12 rounded-sm bg-green-100 border border-green-300"
             >
               <svg
                 class="h-6 w-6 text-green-600"
@@ -36,20 +36,26 @@
               <h3
                 class="text-lg leading-6 font-medium text-gray-900"
                 id="modal-headline"
-              >{{ title }}</h3>
+              >
+                {{ title }}
+              </h3>
               <div class="mt-2">
-                <p class="text-sm leading-5 text-gray-500">{{ successDescription }}</p>
+                <p class="text-sm leading-5 text-gray-500">
+                  {{ successDescription }}
+                </p>
               </div>
             </div>
           </div>
           <div class="mt-5 sm:mt-6">
-            <span class="flex w-full rounded-md shadow-sm">
+            <span class="flex w-full rounded-sm shadow-sm">
               <button
                 ref="close"
                 v-on:click="showing = false"
                 type="button"
-                class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-              >{{ closeText }}</button>
+                class="inline-flex justify-center w-full rounded-sm border border-transparent px-4 py-2 bg-theme-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-theme-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+              >
+                {{ closeText }}
+              </button>
             </span>
           </div>
         </div>

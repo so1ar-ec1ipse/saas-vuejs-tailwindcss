@@ -1,23 +1,30 @@
 <template>
   <div class="relative" v-click-outside="closeDropdown">
-    <span class="inline-block w-full rounded-md shadow-sm">
+    <span class="inline-block w-full rounded-sm shadow-sm">
       <button
         v-on:click="droppedDown = !droppedDown"
         type="button"
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"
-        class="cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+        class="cursor-default relative w-full rounded-sm border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
       >
         <span class="block truncate">
           {{
-          translate(chosen)
-          ? translate(chosen)
-          : "- " + $t("shared.selectOption") + " - "
+            translate(chosen)
+              ? translate(chosen)
+              : "- " + $t("shared.selectOption") + " - "
           }}
         </span>
-        <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-          <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+        <span
+          class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+        >
+          <svg
+            class="h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+          >
             <path
               d="M7 7l3-3 3 3m0 6l-3 3-3-3"
               stroke-width="1.5"
@@ -30,13 +37,16 @@
     </span>
 
     <!-- Select popover, show/hide based on select state. -->
-    <div v-if="droppedDown" class="absolute object-top mt-1 w-full rounded-md bg-white shadow-lg">
+    <div
+      v-if="droppedDown"
+      class="absolute object-top mt-1 w-full rounded-sm bg-white shadow-lg"
+    >
       <ul
         tabindex="-1"
         role="listbox"
         aria-labelledby="listbox-label"
         aria-activedescendant="listbox-item-3"
-        class="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+        class="max-h-60 rounded-sm py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
       >
         <!--
                         Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
@@ -53,9 +63,7 @@
           <a v-on:click="setValue(option)">
             <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
             <span class="font-normal block truncate">
-              {{
-              translate(option)
-              }}
+              {{ translate(option) }}
             </span>
 
             <!--

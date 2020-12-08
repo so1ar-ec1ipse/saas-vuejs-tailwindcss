@@ -11,7 +11,7 @@
           >
             <span
               v-if="!showFlagInsteadOfLocale"
-              class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-theme-500"
+              class="inline-flex items-center justify-center h-8 w-8 rounded-sm bg-theme-500"
             >
               <span class="text-xs font-normal leading-none text-white">
                 {{ getCurrentLocale(false) }}
@@ -22,7 +22,7 @@
               :country="getCurrentLocale(true)"
               size="normal"
             />
-            <!-- <i class="fa fa-user rounded-full" /> -->
+            <!-- <i class="fa fa-user rounded-sm" /> -->
           </div>
         </div>
         <!--
@@ -39,8 +39,8 @@
           v-if="dropDownFlags || open"
           :class="
             !open
-              ? 'z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-64 rounded-md '
-              : 'z-40 transition duration-500 ease-in-out  mt-2 w-64 rounded-md '
+              ? 'z-40 transition duration-500 ease-in-out origin-top-right absolute right-0 mt-2 w-64 rounded-sm '
+              : 'z-40 transition duration-500 ease-in-out  mt-2 w-64 rounded-sm '
           "
         >
           <div

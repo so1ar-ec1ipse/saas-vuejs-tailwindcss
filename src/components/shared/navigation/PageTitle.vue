@@ -8,7 +8,7 @@
           class="flex text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:leading-9 sm:truncate"
         >
           <!-- <img
-            class=" h-10 w-10 rounded-md block mr-2"
+            class=" h-10 w-10 rounded-sm block mr-2"
             :src="$store.state.account.user.avatar"
             alt=""
           /> -->
