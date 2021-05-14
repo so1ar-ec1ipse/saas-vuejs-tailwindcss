@@ -8,7 +8,7 @@
 ### What's new in v2.0.0?
 
 - [x] **Workspaces**: Each tenant has its own workspaces
-- [x] **Projects**: Every user can add project
+- [x] **Projects**: Every user can add projects
 - [x] **Files**: Upload multiple files (receipts)
 - [x] **Dashboard**: Transactions summary
 - [ ] OCR: Only with [NetcoreSaas backend](https://netcoresaas.com)
