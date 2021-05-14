@@ -1,0 +1,104 @@
+{
+  "profile": {
+    "profileTitle": "Profile",
+    "profileText": "Change your user profile",
+    "securityTitle": "Security",
+    "securityText": "Change your password",
+    "passwordUpdated": "New password saved",
+    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "whatsApp": "WhatsApp (to send receipts)",
+    "role": "Role",
+    "roles": {
+      "OWNER": "Owner",
+      "ADMIN": "Admin",
+      "MEMBER": "Member",
+      "GUEST": "Guest"
+    },
+    "joinedMethod": "Joined",
+    "joined": {
+      "CREATOR": "Creator",
+      "JOINED_BY_INVITATION": "By Invitation",
+      "JOINED_BY_LINK": "By Link",
+      "JOINED_BY_PUBLIC_URL": "By public URL"
+    },
+    "status": {
+      "PENDING_INVITATION": "Pending Invitation",
+      "PENDING_ACCEPTANCE": "Pending Acceptance",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    },
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "passwordCurrent": "Current password",
+    "profileUpdated": "Profile saved",
+    "changePassword": "Change password",
+    "errorText": "Could not save changes",
+    "passwordMismatch": "Passwords don't match",
+    "cannotChangePassword": "You signed up without a password, so you don't have one"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "description": "Change your preferences!",
+    "language": "Language"
+  },
+  "danger": {
+    "title": "Danger zone",
+    "description": "Be careful",
+    "deleteAccount": "Delete account",
+    "delete": "Delete",
+    "confirmDelete": "We will delete your account and all your organizations",
+    "deleteYourAccount": "Delete your account",
+    "onceYouDelete": "Once you delete your account, you will lose all data associated with it"
+  },
+  "tenant": {
+    "title": "Organization",
+    "domain": "Domain",
+    "subdomain": "Subdomain",
+    "general": "General settings",
+    "generalDescription": "Update your organization settings",
+    "updated": "Organization updated",
+    "create": "Create new organization",
+    "createDescription": "Create a new organization to separate data",
+    "createConfirm": "Create new organization?",
+    "created": "Created new organization",
+    "subscription": {
+      "title": "Subscription",
+      "description": "Update your plan and payment details",
+      "notSubscribed": "You don't have any active subscription",
+      "notSubscribedDescription": "Please select a plan according to your needs",
+      "updated": "Subscription updated",
+      "alreadySubscribed": "You're already subscribed",
+      "alreadyBought": "You've already bought this",
+      "clickCancel": "Click here to cancel",
+      "confirmCancel": "Are you sure you want to cancel your subscription?",
+      "canceled": "Subscription canceled",
+      "trialing": "Trial until",
+      "upcomingInvoice": "Upcoming invoice",
+      "noUpcomingInvoices": "No upcoming invoices",
+      "noInvoicesYet": "There are no invoices yet",
+      "openCustomerPortal": "Open subscription portal"
+    },
+    "payment": {
+      "title": "Payment details",
+      "card": "Card",
+      "ending": "ending in",
+      "updated": "Payment details updated",
+      "notSet": "No payment method set, please add a credit or debit card"
+    },
+    "invoices": {
+      "title": "My invoices"
+    },
+    "members": {
+      "title": "Members",
+      "maxNumberOfUsers": "Max number of users reached",
+      "invite": "Invite link",
+      "inviteDescription": "Share this secret link to invite people to {0}. Only admins can see this.",
+      "inviteResetLink": "Click here to generate a new link",
+      "enableLink": "Enable link",
+      "requireAcceptance": "Require acceptance"
+    }
+  }
+}

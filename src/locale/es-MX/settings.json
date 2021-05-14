@@ -1,0 +1,104 @@
+{
+  "profile": {
+    "profileTitle": "Perfil",
+    "profileText": "Actualiza tu perfil",
+    "securityTitle": "Seguridad",
+    "securityText": "Cambia tu contraseña",
+    "passwordUpdated": "Nueva contraseña guardada",
+    "name": "Nombre",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phone": "Celular",
+    "whatsApp": "WhatsApp (para enviar tickets)",
+    "role": "Rol",
+    "roles": {
+      "OWNER": "Propietario",
+      "ADMIN": "Administrador",
+      "MEMBER": "Miembro",
+      "GUEST": "Invitado"
+    },
+    "joinedMethod": "Ingresó",
+    "joined": {
+      "CREATOR": "Creador",
+      "JOINED_BY_INVITATION": "Por invitación",
+      "JOINED_BY_LINK": "Por enlace",
+      "JOINED_BY_PUBLIC_URL": "Por URL"
+    },
+    "status": {
+      "PENDING_INVITATION": "Pendiente",
+      "PENDING_ACCEPTANCE": "Pendiente",
+      "ACTIVE": "Activo",
+      "INACTIVE": "Inactivo"
+    },
+    "password": "Contraseña",
+    "passwordConfirm": "Confirmar contraseña",
+    "passwordCurrent": "Contraseña actual",
+    "profileUpdated": "Perfil guardado",
+    "changePassword": "Cambiar password",
+    "errorText": "No se pudo guardar cambios",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "cannotChangePassword": "Te registraste sin contraseña, así que no tienes una"
+  },
+  "preferences": {
+    "title": "Preferencias",
+    "description": "Actualiza tus preferencias",
+    "language": "Idioma"
+  },
+  "danger": {
+    "title": "Zona de peligro",
+    "description": "Ten cuidado aquí",
+    "deleteAccount": "Eliminar cuenta",
+    "delete": "Eliminar",
+    "confirmDelete": "Eliminaremos tu cuenta y todas tus organizaciones",
+    "deleteYourAccount": "Elimina tu cuenta",
+    "onceYouDelete": "Una vez eliminada tu cuenta, perderás toda la información y acceso asociada a ella"
+  },
+  "tenant": {
+    "title": "Organización",
+    "domain": "Dominio",
+    "subdomain": "Subdominio",
+    "general": "Ajustes generales",
+    "generalDescription": "Actualiza la información de tu organización",
+    "updated": "Organización actualizada",
+    "create": "Crear organización",
+    "createDescription": "Crea una nueva organización para otra empresa o para ti",
+    "createConfirm": "¿Crear nueva organización?",
+    "created": "Organización creada",
+    "subscription": {
+      "title": "Subscripción",
+      "description": "Actualiza tu plan y details de pago",
+      "notSubscribed": "No tienes ninguna subscripción activa",
+      "notSubscribedDescription": "Por favor selecciona un plan de acuerdo a lo que necesitas",
+      "updated": "Subscripción actualizada",
+      "alreadySubscribed": "Ya estás suscrito",
+      "alreadyBought": "Ya has comprado esto",
+      "clickCancel": "Clic aquí para cancelar",
+      "confirmCancel": "Seguro que quieres cancelar tu subscripción?",
+      "canceled": "Subscripción cancelada",
+      "trialing": "Estás en period de prueba hasta",
+      "upcomingInvoice": "Siguiente cobro",
+      "noUpcomingInvoices": "No hay recibos siguientes",
+      "noInvoicesYet": "No hay recibos todavía",
+      "openCustomerPortal": "Portal de subscripción"
+    },
+    "payment": {
+      "title": "Detalles de pago",
+      "card": "Tarjeta",
+      "ending": "terminación en",
+      "updated": "Detalles de pago actualizados",
+      "notSet": "No se ha definido método de pago, por favor agrega una tarjeta de débito o crédito"
+    },
+    "invoices": {
+      "title": "Mis recibos"
+    },
+    "members": {
+      "title": "Miembros",
+      "maxNumberOfUsers": "Máximo número de usuarios alcanzado",
+      "invite": "Enlace de invitación",
+      "inviteDescription": "Comparte este enlace secreto para invitar a otras personas a unirse a {0}. Solo los administradores pueden ver esto.",
+      "inviteResetLink": "Clic aquí para generar nuevo enlace",
+      "enableLink": "Habilitar enlace",
+      "requireAcceptance": "Requiere aceptación"
+    }
+  }
+}

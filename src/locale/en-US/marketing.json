@@ -1,0 +1,347 @@
+{
+  "navbar": {
+    "product": "Product",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "blog": "Blog",
+    "signIn": "Log in",
+    "signUp": "Sign up",
+    "dashboard": "Dashboard",
+    "existingCustomer": "Already have an account?",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "product": {
+    "pre-headline": "Sign up today!",
+    "headline1": "Simple but powerful 💪",
+    "headline2": "codebase for your next SaaS",
+    "subheadline": "Boldy state your unique selling point. Included your target audience in the the header or sub-header.",
+    "getStarted": "📣 FULL STACK DEVS",
+    "cta1": "Sign up today",
+    "cta2": "Contact us",
+    "learnMore": "Learn more",
+    "generator": "PRODUCT_NAME generator"
+  },
+  "hero": {
+    "headline1": "Open source frontend",
+    "headline2": "for",
+    "headline3": "SaaS",
+    "headline4": "apps",
+    "feature1": "Free",
+    "feature2": "Vue 2",
+    "feature3": "Tailwind CSS 2",
+    "start": "Start today",
+    "startHint": "Start your free trial, no credit card necessary."
+  },
+  "benefits": {
+    "title": "Benefits headline",
+    "description": "Benefits subhealine",
+    "benefit1Description": "sample 1",
+    "benefit1Value": "45",
+    "benefit1ValueDescription": "",
+    "benefit2Description": "sample 2",
+    "benefit2Value": "5",
+    "benefit2ValueDescription": "min",
+    "benefit3Description": "sample 3",
+    "benefit3Value": "30%",
+    "benefit3ValueDescription": "up to"
+  },
+  "featuresNetcoreSaasv2": {
+    "headline": "What's new in v2.0.0?",
+    "subheadline": "I've added a bunch of new features for the last 2 months.",
+    "feature1Title": "Workspaces",
+    "feature1Description": "This demo treats them as companies. Start with the default workspace, and all your IAppWorkspaceEntity entities will be filtered based on the selected workspace.",
+    "feature2Title": "OCR",
+    "feature2Description": "Optical character recognition with Azure. If you upload a receipt, it will scan the possible total, date, website, email... customize it.",
+    "feature3Title": "Projects",
+    "feature3Description": "Add a project, set a color and add receipts to it (to track your expenses) and update the status to Active, Pending or Archived.",
+    "feature4Title": "Dashboard",
+    "feature4Description": "A better dashboard using real application data, like Workspaces, Users, Projects, Suppliers and Customers... (if any on selected period).",
+    "feature5Title": "$refs",
+    "feature5Description": "Almost every component is strong-typed using $refs, instead of // @ts-ignore this.$refs['errorModal'].show('') -> this.$refs.errorModal.show('')",
+    "feature6Title": "What about React? :(",
+    "feature6Description": "I have decided not to learn React until I am satisfied with a truly customizable codebase for any .NET and Vue developer."
+  },
+  "features2": {
+    "headline": "All-in-one",
+    "feature1": {
+      "headline": "Upload receipts to bill",
+      "subheadline": "Manage all your transactions, expense and income",
+      "feature1": "1. Define your workspaces (companies)",
+      "feature1Description": "Add one or more workspace for better data management",
+      "feature2": "2. Asign to projects",
+      "feature2Description": "Select an active project",
+      "feature3": "3. Who Invoices?",
+      "feature3Description": "If your subscription is elegible, we generate the invoices"
+    },
+    "feature2": {
+      "headline": "Send with WhatsApp",
+      "subheadline": "If you use your cell phone to work, it will surely be more convenient for you to send and check receipts and invoices from your WhatsApp.",
+      "feature1": "Receipts 🧾",
+      "feature1Description": "Upload and check your receipts",
+      "feature2": "Reports 📊",
+      "feature2Description": "How much you have spent per company/project/user...?",
+      "feature3": "Support 🙋",
+      "feature3Description": "Do you need help? Send us a message"
+    },
+    "feature3": {
+      "headline": "What, when and how much does your company spend?",
+      "subheadline": "From the moment you enter the portal, you can see how much remains to be billed or how much has been billed in a certain period.",
+      "feature1": "Active projects",
+      "feature1Description": "How your expenses and income have been distributed per project",
+      "feature2": "Which employees spend the most",
+      "feature2Description": "Of the members of your team, who is the one that consumes more or less",
+      "feature3": "Suppliers",
+      "feature3Description": "In which establishment do you usually spend more"
+    },
+    "feature4": {
+      "headline": "Instant receipt scanning",
+      "subheadline": "From the moment you upload the receipt, the important information to invoice is detected (Total, Date, Issuer Tax ID...).",
+      "feature1": "Total",
+      "feature1Description": "The possible total is scanned",
+      "feature2": "Date",
+      "feature2Description": "When was the expense?",
+      "feature3": "Establishment",
+      "feature3Description": "We detect the establishment website and/or Tax ID"
+    },
+    "feature5": {
+      "headline": "Project management",
+      "subheadline": "Manage the profitability of a project or assign a budget for better control.",
+      "feature1": "Default project",
+      "feature1Description": "Define the current project of your company",
+      "feature2": "Budget",
+      "feature2Description": "Control what is the estimated cost of the project",
+      "feature3": "Active, Pending or Archived Status",
+      "feature3Description": "Change to the corresponding project status"
+    }
+  },
+  "features": {
+    "headline": "Built for developers",
+    "feature1": {
+      "headline": "Clean Architecture",
+      "subheadline": "We've split the project into multiple 'layers'",
+      "feature1": "'Layers'",
+      "feature1Description": "Domain, Application, Infrastructure, WebApi, IntegrationTests, UnitTests",
+      "feature2": "Repositories",
+      "feature2Description": "Every entity has its own repository interface and implementation",
+      "feature3": "Unit of Work",
+      "feature3Description": "You can control if an entity belongs to a tenant or in the master database"
+    },
+    "feature2": {
+      "headline": "Unit and Integration Tests",
+      "subheadline": "Almost every controller method has its own integration test",
+      "feature1": "+130 Tests",
+      "feature1Description": "Tests for Authentication, Users, Tenants, Subscriptions, Transactions...",
+      "feature2": "Stripe customers",
+      "feature2Description": "Include your 'testing' keys, and each test will create new stripe customers",
+      "feature3": "Stripe products/subscriptions",
+      "feature3Description": "Test how your subscription mechanism will work against a real world API"
+    },
+    "feature3": {
+      "headline": "Multi-organization",
+      "subheadline": "Each user can create its own organizations",
+      "feature1": "Owner",
+      "feature1Description": "The owner of the organization can update general settings",
+      "feature2": "Admin",
+      "feature2Description": "Can manage members and update subscription",
+      "feature3": "Member",
+      "feature3Description": "You decide!"
+    },
+    "feature4": {
+      "headline": "Multi-tenancy",
+      "subheadline": "Decide if you want only one database or one database per tenant",
+      "feature1": "Standalone App",
+      "feature1Description": "You only have one database, and a tenant column of your core models",
+      "feature2": "Database per Tenant",
+      "feature2Description": "Each tenant will have its own database for data isolation"
+    },
+    "feature5": {
+      "headline": "Multi-theme",
+      "subheadline": "Using the power of TailwindCSS you can customize your own themes or use a default",
+      "feature1": "11 pre-configured colors",
+      "feature1Description": "Tailwind based themes so you can focus on design right away",
+      "feature2": "Customization",
+      "feature2Description": "Files easy to configure to customize your own themes"
+    },
+    "feature6": {
+      "headline": "Multi-language",
+      "subheadline": "You can launch internationally by adding your language",
+      "feature1": "3 pre-configured languaged",
+      "feature1Description": "English, Spanish and Hindi",
+      "feature2": "Customization",
+      "feature2Description": "Files easy to configure to customize your own languages"
+    },
+    "feature7": {
+      "headline": "Multi-database",
+      "subheadline": "Entity Framework Core supported databases",
+      "feature1": "PostgreSQL",
+      "feature1Description": "",
+      "feature2": "MySQL",
+      "feature2Description": "",
+      "feature3": "SQL Server (comming soon)",
+      "feature3Description": ""
+    },
+    "feature8": {
+      "headline": "And more!",
+      "subheadline": "Features based on real world SaaS applications",
+      "feature1": "Member managment",
+      "feature1Description": "Manage your organization members",
+      "feature2": "Invitation link",
+      "feature2Description": "Invite users by email or send them an invitation link",
+      "feature3": "Resources",
+      "feature3Description": "Add resources and assign them to certain subscriptions and roles"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "headline": "Ghost.io RSS Feed",
+    "setup": "Update the .env variables VUE_APP_BLOG_GHOST_URL and VUE_APP_BLOG_GHOST_CONTENT_API_KEY"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "headline": "Create your account today!",
+    "subheadline": "",
+    "startTrial": "Start {0}-day trial",
+    "subscribe": "Subscribe",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade",
+    "buy": "Buy",
+    "pay": "Pay",
+    "payOnce": "Pay once",
+    "signUpFree": "Sign up free",
+    "updateSubscription": "Update",
+    "month": "Monthly",
+    "year": "Yearly",
+    "MONTHLY": "Monthly",
+    "YEARLY": "Yearly",
+    "YEARLYDiscount": "2 months free",
+    "MONTHLYShort": "month",
+    "YEARLYShort": "year",
+    "DAILYShort": "day",
+    "ONCE": "once",
+    "noCreditCardRequired": "No credit card required",
+    "taxIncluded": "Taxes already included",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "custom": "Contact us",
+    "pricingMode": "Who will generate the invoices?",
+    "whatsIncluded": "What's included",
+    "products": {
+      "custom": "Custom ⚙️",
+      "1": "Basic 🦄",
+      "2": "Essential 🚀",
+      "3": "Professional 💼",
+      "4": "Corporate 🏢"
+    },
+    "productDescriptions": {
+      "1": "The perfect option for your new business.",
+      "2": "Recommended for growing companies.",
+      "3": "Designed for professionals with large teams.",
+      "4": "For organizations with many collaborators."
+    },
+    "features": {
+      "oneUser": "1 user",
+      "oneWorkspace": "1 workspace",
+      "maxNumberOfUsers": "Up to {0} users",
+      "numberOfUsers": "{0} users",
+      "moreThanUsers": "{0} or more users",
+      "numberOfWorkspaces": "{0} workspaces",
+      "moreThanWorkspaces": "{0} or more workspaces",
+      "maxNumberOfWorkspaces": "Up to {0} workspaces",
+      "maxNumberOfCfdis": "Up to {0} CFDis",
+      "unlimitedCfdis": "Unlimited CFDis",
+      "unlimitedUsers": "Unlimited users",
+      "feature2": "Feature 2",
+      "feature3": "Feature 3",
+      "feature4": "Feature 4",
+      "feature5": "Feature 5",
+      "upToProjects": "Up to {0} projects",
+      "upToDevelopers": "Up to {0} developers",
+      "1yearAccess": "1 year access to latest releases",
+      "prioritySupport": "Priority support",
+      "onboarding30min": "30 min onboarding",
+      "onboarding2hrs": "2 hrs onboarding",
+      "unlimitedDevelopers": "Unlimited developers!",
+      "unlimitedProjects": "Unlimited projects!",
+      "revenue": "{0} $50k USD annual revenue",
+      "vueFrontend": "VueJS Frontend",
+      "typescript": "TypeScript",
+      "tailwindcss": "TailwindCSS",
+      "frontendBackend": "VueJS frontend + .NET Core backend",
+      "monthlyTickets": "{0} receipts/month",
+      "unlimitedTickets": "Unlimited tickets",
+      "whatsApp": "Send tickets on WhatsApp"
+    },
+    "badges": {
+      "recommended": "Recommended",
+      "mostPopular": "Most popular"
+    }
+  },
+  "contact": {
+    "title": "Contact sales",
+    "headline": "We'd love to know how we can add value to your company",
+    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "company": "Company",
+    "organization": "Organization",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sentTitle": "Message sent",
+    "sentMessage": "We'll be in touch soon",
+    "taxIds": "Tax ID's that you manage",
+    "tickets": "Monthly invoiced receipts",
+    "users": "Number of users",
+    "interested": "Interested in plan",
+    "comments": "Comments, questions, or concerns",
+    "howDidYouHearAboutUs?": "How did you hear about us?",
+    "whoInvoices?": "Who would you like to invoice your receipts?",
+    "whoInvoicesYou": "You (and your collaborators)",
+    "whoInvoicesUs": "Us",
+    "setup": "Update the .env variable VUE_APP_INTEGRATIONS_CONTACT_FORMSPREE"
+  },
+  "newsletter": {
+    "title": "Not sure yet, but want to know more?",
+    "signUp": "Sign up for our newsletter to stay up to date.",
+    "email": "Enter your email",
+    "wontSpam": "Don't worry, we won't spam.",
+    "subscribe": "Subscribe",
+    "subscribedTitle": "Subscribed!",
+    "subscribedText": "Thank you for subscribing to our newsletter",
+    "subscribedClose": "You're welcome",
+    "errorText": "There was a problem signin up to the newsletter"
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "questions": {
+      "q1": "Question 1?",
+      "a1": "Answer 1.",
+      "q2": "Question 2?",
+      "a2": "Answer 2.",
+      "q3": "Question 3?",
+      "a3": "Answer 3.",
+      "q4": "Question 4?",
+      "a4": "Answer 4.",
+      "q5": "Question 5?",
+      "a5": "Answer 5.",
+      "q6": "Question 6?",
+      "a6": "Answer 7."
+    }
+  },
+  "footer": {
+    "copyright": "2021, All rights reserved."
+  },
+  "terms": {
+    "title": "Terms and Conditions"
+  },
+  "policy": {
+    "title": "Privacy Policy"
+  },
+  "banner": {
+    "largeText": "Get the .NET 5 backend for an app",
+    "smallText": "Get the .NET 5 backend",
+    "thisWebsite": "like this one"
+  }
+}

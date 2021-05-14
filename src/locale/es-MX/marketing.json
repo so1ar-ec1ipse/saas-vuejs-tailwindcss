@@ -1,0 +1,347 @@
+{
+  "navbar": {
+    "product": "Producto",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "blog": "Blog",
+    "signIn": "Entrar",
+    "signUp": "Registrarme",
+    "dashboard": "Dashboard",
+    "existingCustomer": "¿Ya tienes cuenta?",
+    "terms": "Términos",
+    "privacy": "Privacidad"
+  },
+  "product": {
+    "pre-headline": "¡Regístrate hoy!",
+    "headline1": "Simple pero poderosa 💪",
+    "headline2": "plantilla para tu idea SaaS",
+    "subheadline": "Indica lo que diferencia a tu producto. Incluye a tu público objetivo en el encabezado o subencabezado.",
+    "getStarted": "📣 desarrolladores full stack",
+    "cta1": "Regístrate",
+    "cta2": "Contáctanos",
+    "learnMore": "Ver más"
+  },
+  "hero": {
+    "headline1": "Frontend open source,",
+    "headline2": "la plantilla para",
+    "headline3": "SaaS",
+    "headline4": "",
+    "feature1": "Gratis",
+    "feature2": "Vue 2",
+    "feature3": "Tailwind CSS 2",
+    "start": "Comenzar",
+    "startHint": "Comienza tu prueba gratis, no se necesita tarjeta de crédito."
+  },
+  "benefits": {
+    "title": "Título de beneficios",
+    "description": "Subtítulo de beneficios",
+    "benefit1Description": "ejemplo 1",
+    "benefit1Value": "¿?",
+    "benefit1ValueDescription": "",
+    "benefit2Description": "ejemplo 2",
+    "benefit2Value": "5",
+    "benefit2ValueDescription": "min",
+    "benefit3Description": "ejemplo 3",
+    "benefit3Value": "30%",
+    "benefit3ValueDescription": "hasta"
+  },
+  "features2": {
+    "headline": "Todo en uno",
+    "feature1": {
+      "headline": "Sube tickets para facturarlos",
+      "subheadline": "Todos los recibos de gastos que realices, súbelos para que no se junten al final del día, o peor, del mes!",
+      "feature1": "1. Define tus empresas",
+      "feature1Description": "Si tienes varios RFCs, determina a cuál desees que se facture",
+      "feature2": "2. Asígnale un proyecto",
+      "feature2Description": "Selecciona un proyecto activo que hayas creado para mantener control",
+      "feature3": "3. Facturas tú o nosotros",
+      "feature3Description": "Si aplica en tu suscripción, nosotros facturamos todos tus tickets"
+    },
+    "feature2": {
+      "headline": "Envía por WhatsApp",
+      "subheadline": "Si usas tu celular para trabajar, seguramente te resultará más cómodo enviar y consultar tickets y facturas desde tu WhatsApp.",
+      "feature1": "Tickets 🧾",
+      "feature1Description": "Sube y consulta tus tickets",
+      "feature2": "Reportes 📊",
+      "feature2Description": "Cuánto has gastado por empresa/proyecto/usuario",
+      "feature3": "Soporte técnico 🙋",
+      "feature3Description": "¿Necesitas ayuda o tienes un problema? Mándanos un mensaje"
+    },
+    "feature3": {
+      "headline": "¿En qué y cuánto gasta tu empresa?",
+      "subheadline": "Desde que entras al portal, puedes ver cuánto falta por facturarse o cuánto se ha facturado en cierto periodo.",
+      "feature1": "Proyectos activos",
+      "feature1Description": "Cómo se han distribuido tus gastos e ingresos por proyecto",
+      "feature2": "Qué colaboradores gastan más",
+      "feature2Description": "De los miembros de tu equipo, quién es el que consume más o menos",
+      "feature3": "Proveedores",
+      "feature3Description": "En qué establecimiento sueles gastar más"
+    },
+    "feature4": {
+      "headline": "Escaneo de tickets al instante",
+      "subheadline": "Desde que subes el ticket, se detecta la información importante para facturar (Total, Fecha, RFC Emisor, etc...).",
+      "feature1": "Total",
+      "feature1Description": "Se detecta el posible total del ticket",
+      "feature2": "Fecha",
+      "feature2Description": "De cuándo fue el gasto",
+      "feature3": "Establecimiento",
+      "feature3Description": "Si cuenta con RFC o página web, detectamos el establecimiento"
+    },
+    "feature5": {
+      "headline": "Gestión de proyectos",
+      "subheadline": "Administra la rentabilidad de un proyecto o asígnale presupuesto para un mejor control.",
+      "feature1": "Establece el predeterminado",
+      "feature1Description": "Define el proyecto actual de tu empresa",
+      "feature2": "Presupuesto",
+      "feature2Description": "Controla cuál es el gasto estimado del proyecto",
+      "feature3": "Estatus Activo, Pendiente o Archivado",
+      "feature3Description": "Cambia el status del proyecto al que corresponda"
+    }
+  },
+  "features": {
+    "headline": "Hecho para desarrolladores",
+    "feature1": {
+      "headline": "Clean Architecture",
+      "subheadline": "Separamos el proyecto en varias 'capas'",
+      "feature1": "'Capas'",
+      "feature1Description": "Domain, Application, Infrastructure, WebApi, IntegrationTests, UnitTests",
+      "feature2": "Repositorios",
+      "feature2Description": "Cada entidad tiene su propia interface e implementación",
+      "feature3": "Unit of Work",
+      "feature3Description": "Puedes controlar si una entidad corresponde You can control if an entity belongs to a tenant or in the master database"
+    },
+    "feature2": {
+      "headline": "Pruebas Unitarias y de Integración",
+      "subheadline": "Casi cada método de los controladores tiene su propia prueba de integración",
+      "feature1": "+130 Pruebas",
+      "feature1Description": "Pruebas para Autenticación, Usuarios, Organizaciones, Subscripciones, Transactions...",
+      "feature2": "Clientes Stripe",
+      "feature2Description": "Incluye tus llaves para 'testing' y cada prueba creará su propio cliente en Stripe",
+      "feature3": "Productos/Subscripciones Stripe",
+      "feature3Description": "Prueba cómo tu mecanismo de subscripciones funcionará con una API del mundo real"
+    },
+    "feature3": {
+      "headline": "Multi-organización",
+      "subheadline": "Cada usuario puede crear su propia organización",
+      "feature1": "Propietario",
+      "feature1Description": "El dueño o propietario puede actualizar ajustes generales",
+      "feature2": "Administrador",
+      "feature2Description": "Puede administrar miembros y la subscripción",
+      "feature3": "Miembro",
+      "feature3Description": "¡Tú decide!"
+    },
+    "feature4": {
+      "headline": "Multi-tenant",
+      "subheadline": "Decide si quieres una sola base de datos o una por cada organización",
+      "feature1": "Una sola base de datos",
+      "feature1Description": "Solamente hay una base de datos, con columnas de organización en el esquema",
+      "feature2": "Base de datos por Organización",
+      "feature2Description": "Cada organización tendrá su base de datos para separar los datos"
+    },
+    "feature5": {
+      "headline": "Multi-tema",
+      "subheadline": "Usando el poder de TailwindCSS puedes personalizar tus temas o usar los predeterminados",
+      "feature1": "11 colores pre-configurados",
+      "feature1Description": "Temas basados en Tailwind para que te enfoques en el diseño directamente",
+      "feature2": "Personalización",
+      "feature2Description": "Archivos fáciles de configurar para personalizar tus temas"
+    },
+    "feature6": {
+      "headline": "Multi-lenguaje",
+      "subheadline": "Puedes lanzar internacionalmente añadiendo más lenguajes",
+      "feature1": "3 lenguajes preconfigurados",
+      "feature1Description": "Inglés, Español e Hindú",
+      "feature2": "Personalización",
+      "feature2Description": "Archivos fáciles de configurar para añadir lenguajes"
+    },
+    "feature7": {
+      "headline": "Multi-BD",
+      "subheadline": "Bases de datos soportadas por Entity Framework Core",
+      "feature1": "PostgreSQL",
+      "feature1Description": "",
+      "feature2": "MySQL",
+      "feature2Description": "",
+      "feature3": "SQL Server (pronto)",
+      "feature3Description": ""
+    },
+    "feature8": {
+      "headline": "¡Y más!",
+      "subheadline": "Características basadas en aplicaciones SaaS del mundo real",
+      "feature1": "Administración de usuarios",
+      "feature1Description": "Administra los miembros de la organización",
+      "feature2": "Enlace de invitación",
+      "feature2Description": "Invita a usuarios con un correo o envíales el enlace de invitación",
+      "feature3": "Recursos",
+      "feature3Description": "Agrega recursos y asígnalos a ciertas subscripciones o roles"
+    }
+  },
+  "featuresNetcoreSaasv2": {
+    "headline": "¿Qué hay de nuevo en v2.0.0?",
+    "subheadline": "Agregué múltiples funciones en los últimos 2 meses.",
+    "feature1Title": "Workspaces",
+    "feature1Description": "En este demo los trata como empresas. Empieza con el predeterminado y todas tus entidades IAppWorkspaceEntity se filtrarán basandose en el seleccionado.",
+    "feature2Title": "OCR",
+    "feature2Description": "Reconocimiento óptico de caracteres usando Azure. Si subes un ticket, escaneará el posible total, fecha, página web, correo... personalizalo. ",
+    "feature3Title": "Proyectos",
+    "feature3Description": "Agrega un proyecto, establece un color y agrega tickets (para administrar tus gastos) y actualiza el estatus a Activo, Pendiente o Archivado.",
+    "feature4Title": "Dashboard",
+    "feature4Description": "Un mejor dashboard usando información real de la aplicación, como Empresas, Usuarios, Proyectos, Proveedores, Clientes... (si hay en el periodo seleccionado).",
+    "feature5Title": "$refs",
+    "feature5Description": "Casi todos los componentes están strong-typed usando $refs, en lugar de // @ts-ignore this.$refs['errorModal'].show('') -> this.$refs.errorModal.show('')",
+    "feature6Title": "¿Qué hay de React?",
+    "feature6Description": "He decidido no aprender a utilizar React hasta que esté conforme con una plantilla verdaderamente personalizable para cualquier desarrollador de .NET y Vue."
+  },
+  "blog": {
+    "title": "Blog",
+    "headline": "Ghost.io RSS Feed",
+    "setup": "Actualiza las variables .env VUE_APP_BLOG_GHOST_URL y VUE_APP_BLOG_GHOST_CONTENT_API_KEY"
+  },
+  "pricing": {
+    "title": "Precios",
+    "headline": "Crea tu cuenta hoy!",
+    "subheadline": "",
+    "startTrial": "Comenzar prueba de {0} días",
+    "subscribe": "Suscribirme",
+    "upgrade": "Actualizar subscripción",
+    "downgrade": "Actualizar subscripción",
+    "buy": "Comprar",
+    "pay": "Comprar",
+    "payOnce": "Pagar una vez",
+    "signUpFree": "Regístrate gratis",
+    "updateSubscription": "Actualizar",
+    "recommended": "Recomenando",
+    "month": "Mensual",
+    "year": "Anual",
+    "MONTHLY": "Mensual",
+    "YEARLY": "Anual",
+    "YEARLYDiscount": "2 meses gratis",
+    "MONTHLYShort": "mes",
+    "DAILYShort": "día",
+    "YEARLYShort": "año",
+    "ONCE": "una vez",
+    "monthInterval": "mes",
+    "yearInterval": "año",
+    "noCreditCardRequired": "No se necesita tarjeta de crédito",
+    "taxIncluded": "Precio ya incluye IVA",
+    "learnMore": "Saber más...",
+    "contactUs": "Contáctanos",
+    "custom": "Contáctanos",
+    "pricingMode": "¿Quién facturará tus tickets?",
+    "whatsIncluded": "Qué incluye",
+    "products": {
+      "custom": "Personalizado ⚙️",
+      "1": "Básico 🦄",
+      "2": "Esencial 🚀",
+      "3": "Profesional 💼",
+      "4": "Corporativo/Despacho 🏢"
+    },
+    "productDescriptions": {
+      "1": "La opción perfecta para tu nuevo negocio.",
+      "2": "Recomendado para empresas en crecimiento.",
+      "3": "Pensado en profesionales con equipos grandes.",
+      "4": "Para empresas con muchos colaboradores."
+    },
+    "features": {
+      "oneUser": "1 usuario",
+      "oneWorkspace": "1 RFC",
+      "maxNumberOfUsers": "Hasta {0} usuarios",
+      "numberOfUsers": "{0} usuarios",
+      "moreThanUsers": "{0} usuarios o más",
+      "numberOfWorkspaces": "{0} RFCs",
+      "moreThanWorkspaces": "{0} RFCs o más",
+      "maxNumberOfWorkspaces": "Hasta {0} RFCs",
+      "maxNumberOfCfdis": "Sube hasta {0} CFDis",
+      "unlimitedCfdis": "Sube CFDis sin límite",
+      "unlimitedUsers": "Colaboradores ilimitados",
+      "feature2": "Característica 2",
+      "feature3": "Característica 3",
+      "feature4": "Característica 4",
+      "feature5": "Característica 5",
+      "upToProjects": "Hasta {0} proyectos",
+      "upToDevelopers": "Hasta {0} desarrolladores",
+      "1yearAccess": "1 año de acceso a la última versión",
+      "prioritySupport": "Soporte prioritario",
+      "onboarding30min": "30 min de introducción",
+      "onboarding2hrs": "2 hrs de introducción",
+      "unlimitedDevelopers": "¡Sin límite de desarrolladores!",
+      "unlimitedProjects": "¡Sin límite de proyectos!",
+      "revenue": "{0} $50k USD ingresos anuales",
+      "vueFrontend": "VueJS Frontend",
+      "typescript": "TypeScript",
+      "tailwindcss": "TailwindCSS",
+      "frontendBackend": "VueJS frontend + .NET Core backend",
+      "monthlyTickets": "{0} tickets/mes",
+      "unlimitedTickets": "Tickets ilimitados",
+      "whatsApp": "Envía tickets por WhatsApp"
+    },
+    "badges": {
+      "recommended": "Recomendado",
+      "mostPopular": "Más popular"
+    }
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "headline": "Nos encantaría saber cómo podemos agregar valor a tu empresa.",
+    "name": "Nombre",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "company": "Organization",
+    "email": "Correo electrónico",
+    "phone": "WhatsApp",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sentTitle": "Mensaje enviado",
+    "sentMessage": "Te contactaremos pronto",
+    "taxIds": "RFCs que administras",
+    "tickets": "Tickets de gastos que facturas al mes",
+    "users": "Número aproximado de personas que subirían tickets",
+    "interested": "Interesado en plan",
+    "comments": "Comentarios, dudas, sugerencias o quejas",
+    "howDidYouHearAboutUs?": "¿Cómo te enteraste de nosotros?",
+    "whoInvoices?": "¿Quién quisieras que facturara tus tickets?",
+    "whoInvoicesYou": "Tú (y tus colaboradores)",
+    "whoInvoicesUs": "PRODUCT_NAME (Nosotros)",
+    "setup": "Actualiza la variable .env VUE_APP_INTEGRATIONS_CONTACT_FORMSPREE"
+  },
+  "newsletter": {
+    "title": "¿No estás seguro, pero quieres saber más?",
+    "signUp": "Suscríbete a nuestro boletín para estar al día.",
+    "email": "Ingresa tu correo",
+    "wontSpam": "No te preocupes, no hacemos spam.",
+    "subscribe": "Comenzar ahora",
+    "subscribedTitle": "¡Suscrito!",
+    "subscribedText": "Gracias por registrarte a nuestro boletín informativo",
+    "subscribedClose": "De nada",
+    "errorText": "Hubo un problema suscribiéndote"
+  },
+  "faq": {
+    "title": "Preguntas más frecuentes",
+    "questions": {
+      "q1": "¿Pregunta 1?",
+      "a1": "Respuesta 1.",
+      "q2": "¿Pregunta 2?",
+      "a2": "Respuesta 2.",
+      "q3": "¿Pregunta 3?",
+      "a3": "Respuesta 3.",
+      "q4": "¿Pregunta 4?",
+      "a4": "Respuesta 4.",
+      "q5": "¿Pregunta 5?",
+      "a5": "Respuesta 5.",
+      "q6": "¿Pregunta 6?",
+      "a6": "Respuesta 7."
+      }
+  },
+  "footer": {
+    "copyright": "Todos los derechos reservados."
+  },
+  "terms": {
+    "title": "Términos y Condiciones"
+  },
+  "policy": {
+    "title": "Política de Privacidad"
+  },
+  
+    "largeText": "Obtén el backend en .NET 5 para un sitio",
+    "smallText": "Obtén el backend en .NET 5",
+    "thisWebsite": "como este"
+}

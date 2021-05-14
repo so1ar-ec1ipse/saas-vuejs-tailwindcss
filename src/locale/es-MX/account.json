@@ -1,0 +1,105 @@
+{
+  "shared": {
+    "email": "Correo",
+    "password": "Contraseña",
+    "signIn": "Entrar",
+    "signOut": "Cerrar sesión"
+  },
+  "login": {
+    "title": "Entra a tu cuenta",
+    "button": "Entrar",
+    "orStartTrial": "comienza tu prueba de {0} días",
+    "remember": "Recordarme",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "orSignInUsing": "O entra usando",
+    "errorText": "Error al entrar",
+    "errors": {
+      "unverified": "Revisa tu correo para verificar tu cuenta",
+      "invalid": "Credenciales inválidas",
+      "exists": "Usuario ya registrado",
+      "nonexistent": "No te has registrado",
+      "passwordMissmatch": "Las contraseñas no coinciden",
+      "noTenants": "No perteneces a ninguna organización, regístrate para crear una"
+    }
+  },
+  "register": {
+    "title": "Crea tu cuenta",
+    "headline": "Regístrate y comienza en segundos",
+    "successTitle": "Bienvenido",
+    "successText": "Por favor revisa tu correo electrónico (revisa tu carpeta de spam o de promociones).",
+    "startTrial": "Comienza prueba de {0} días",
+    "providePaymentDetails": "Por favor proporciona tus details de pago",
+    "confirmPassword": "Confirmar contraseña",
+    "orSignUpUsing": "O regístrate usando",
+    "clickHereToLogin": "Clic aquí para entrar",
+    "personalInfo": "Datos personales",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "company": "Empresa",
+    "organization": "Organización",
+    "applyCoupon": "Tengo un cupón",
+    "coupon": "Cupón",
+    "couponCode": "Código del cupón",
+    "invalidCoupon": "Cupón inválido",
+    "couponMaxRedeems": "El cupón ya llegó a su límite de usos",
+    "couponInactive": "Cupón inactivo",
+    "termsAndConditions": "términos y condiciones",
+    "privacyPolicy": "política de privacidad",
+    "alreadyRegistered": "¿Ya estás registrado?",
+    "bySigningUp": "Al registrarte, aceptas que eres mayor de edad y que aceptas nuestros",
+    "andOur": "y nuestra",
+    "errorText": "Could not register",
+    "setTenantName": "Por favor especifica un nombre de organización, puede ser tu nombre",
+    "clickHereToVerify": "Clic aquí para verificar (modo desarrollo)",
+    "errors": {
+      "priceNotInDatabase": "Plan seleccionado pero no existe en la base de datos",
+      "priceNotSelected": "Por favor selecciona un plan",
+      "exists": "Usuario ya registrado"
+    }
+  },
+  "reset": {
+    "title": "¿Olvidaste tu contraseña?",
+    "headline": "Te enviaremos un enlace para restablecerla.",
+    "button": "Restablecer contraseña",
+    "resetSuccess": "Contraseña restablecida",
+    "emailSent": "Por favor revisa tu correo electrónico, si no recibes ninguno por favor contacta a SUPPORT_EMAIL"
+  },
+  "newPassword": {
+    "title": "Nueva contraseña",
+    "button": "Actualizar contraseña"
+  },
+  "forgot": {
+    "rememberedPassword": "¿Recordaste tu contraseña?",
+    "backToLogin": "Clic aquí para entrar"
+  },
+  "invitation": {
+    "notAvailable": "Enlace de invitación no disponible",
+    "invitedYou": "te invitó a unirte",
+    "youWereInvited": "fuiste invitado a unirte a",
+    "requestAccess": "Solicita acceso para unirte a",
+    "acceptedUser": "👋  Te damos la bienvenida a {0}",
+    "button": "Aceptar y continuar",
+    "anotherEmail": "Clic aquí para unirte con otro usuario",
+    "successTitle": "Solicitud de acceso enviada",
+    "successText": "Tu solicitud de acceso se ha enviado al administrador, cuando sea aceptada te enviaremos un correo de bienvenida (asegúrate de revisar en spam o promociones)"
+  },
+  "verify": {
+    "title": "Verifica tu cuenta",
+    "button": "Verificar y continuar",
+    "errors": {
+      "invalid": "Credenciales inválidas",
+      "alreadyVerified": "Usuario ya verificado",
+      "organizationTaken": "Nombre de organización ya existe"
+    }
+  },
+  "tenant": {
+    "undefined": "Organización indefinida",
+    "existingUser": "Usuario ya existe en organización",
+    "subdomainTaken": "Subdominio ya existe",
+    "cannotBeWithoutOwner": "La organización no puede estar sin propietario",
+    "cannotBeWithoutMembers": "La organización no puede estar sin miembros",
+    "onlyOwner": "Solo propietarios pueden realizar esta operación",
+    "onlyAdmin": "Solo administradores o propietarios pueden realizar esta operación",
+    "onlyMember": "Solo miembros, administradores o propietarios pueden realizar esta operación"
+  }
+}

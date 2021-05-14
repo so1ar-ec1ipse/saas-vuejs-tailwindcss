@@ -1,0 +1,44 @@
+import { AppWorkspaceEntityDto } from "../AppWorkspaceEntityDto";
+import { WhoInvoices } from "@/application/enums/app/cfdis/WhoInvoices";
+import { Colors } from "@/application/enums/app/common/Colors";
+import { TicketStatus } from "@/application/enums/app/transactions/TicketStatus";
+import { TicketInvoicedDto } from "./TicketInvoicedDto";
+import { TransactionDto } from "./TransactionDto";
+import {WorkspaceDto} from "@/application/dtos/app/workspaces/WorkspaceDto";
+import {ProjectDto} from "@/application/dtos/app/projects/ProjectDto";
+
+export interface TicketDto extends AppWorkspaceEntityDto {
+  number: number;
+  status: TicketStatus;
+  image: string;
+  taxId: string;
+  legalName: string;
+  cfdiUse: string;
+  comments?: string;
+  errorDescription?: string;
+  errorImage?: string;
+  projectId?: string | null;
+  project?: ProjectDto;
+  scannedLines?: string[];
+  transactions?: TransactionDto[];
+  ticketInvoiced?: TicketInvoicedDto;
+  possibleTotal?: number;
+  possibleWebsite?: string;
+  possibleDate?: string | null;
+  possibleFolio?: string;
+  whoInvoices: WhoInvoices;
+  thumbnail?: string;
+  scanned?: boolean;
+  createdSince?: string;
+  statusDescription?: string;
+  statusBackgroundColor?: Colors;
+  statusTextColor?: Colors;
+  filePath?: string;
+  possibleValues?: { [key: string]: string[] };
+  totals?: number[];
+  dates?: string[];
+  taxIds?: string[];
+  websites?: string[];
+  folios?: string[];
+  ids?: string[];
+}

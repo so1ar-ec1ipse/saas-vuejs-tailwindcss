@@ -1,0 +1,306 @@
+{
+    "shared": {
+        "errors": {
+            "noChanges": "No hubo cambios",
+            "onlyOwner": "Solo propietarios pueden realizar esta operación",
+            "onlyAdmin": "Solo administradores o propietarios pueden realizar esta operación",
+            "onlyMember": "Solo miembros, administradores o propietarios pueden realizar esta operación"
+        },
+        "buttons": {
+            "filter": "Filtrar",
+            "applyFilters": "Aplicar filtros",
+            "removeFilters": "Quitar filtros",
+            "clearSearch": "Quitar búsqueda",
+            "dragImagesHere": "Arrastra las fotos aquí",
+            "clickHereToAdd": "Clic aquí para agregar",
+            "orClickHereToAdd": "o clic aquí para agregar",
+            "viewDetails": "Ver detalles de",
+            "viewMore": "Ver más",
+            "viewNMore": "Ver {0} más",
+            "showDetails": "Mostrar detalles",
+            "hideDetails": "Ocultar detalles"
+        },
+        "selectors": {
+            "notSelected": "-- No seleccionado --",
+            "status": "Selecciona un status"
+        },
+        "validation": {
+            "fieldIsRequired": "Campo requerido",
+            "textTooSmall": "Mínimo {0} caracteres",
+            "textTooBig": "Máximo {0} caracteres"
+        },
+        "colors": {
+            "UNDEFINED": "Indefinido",
+            "BLUE_GRAY": "Gris azul",
+            "COOL_GRAY": "Gris frío",
+            "GRAY": "Gris",
+            "TRUE_GRAY": "Gris oscuro",
+            "WARM_GRAY": "Gris cálido",
+            "RED": "Rojo",
+            "ORANGE": "Naranja",
+            "AMBER": "Ámbar",
+            "YELLOW": "Amarillo",
+            "LIME": "Lima",
+            "GREEN": "Verde",
+            "EMERALD": "Esmeralda",
+            "TEAL": "Verde azulado",
+            "CYAN": "Cian",
+            "LIGHT_BLUE": "Azul bajo",
+            "BLUE": "Azul",
+            "INDIGO": "Indigo",
+            "VIOLET": "Violeta",
+            "PURPLE": "Morado",
+            "FUCHSIA": "Fucsia",
+            "PINK": "Rosa",
+            "ROSE": "Rojizo"
+        },
+        "periods": {
+            "ALL": "Todo",
+            "YEAR": "Año",
+            "MONTH": "Mes",
+            "WEEK": "Semana",
+            "DAY": "Hoy",
+            "LAST_YEAR": "Año pasado",
+            "LAST_MONTH": "Mes pasado",
+            "LAST_WEEK": "Semana pasada",
+            "LAST_DAY": "Ayer",
+            "LAST_30_DAYS": "Últimos 30 días",
+            "LAST_7_DAYS": "Últimos 7 días",
+            "ALL_Description": "",
+            "YEAR_Description": "Este año",
+            "MONTH_Description": "Este mes",
+            "WEEK_Description": "Esta semana",
+            "DAY_Description": "Hoy",
+            "LAST_YEAR_Description": "El año pasado",
+            "LAST_MONTH_Description": "El mes pasado",
+            "LAST_WEEK_Description": "La semana pasada",
+            "LAST_DAY_Description": "Ayer",
+            "LAST_30_DAYS_Description": "En los últimos 30 días",
+            "LAST_7_DAYS_Description": "En los últimos 7 días"
+        }
+    },
+    "navbar": {
+        "tenant": "Organización",
+        "profile": "Perfil",
+        "logout": "Cerrar sesión",
+        "settings": "Ajustes",
+        "signOut": "Cerrar sesión",
+        "integrations": "Integraciones"
+    },
+    "sidebar": {
+        "app": "Aplicación",
+        "manage": "Administrar",
+        "catalogs": "Catálogos",
+        "permissions": "Permisos",
+        "integrations": "Integraciones"
+    },
+    "tenants": {
+        "members": {
+            "create": "Agregar miembro",
+            "edit": "Editar miembro",
+            "hasNoMembers": "No tiene miembros"
+        },
+        "errors": {
+            "userNotInTenant": "No perteneces a la organización actual"
+        }
+    },
+    "subscription": {
+        "errors": {
+            "noSubscription": "No hay subscripción activa",
+            "limitReachedRfc": "Has llegado al límite de empresas",
+            "limitReachedUsers": "Has llegado al límite de usuarios",
+            "limitReachedTickets": "Has llegado al límite de tickets"
+        }
+    },
+    "reports": {
+        "title": "Reportes",
+        "description": "Analiza en qué gastas (empresa, proyectos, usuarios...)"
+    },
+    "workspaces": {
+        "select": "Selecciona empresa",
+        "create": "Agrega un RFC",
+        "edit": "Editar RFC",
+        "createDescription": "Si tienes más de un RFC, agrega tus datos fiscales.",
+        "none": "No has agregado ninguna empresa",
+        "deleteWarning": "ADVERTENCIA: Una vez la elimines no podrás recuperar las transactions.",
+        "cannotBeWithoutWorkspaces": "Debes tener al menos 1 espacio de trabajo",
+        "askAdminToAddYou": "Pídele a un administrador que te agregue a un espacio de trabajo (empresa).",
+        "errors": {
+            "notFound": "Empresa no encontrada",
+            "notAdded": "No has agregado esta empresa",
+            "existingRfc": "Ya hay una empresa con ese RFC",
+            "invalidRfc": "RFC inválido",
+            "invalidRazonSocial": "Nombre inválido",
+            "maxNumberOfWorkspaces": "Máximo número de empresas alcanzado",
+            "alreadyAMember": "Ya pertenece a la empresa"
+        }
+    },
+    "projects":{
+        "active": "Activos",
+        "activeProjects": "Proyectos activos",
+        "create": "Crea un proyecto",
+        "new": "Nuevo proyecto",
+        "edit": "Editar proyecto",
+        "createDescription": "Para organizar tus tickets y facturas, agrega proyectos.",
+        "notDefined": "Proyecto indefinido",
+        "status": {
+            "ACTIVE": "Activo",
+            "PENDING": "Pendiente",
+            "ARCHIVED": "Archivado"
+        },
+        "statusPlural": {
+            "ACTIVE": "Activos",
+            "PENDING": "Pendientes",
+            "ARCHIVED": "Archivados"
+        },
+        "actions": {
+            "activate": "Activar",
+            "pending": "Pendiente",
+            "archive": "Archivar"
+        },
+        "errors":{
+            "createError": "No se pudo crear proyecto",
+            "notAMember": "No eres miembro de este equipo",
+            "notFound": "Proyecto inexistente",
+            "archivedProject": "Este proyecto ya está archivado",
+            "alreadyMemberWithSameName": "Ya existe un proyecto con ese nombre en tu organización",
+            "alreadyAMember": "Ya pertenece al proyecto",
+            "cannotRemoveMember": "No puedes remover a este usuario"
+        }
+    },
+    "transactions": {
+        "expenseSingular": "Gasto",
+        "incomeSingular": "Ingreso",
+        "expensePlural": "Gastos",
+        "incomePlural": "Ingresos",
+        "categories": "Categorías",
+        "newManual": "Gasto/Ingreso manual",
+        "newManualDescription": "Si no tienes el ticket o CFDi para registrarlo."
+    },
+    "dashboard": {
+        "summary": "Resumen",
+        "summaryTypes": {
+            "WORKSPACE": "Empresas",
+            "SUPPLIER": "Proveedores",
+            "CUSTOMER": "Clientes",
+            "CATEGORY": "Categorías",
+            "YEAR": "Años",
+            "MONTH": "Meses",
+            "WEEK": "Semanas",
+            "USER": "Usuarios",
+            "PROJECT": "Proyectos"
+        }
+    },
+    "tickets": {
+        "uploadTickets": "Subir tickets",
+        "uploadDescription": "Sube fotos de tus tickets y nosotros nos encargamos de la facturación.",
+        "uploadTicketsWithPhone": "Envía por WhatsApp",
+        "uploadTicketsWithPhoneDescription": "Usa nuestro robot para enviar y consultar tickets y facturas",
+        "uploadYourTickets": "Sube tus tickets",
+        "inLessThan24hrs": "En menos de 24 horas recibirás tus comprobantes.",
+        "selectYourRFC": "Selecciona tus RFC",
+        "yourTicketPhotos": "Fotos de tus tickets",
+        "yourTickets": "Tus tickets",
+        "addRFC": "Agrega un RFC",
+        "addTicket": "Agrega otro ticket",
+        "ticketPhoto": "Foto del ticket",
+        "selectTaxId": "RFC",
+        "selectCfdiUse": "Uso de CFDi",
+        "confirm": "Confirmar",
+        "noTicketsNorInvoices": "No hay tickets ni facturas",
+        "ticketScanned": "Ticket escaneado",
+        "whoInvoices": {
+            "0": "Tú facturarás los tickets.",
+            "1": "Nosotros facturaremos los tickets."
+        },
+        "scan": "Escanear",
+        "scanAllPending": "Escanear todos los tickets pendientes",
+        "hasNotBeenScanned": "No se ha escaneado",
+        "upload": {
+            "hint": "Asegúrate de que tus fotos sean legibles y salgan todos los campos del ticket.",
+            "success": "Tickets subidos",
+            "successDescription1": "Se han subido existosamente se facturarán en menos de 48 horas hábiles.",
+            "successDescription2": "Se han subido existosamente.",
+            "ticketsRemaining": "Quedan {0} tickets este mes",
+            "limitReached": "Ya no puedes subir tickets, tu plan incluye {0} tickets por mes"
+        },
+        "pictureInput":{
+            "tap": "Clic aquí para seleleccionar de tu galería",
+            "change": "Cambiar foto",
+            "remove": "Quitar foto",
+            "select": "Selecciona una foto",
+            "selected": "<p>Foto agregada</p>",
+            "fileSize": "El tamaño de la foto excede el límite",
+            "fileType": "Este tipo de archivo no es soportado.",
+            "aspect": "Horizontal/Vertical",
+            "upload": "<h1>Tickets</h1>",
+            "drag": "<p class='text-gray-700 text-base'>Arrastra una foto del <span class='text-base font-bold'>ticket {0}</span></p><p class='text-sm'>o clic aquí para seleccionar</p>",
+            "dragImage": "<p class='text-gray-700 text-base'>Arrastra una foto</p><p class='text-sm'>o clic aquí para seleccionar</p>"
+        },
+        "statusPlural": {
+            "PENDING": "Pendientes",
+            "INVALID": "Inválidos",
+            "INVOICED": "Facturados"
+        },
+        "status": {
+            "PENDING": "Pendiente",
+            "REQUESTED": "Solicitado",
+            "INVOICED": "Facturado",
+            "DUPLICATED": "Repetido",
+            "UNREADABLE": "Ilegible",
+            "EXPIRED": "Vencido",
+            "INVALID": "Inválido"
+        },
+        "uploadErrors": {
+            "type": "Tipo de error",
+            "sameDayOnly": "Solo facturan el día",
+            "expired": "Fuera de tiempo",
+            "pictureIncomplete": "Imagen incompleta",
+            "pictureBlurred": "Imagen borrosa",
+            "duplicated": "Duplicado",
+            "websiteWithoutInvoicing": "Sucursal no cuenta con facturación",
+            "websiteNotWorking": "No funciona su página",
+            "websiteAndPhoneNotFound": "No se encontró página ni teléfono",
+            "websiteNotFoundNotPickingUp": "No se encontró página y no contestan",
+            "other": "Otro",
+            "noXmlNorPdf": "No has agregado XML y PDF"
+        },
+        "possibleValues": {
+            "Website": "Página web",
+            "TaxId": "RFC",
+            "Date": "Fecha",
+            "Total": "Total",
+            "Folio": "Folio",
+            "Id": "ID",
+            "Email": "Correo"
+        },
+        "warnings": {
+            "removingUser": "Ya no podrá subir tickets ni facturas al empresa."
+        },
+        "errors": {
+            "reportError?": "Reportarás al usuario el error.",
+            "canEditOnlyPending": "Solo se pueden editar tickets pendientes",
+            "noTickets": "Sube al menos un ticket",
+            "noXml": "Sube el XML (y PDF opcional)",
+            "cannotBeDeleted": "No se puede eliminar el ticket, ya tiene transactions",
+            "cannotDeleteTransaction": "No se puede eliminar un ticket facturado",
+            "alreadyScanned": "Ya fue escaneado",
+            "existingTransaction": "No se puede definir el error, tiene transacción.",
+            "noErrorDescription": "No definiste el error",
+            "invalidChannel": "Define el canal como fue facturado",
+            "pendingInvoice": "No ha sido facturado",
+            "hasMoreThanOneTransaction": "El ticket tiene más de una transacción",
+            "pendingCfdi": "No tiene CFDi (archivo .xml)",
+            "monthlyTicketsExceded": "Has llegado al límite de tickets, actualiza tu subscripción para poder agregar más",
+            "monthlyTicketsWillExcede": "No puedes subir tantos tickets porque pasarías el límite de tickets mensuales, actualiza tu subscripción para poder agregar más"
+        }
+    },
+    "cfdis": {
+        "uploadCfdis": "Subir CFDis",
+        "uploadDescription": "Arrastra todos tus CFDis de ingresos y gastos para mejores reportes.",
+        "uploadSuccess": "CFDi subido correctamente",
+        "noValidCfdis": "No hay CFDis válidos por subir",
+        "dragXmlAndPdf": "Arrastra el XML y PDF aquí",
+        "dragNewPdf": "Arrastra el nuevo PDF aquí"
+    }
+}

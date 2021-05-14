@@ -1,0 +1,304 @@
+{
+    "shared": {
+        "errors": {
+            "noChanges": "No changes",
+            "onlyOwner": "Ownly owners can perform this operation",
+            "onlyAdmin": "Ownly admins and owners can perform this operation",
+            "onlyMember": "Ownly members, admins or owners can perform this operation"
+        },
+        "buttons": {
+            "filter": "Filter",
+            "applyFilters": "Apply filters",
+            "removeFilters": "Remove filters",
+            "clearSearch": "Clear search",
+            "dragImagesHere": "Drag the images here",
+            "clickHereToAdd": "Click here to add",
+            "orClickHereToAdd": "or click here to add",
+            "viewDetails": "View details",
+            "viewMore": "View more",
+            "viewNMore": "View {0} more",
+            "showDetails": "Show details",
+            "hideDetails": "Hide details"
+        },
+        "selectors": {
+            "notSelected": "-- Not selected --",
+            "status": "Select status"
+        },
+        "validation": {
+            "fieldIsRequired": "This field is required",
+            "textTooSmall": "{0} characters minimum",
+            "textTooBig": "{0} characters maximum"
+        },
+        "colors": {
+            "UNDEFINED": "Undefined",
+            "BLUE_GRAY": "Blue gray",
+            "COOL_GRAY": "Cool gray",
+            "GRAY": "Gray",
+            "TRUE_GRAY": "True gray",
+            "WARM_GRAY": "Warm gray",
+            "RED": "Red",
+            "ORANGE": "Orange",
+            "AMBER": "Amber",
+            "YELLOW": "Yellow",
+            "LIME": "Lime",
+            "GREEN": "Green",
+            "EMERALD": "Emerald",
+            "TEAL": "Teal",
+            "CYAN": "Cyan",
+            "LIGHT_BLUE": "Light blue",
+            "BLUE": "Blue",
+            "INDIGO": "Indigo",
+            "VIOLET": "Violet",
+            "PURPLE": "Purple",
+            "FUCHSIA": "Fuchsia",
+            "PINK": "Pink",
+            "ROSE": "Rose"
+        },
+        "periods": {
+            "ALL": "All",
+            "YEAR": "Year",
+            "MONTH": "Month",
+            "WEEK": "Week",
+            "DAY": "Today",
+            "LAST_YEAR": "Last year",
+            "LAST_MONTH": "Last month",
+            "LAST_WEEK": "Last week",
+            "LAST_DAY": "Yesterday",
+            "LAST_30_DAYS": "Last 30 days",
+            "LAST_7_DAYS": "Last 7 days",
+            "ALL_Description": "",
+            "YEAR_Description": "This year",
+            "MONTH_Description": "This month",
+            "WEEK_Description": "This week",
+            "DAY_Description": "Today",
+            "LAST_YEAR_Description": "Last year",
+            "LAST_MONTH_Description": "Last month",
+            "LAST_WEEK_Description": "Last week",
+            "LAST_DAY_Description": "Yesterday",
+            "LAST_30_DAYS_Description": "In the last 30 days",
+            "LAST_7_DAYS_Description": "In the last 7 days"
+        }
+    },
+    "navbar": {
+        "tenant": "Organization",
+        "profile": "Profile",
+        "logout": "Logout",
+        "settings": "Settings",
+        "signOut": "Sign out",
+        "integrations": "Integrations"
+    },
+    "sidebar": {
+        "app": "App",
+        "manage": "Manage",
+        "catalogs": "Catalogs",
+        "permissions": "Permissions",
+        "integrations": "Integrations"
+    },
+    "tenants": {
+        "members": {
+            "create": "Add member",
+            "edit": "Edit member",
+            "hasNoMembers": "No members"
+        },
+        "errors": {
+            "userNotInTenant": "You don't belong to the current tenant"
+        }
+    },
+    "subscription": {
+        "errors": {
+            "noSubscription": "No active subscription",
+            "limitReachedRfc": "You have reached the workspaces limit",
+            "limitReachedUsers": "You have reached the members limit",
+            "limitReachedTickets": "You have reached the receipts limit"
+        }
+    },
+    "reports": {
+        "title": "Reports",
+        "description": "Analyze your expenses (companies, projects, users...)"
+    },
+    "workspaces": {
+        "select": "Select workspace",
+        "create": "Add a workspace",
+        "edit": "Edit workspace",
+        "createDescription": "If you have more than 1 workspace, add its details.",
+        "none": "You have not added any workspace",
+        "deleteWarning": "WARNING: Once you delete it, you will not be able to see any of its transactions.",
+        "cannotBeWithoutWorkspaces": "There must be at least 1 workspace",
+        "askAdminToAddYou": "Ask an administrator to add you to a workspace.",
+        "errors": {
+            "notFound": "Workspace not found",
+            "notAdded": "You have not added this workspace",
+            "existingRfc": "There's already a workspace with the same name",
+            "invalidRfc": "taxIdInvalid",
+            "invalidRazonSocial": "Invalid name",
+            "maxNumberOfWorkspaces": "Maximum number of workspace reached",
+            "alreadyAMember": "Already belongs to workspace"
+        }
+    },
+    "projects":{
+        "active": "Active",
+        "activeProjects": "Active projects",
+        "create": "Create a project",
+        "new": "New project",
+        "edit": "Edit project",
+        "createDescription": "To organize your receipts and transactions, add projects.",
+        "notDefined": "Undefined project",
+        "status": {
+            "ACTIVE": "Active",
+            "PENDING": "Pending",
+            "ARCHIVED": "Archived"
+        },
+        "statusPlural": {
+            "ACTIVE": "Active",
+            "PENDING": "Pending",
+            "ARCHIVED": "Archived"
+        },
+        "actions": {
+            "activate": "Activate",
+            "pending": "Pending",
+            "archive": "Archive"
+        },
+        "errors":{
+            "createError": "Could not create project",
+            "notAMember": "You are not a member of this team",
+            "notFound": "Existing project",
+            "archivedProject": "This project has been archived",
+            "alreadyMemberWithSameName": "There's already a project with that name in your organisation",
+            "alreadyAMember": "Already a member",
+            "cannotRemoveMember": "You cannot remove this member"
+        }
+    },
+    "transactions": {
+        "expensePlural": "Expenses",
+        "incomePlural": "Income",
+        "categories": "Categories",
+        "newManual": "Expense/Income manual",
+        "newManualDescription": "If you don't have the receipt, register manually."
+    },
+    "dashboard": {
+        "summary": "Summary",
+        "summaryTypes": {
+            "WORKSPACE": "Workspaces",
+            "SUPPLIER": "Suppliers",
+            "CUSTOMER": "Customers",
+            "CATEGORY": "Categories",
+            "YEAR": "Years",
+            "MONTH": "Months",
+            "WEEK": "Weeks",
+            "USER": "Users",
+            "PROJECT": "Projects"
+        }
+    },
+    "tickets": {
+        "uploadTickets": "Upload receipts",
+        "uploadDescription": "Upload receipt photos and we generate the invoices.",
+        "uploadTicketsWithPhone": "Send with WhatsApp",
+        "uploadTicketsWithPhoneDescription": "Use our robot to send receipts and to track your expenses",
+        "uploadYourTickets": "Upload your receipts",
+        "inLessThan24hrs": "In less than 48 hrs you'll receive your invoices.",
+        "selectYourRFC": "Select your RFC",
+        "yourTicketPhotos": "Receipt photos",
+        "yourTickets": "Your receipts",
+        "addRFC": "Add RFC",
+        "addTicket": "Add receipt",
+        "ticketPhoto": "Receipt photo",
+        "selectTaxId": "Select Tax ID",
+        "selectCfdiUse": "CFDi Use",
+        "confirm": "Confirm",
+        "noTicketsNorInvoices": "There are no receipts and transactions",
+        "ticketScanned": "Scanned ticket",
+        "whoInvoices": {
+            "0": "You'll generate the invoices.",
+            "1": "We'll generate the invoices."
+        },
+        "scan": "Scan",
+        "scanAllPending": "Scan all pending receipts",
+        "hasNotBeenScanned": "Has not been scanned",
+        "upload": {
+            "hint": "Make sure your photos are readable.",
+            "success": "Receipts uploaded",
+            "successDescription1": "Receipts uploaded successfully, you will get the invoices in less than 48 hours.",
+            "successDescription2": "Receipts uploaded successfully.",
+            "ticketsRemaining": "{0} receipts remaining",
+            "limitReached": "You can no longer upload receipts, your subscription includes {0} receipts per month"
+        },
+        "pictureInput":{
+            "tap": "Click here to select a photo",
+            "change": "Change photo",
+            "remove": "Remove photo",
+            "select": "Select a photo",
+            "selected": "<p>Photo added</p>",
+            "fileSize": "The file size exceeds the limit",
+            "fileType": "This file type is not supported.",
+            "aspect": "Landscape/Portrait",
+            "upload": "<h1>Receipts</h1>",
+            "drag": "<p class='text-gray-700 text-base'>Drag an image for <span class='text-base font-bold'>receipt {0}</span></p><p class='text-sm'>or click here to select a file</p>",
+            "dragImage": "<p class='text-gray-700 text-base'>Drag a picture</p><p class='text-sm'>or click here to select a file</p>"
+        },
+        "statusPlural": {
+            "PENDING": "Pending",
+            "INVALID": "Invalid",
+            "INVOICED": "Invoiced"
+        },
+        "status": {
+            "PENDING": "Pending",
+            "REQUESTED": "Requested",
+            "INVOICED": "Invoiced",
+            "DUPLICATED": "Duplicated",
+            "UNREADABLE": "Unreadable",
+            "EXPIRED": "Expired",
+            "INVALID": "Invalid"
+        },
+        "uploadErrors": {
+            "type": "Error type",
+            "sameDayOnly": "Only same day",
+            "expired": "Expired date",
+            "pictureIncomplete": "Incomplete image",
+            "pictureBlurred": "Blurred image",
+            "duplicated": "Duplicated",
+            "websiteWithoutInvoicing": "Branch does not provide billing",
+            "websiteNotWorking": "Website not working",
+            "websiteAndPhoneNotFound": "Website and phone not working",
+            "websiteNotFoundNotPickingUp": "Website and they won't answer the phone",
+            "other": "Other",
+            "noXmlNorPdf": "You have not added a valid XML and PDF"
+        },
+        "possibleValues": {
+            "Website": "Website",
+            "TaxId": "Tax ID",
+            "Date": "Date",
+            "Total": "Total",
+            "Folio": "Folio",
+            "Id": "ID",
+            "Email": "Email"
+        },
+        "warnings": {
+            "removingUser": "This user will no longer be able to upload receipts/invoices to this workspace."
+        },
+        "errors":{
+            "reportError?": "You will report the error to the user.",
+            "canEditOnlyPending": "You can only edit pending receipts",
+            "noTickets": "Upload at least 1 receipt",
+            "noXml": "Upload the XML (PDF is optional)",
+            "cannotBeDeleted": "You cannot delete the receipt, it already has transactions",
+            "cannotDeleteTransaction": "You cannot delete an invoiced receipt",
+            "alreadyScanned": "Already scanned",
+            "existingTransaction": "Could not define error, it has an existing transaction.",
+            "noErrorDescription": "You didn't define the error",
+            "invalidChannel": "Define how you generated the invoice",
+            "pendingInvoice": "Has not been invoiced",
+            "hasMoreThanOneTransaction": "Receipt has more than one transaction",
+            "pendingCfdi": "Doesn't have CFDi (.xml file)",
+            "monthlyTicketsExceded": "You have reached the receipts limit, upgrade your subscription to add more",
+            "monthlyTicketsWillExcede": "You cannot add this many receipts, upgrade your subscription to add more"
+        }
+    },
+    "cfdis": {
+        "uploadCfdis": "Upload CFDis",
+        "uploadDescription": "Drag and drop all your CFDis for better reporting.",
+        "uploadSuccess": "CFDi uploaded successfully",
+        "noValidCfdis": "There are no valid CFDis to upload",
+        "dragXmlAndPdf": "Drag the XML and PDF files here",
+        "dragNewPdf": "Drag the new PDF here"
+    }
+}

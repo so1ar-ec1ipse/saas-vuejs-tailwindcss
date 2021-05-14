@@ -1,0 +1,41 @@
+﻿import { AppWorkspaceEntityDto } from "../AppWorkspaceEntityDto";
+
+export interface CfdiDto extends AppWorkspaceEntityDto {
+  version: string;
+  fecha: string;
+  sello: string;
+  noCertificado: string;
+  certificado: string;
+  subTotal: number;
+  moneda: string;
+  total: number;
+  tipoDeComprobante: string;
+  lugarExpedicion: string;
+  emisorRfc: string;
+  emisorNombre: string;
+  emisorRegimenFiscal: string;
+  receptorRfc: string;
+  receptorNombre: string;
+  receptorResidenciaFiscal: string;
+  receptorNumRegIdTrib: string;
+  receptorUsoCfdi: string;
+  serie: string;
+  folio: string;
+  formaPago: string;
+  condicionesDePago: string;
+  descuento: number;
+  tipoCambio: string;
+  metodoPago: string;
+  confirmacion: string;
+  xmlText: string;
+  xml: string;
+  pdf: string;
+  nombreArchivo: string;
+  cfdisRelacionados: any[];
+  conceptos: any[];
+  impuestos: any;
+  complemento: any;
+  addenda: any;
+  tieneXml: boolean;
+  tienePdf: boolean;
+}

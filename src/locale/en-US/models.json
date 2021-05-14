@@ -1,0 +1,159 @@
+{
+  "shared": {
+    "createTheFirst": "Create",
+    "createdAgo": "Created",
+    "createdAt": "Date"
+  },
+  "tenant": {
+    "object": "Tenant",
+    "plural": "Tenants",
+    "name": "Name",
+    "domain": "Domain",
+    "subdomain": "Subdomain",
+    "icon": "Icon",
+    "logo": "Logo",
+    "logoDarkmode": "Darkmode logo",
+    "appTheme": "Theme",
+    "appColor": "Color",
+    "subscription": "Subscription",
+    "subscriptionCustomerId": "Customer",
+    "subscriptionPlanId": "Plan",
+    "member": "member",
+    "members": "members"
+  },
+  "user": {
+    "object": "User",
+    "plural": "Users",
+    "username": "Username",
+    "email": "Email",
+    "type": "Type",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "role": "Role",
+    "loginType": "Login type",
+    "token": "Token",
+    "defaultTenant": "Default tenant",
+    "active": "Active",
+    "inactive": "Inactive",
+    "tenants": "Tenants",
+    "impersonate": "Impersonate"
+  },
+
+  "subscriptionProduct": {
+    "object": "Product",
+    "plural": "Products",
+    "objectDescription": "",
+    "serviceId": "Service ID",
+    "tier": "Tier",
+    "title": "Title",
+    "description": "Description",
+    "badge": "Badge",
+    "active": "Active",
+    "image": "Image",
+    "maxUsers": "Max users",
+    "serviceIdLeaveEmpty": "Leave empty to create a product on your Subscription Provider"
+  },
+  "subscriptionPrice": {
+    "object": "Price",
+    "plural": "Prices",
+    "serviceId": "Service ID",
+    "type": "Type",
+    "billingPeriod": "Billing period",
+    "price": "Price",
+    "currency": "Currency",
+    "trialDays": "Trial days",
+    "active": "Active",
+    "priceBefore": "Price before",
+    "serviceIdLeaveEmpty": "Leave empty to create a price on your Subscription Provider"
+  },
+  "subscriptionFeature": {
+    "object": "Feature",
+    "plural": "Features",
+    "order": "Order",
+    "key": "Name",
+    "value": "Value",
+    "translateInFrontend": "Translate in frontend",
+    "included": "Included"
+  },
+  "resource": {
+    "object": "Resource",
+    "plural": "Resources",
+    "title": "Title",
+    "description": "Description",
+    "type": "Type",
+    "file": "File",
+    "fileString": "File",
+    "tiers": "Product or subscription tiers",
+    "roles": "User roles",
+    "errors": {
+      "invalidFile": "Invalid file"
+    }
+  },
+  "transaction": {
+    "object": "Transaction",
+    "plural": "Transactions",
+    "description": "Description",
+    "quantity": "Quantity",
+    "price": "Price",
+    "amount": "Amount",
+    "date": "Date",
+    "category": "Category",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "taxes": "Taxes",
+    "total": "Total"
+  },
+  "workspace": {
+    "object": "Workspace",
+    "plural": "Workspaces",
+    "name": "Name",
+    "taxId": "Tax ID",
+    "legalName": "Legal name",
+    "cfdiUse": "CFDi Use",
+    "addressStreet": "Street",
+    "addressExterior": "Exterior",
+    "addressInterior": "Interior",
+    "addressNeighborhood": "Neighborhood",
+    "addressCity": "City",
+    "addressZip": "Zip Code",
+    "addressState": "State",
+    "addressCountry": "Country",
+    "default": "Default"
+  },
+  "team": {
+    "object": "Team",
+    "plural": "Teams"
+  },
+  "project": {
+    "object": "Project",
+    "plural": "Projects",
+    "name": "Name",
+    "budget": "Budget",
+    "status": "Status",
+    "color": "Color",
+    "default": "Default"
+  },
+  "ticket": {
+    "object": "Receipt",
+    "plural": "Receipts",
+    "image": "Photo",
+    "description": "Description",
+    "taxId": "Tax ID",
+    "legalName": "Legal name",
+    "cfdiUse": "CFDi Use",
+    "status": "Status"
+  },
+  "cfdi": {
+    "object": "CFDi",
+    "plural": "CFDis",
+    "taxId": "Tax ID",
+    "legalName": "Legal name",
+    "issuerName": "Issuer",
+    "cfdiUse": "CFDi Use",
+    "receiverName": "Receiver"
+  },
+  "invoice": {
+    "object": "Invoice",
+    "plural": "Invoices"
+  }
+}

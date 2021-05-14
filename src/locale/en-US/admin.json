@@ -1,0 +1,19 @@
+{
+    "title": "Admin",
+    "tenants": "Organizations",
+    "users": "Users",
+    "subscription": "Subscription",
+    "switchToApp": "Switch to app",
+    "switchToAdmin": "Open admin portal",
+    "cannotHaveSubscription": "Admin cannot have a subscription",
+    "support": "Admin buttons",
+    "pricing": {
+        "title": "Products",
+        "thesePricesAreFromFiles": "This prices are not in the database, these are loaded from:",
+        "generateFromFiles": "Click here to generate these prices in Database and your Subscription provider",
+        "goToPricingPage": "Go to pricing page"
+    },
+    "resources": {
+        "title": "Resources"
+    }
+}

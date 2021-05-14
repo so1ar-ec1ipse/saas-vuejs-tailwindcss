@@ -1,0 +1,10 @@
+export enum SatRequestStatus {
+  WAITING,
+  AUTHENTICATING,
+  PENDING,
+  REQUESTED,
+  VALIDATED,
+  DOWNLOADED,
+  DECOMPRESSED,
+  INSERTED,
+}

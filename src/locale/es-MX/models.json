@@ -1,0 +1,178 @@
+{
+  "shared": {
+    "createTheFirst": "Crear",
+    "uploadTheFirst": "Sube el primer",
+    "createdAgo": "Creado",
+    "createdAt": "Fecha"
+  },
+  "tenant": {
+    "object": "Organización",
+    "plural": "Organizaciones",
+    "name": "Nombre",
+    "domain": "Dominio",
+    "subdomain": "Subdominio",
+    "icon": "Ícono",
+    "logo": "Logo",
+    "logoDarkmode": "Logo oscuro",
+    "appTheme": "Tema",
+    "appColor": "Color",
+    "subscription": "Subscripción",
+    "subscriptionCustomerId": "Cliente",
+    "subscriptionPlanId": "Plan",
+    "member": "miembro",
+    "members": "miembros"
+  },
+  "user": {
+    "object": "Usuario",
+    "plural": "Usuarios",
+    "username": "Usuario",
+    "email": "Correo",
+    "type": "Tipo",
+    "role": "Rol",
+    "loginType": "Tipo de Login",
+    "token": "Token",
+    "defaultTenant": "Organización predeterminada",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "tenants": "Organizaciones",
+    "impersonate": "Simular",
+    "roles": {
+      "OWNER": "Propietario",
+      "ADMIN": "Administrador",
+      "MEMBER": "Miembro",
+      "GUEST": "Invitado"
+    }
+  },
+  "subscriptionProduct": {
+    "object": "Producto",
+    "plural": "Productos",
+    "serviceId": "ID de Servicio",
+    "tier": "Tier",
+    "title": "Título",
+    "description": "Descripción",
+    "badge": "Leyenda",
+    "active": "Activo",
+    "image": "Imagen",
+    "maxUsers": "Límite de usuarios",
+    "serviceIdLeaveEmpty": "Dejar vacío para generar en tu proveedor de Subscripciones"
+  },
+  "subscriptionPrice": {
+    "object": "Precio",
+    "plural": "Precios",
+    "serviceId": "ID de Servicio",
+    "type": "Tipo",
+    "billingPeriod": "Periodo",
+    "price": "Precio",
+    "currency": "Moneda",
+    "trialDays": "Días de prueba",
+    "active": "Activo",
+    "priceBefore": "Precio anterior",
+    "serviceIdLeaveEmpty": "Dejar vacío para generar en tu proveedor de Subscripciones"
+  },
+  "subscriptionFeature": {
+    "object": "Característica",
+    "plural": "Características",
+    "order": "Orden",
+    "key": "Nombre",
+    "value": "Valor",
+    "translateInFrontend": "Traducir en frontend",
+    "included": "Incluído"
+  },
+  "resource": {
+    "object": "Recurso",
+    "plural": "Recursos",
+    "title": "Título",
+    "description": "Descripción",
+    "type": "Tipo",
+    "file": "Archivo",
+    "fileString": "Archivo",
+    "tiers": "Productos o subscripciones",
+    "roles": "Roles de usuario",
+    "errors": {
+      "invalidFile": "Archivo inválido"
+    }
+  },
+  "workspace": {
+    "object": "Empresa",
+    "plural": "Empresas",
+    "name": "Nombre",
+    "taxId": "RFC",
+    "legalName": "Razón social",
+    "cfdiUse": "Uso de CFDi",
+    "addressStreet": "Calle",
+    "addressExterior": "Exterior",
+    "addressInterior": "Interior",
+    "addressNeighborhood": "Colonia",
+    "addressCity": "Ciudad",
+    "addressZip": "Código Postal",
+    "addressState": "Estado",
+    "addressCountry": "País",
+    "default": "Predeterminado"
+  },
+  "team": {
+    "object": "Equipo",
+    "plural": "Equipos"
+  },
+  "project": {
+    "object": "Proyecto",
+    "plural": "Proyectos",
+    "name": "Nombre",
+    "budget": "Presupuesto",
+    "status": "Estatus",
+    "color": "Color",
+    "default": "Predeterminado"
+  },
+  "transaction": {
+    "object": "Transacción",
+    "plural": "Transacciones",
+    "description": "Descripción",
+    "quantity": "Cantidad",
+    "price": "Precio",
+    "amount": "Importe",
+    "date": "Fecha",
+    "category": "Categoría",
+    "subtotal": "Subtotal",
+    "discount": "Descuento",
+    "taxes": "Impuestos",
+    "total": "Total"
+  },
+  "customer": {
+    "object": "Cliente",
+    "plural": "Clientes"
+  },
+  "supplier": {
+    "object": "Proveedor",
+    "plural": "Proveedores"
+  },
+  "ticket": {
+    "object": "Ticket",
+    "plural": "Tickets",
+    "image": "Foto",
+    "description": "Descripción",
+    "taxId": "RFC",
+    "legalName": "Razón social",
+    "cfdiUse": "Uso de CFDi",
+    "status": "Estatus",
+    "addressStreet": "Calle",
+    "addressExterior": "Exterior",
+    "addressInterior": "Interior",
+    "addressNeighborhood": "Colonia",
+    "addressCity": "Ciudad",
+    "addressZip": "CP",
+    "addressState": "Estado",
+    "addressCountry": "País"
+  },
+  "cfdi": {
+    "object": "CFDi",
+    "plural": "CFDis",
+    "taxId": "RFC",
+    "legalName": "Razón social",
+    "issuerName": "Emisor",
+    "cfdiUse": "Uso de CFDi",
+    "receiverName": "Receptor"
+  },
+  "invoice": {
+    "object": "Factura",
+    "plural": "Facturas"
+  }
+}

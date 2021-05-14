@@ -1,0 +1,53 @@
+{
+  "transaction": {
+    "object": "व्यय",
+    "plural": "Transactions",
+    "description": "विवरण",
+    "quantity": "मात्रा",
+    "price": "कीमत",
+    "amount": "रकम",
+    "date": "तारीख",
+    "category": "वर्ग",
+    "member": "member",
+    "members": "members"
+  },
+  "subscriptionProduct": {
+    "object": "Product",
+    "plural": "Products",
+    "serviceId": "Service ID",
+    "tier": "Tier",
+    "title": "Title",
+    "description": "Description",
+    "badge": "Badge",
+    "active": "Active",
+    "image": "Image",
+    "maxUsers": "Max users",
+    "serviceIdLeaveEmpty": "Leave empty to create a price on your subscription provider"
+  },
+  "subscriptionPrice": {
+    "object": "Price",
+    "plural": "Prices"
+  },
+  "subscriptionFeature": {
+    "object": "Feature",
+    "plural": "Features",
+    "order": "Order",
+    "key": "Name",
+    "value": "Value",
+    "included": "Included"
+  },
+  "resource": {
+    "object": "Resource",
+    "plural": "Resources",
+    "title": "Title",
+    "description": "Description",
+    "type": "Type",
+    "file": "File",
+    "fileString": "File",
+    "tiers": "Product or subscription tiers",
+    "roles": "User roles",
+    "errors": {
+      "invalidFile": "Invalid file"
+    }
+  }
+}
