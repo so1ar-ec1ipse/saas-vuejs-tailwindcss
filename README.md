@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://netcoresaas.com"><img width="800" src="https://demo.netcoresaas.com/img/logo-light.81711512.png" alt="NetcoreSaas" /></a>
+    <a href="https://netcoresaas.com"><img width="800" src="/src/assets/img/cover-dark.png" alt="NetcoreSaas" /></a>
 </p>
 
 <h1><a href="https://vue.netcoresaas.com">Frontend demo</a></h1>
