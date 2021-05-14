@@ -1,0 +1,98 @@
+{
+  "navbar": {
+    "product": "उत्पाद",
+    "pricing": "मूल्य",
+    "contact": "संपर्क करें",
+    "blog": "ब्लॉग",
+    "signIn": "लॉग इन करें",
+    "signUp": "साइन अप करें",
+    "dashboard": "डैशबोर्ड",
+    "existingCustomer": "क्या आपके पास पहले से एक खाता मौजूद है?"
+  },
+  "product": {
+    "pre-headline": "आज साइन अप करें!",
+    "headline1": "Free VueJS frontend",
+    "headline2": "with TypeScript and TailwindCSS",
+    "subheadline": "Use this boilerplate to build your next SaaS app, customize your theme, languages and environment variables for integrations",
+    "getStarted": "Sign up",
+    "learnMore": "और अधिक जानें"
+  },
+  "features": {
+    "multi-theme": "Multi-theme",
+    "multi-theme-desc": "Using the power of TailwindCSS you can customize your own themes or use a default",
+    "multi-language": "Multi-language",
+    "multi-language-desc": "You can launch internationally by adding your language",
+    "saas-based": "SaaS based",
+    "saas-based-desc": "Marketing, app and admin pages as any SaaS application for separation of concerns"
+  },
+  "blog": {
+    "title": "ब्लॉग",
+    "headline": "ghost.io आरएसएस फ़ीड"
+  },
+  "pricing": {
+    "title": "मूल्य निर्धारण",
+    "headline": "हर योजना पर 14 दिन का ट्रायल",
+    "subheadline": "",
+    "startTrial": "{0} -दिन के परीक्षण का प्रारंभ करें",
+    "subscribe": "सदस्यता लें",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade",
+    "buy": "Buy",
+    "pay": "Pay",
+    "payOnce": "Pay once",
+    "updateSubscription": "Update",
+    "recommended": "सिफारिश की",
+    "month": "मासिक",
+    "year": "सालाना",
+    "monthly": "मासिक",
+    "annually": "सालाना",
+    "annuallyDiscount": "2 महीने मुफ्त",
+    "MonthlyShort": "महीना",
+    "YearlyShort": "साल",
+    "once": "एक बार",
+    "noCreditCardRequired": "किसी क्रेडिट कार्ड की आवश्यकता नहीं",
+    "features": {
+      "maxNumberOfUsers": "Up to {0} users",
+      "unlimitedUsers": "Unlimited users",
+      "feature2": "Feature 2",
+      "feature3": "Feature 3",
+      "feature4": "Feature 4",
+      "feature5": "Feature 5"
+    },
+    "badges": {
+      "recommended": "Recommended"
+    }
+  },
+  "contact": {
+    "title": "सेल्स टीम से संपर्क करें",
+    "headline": "हमें एक संदेश छोड़ दो!",
+    "name": "नाम",
+    "firstName": "पहला नाम",
+    "lastName": "अंतिम नाम",
+    "company": "कंपनी",
+    "email": "ईमेल",
+    "message": "संदेश",
+    "send": "भेजे",
+    "sentTitle": "मैसेज भेजा गया",
+    "sentMessage": "हम जल्द ही संपर्क करेंगे",
+    "close": "बंद करे"
+  },
+  "newsletter": {
+    "title": "अभी तक निश्चित नहीं है, लेकिन अधिक जानना चाहते हैं?",
+    "signUp": "अद्यतित रहने के लिए हमारे न्यूज़लेटर के लिए साइन अप करें।",
+    "email": "अपना ईमेल दर्ज करें",
+    "wontSpam": "चिंता न करें, हम स्पैम नहीं करेंगे।",
+    "subscribe": "सदस्यता लें",
+    "subscribedTitle": "सदस्यता ली गई!",
+    "subscribedText": "हमारे न्यूज़लैटर को सब्सक्राइब करने के लिए धन्यवाद",
+    "subscribedClose": "आपका स्वागत है",
+    "errorText": "समाचार पत्र के लिए साइन उप करते समय कोई त्रुटि हुई"
+  },
+  "faq": {
+    "title": "हमेशा पूछे जाने वाले सवाल"
+  },
+  "footer": {
+    "copyright": "2020, सभी अधिकार सुरक्षित।"
+  },
+  "launching": {}
+}
