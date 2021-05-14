@@ -340,8 +340,9 @@
   "policy": {
     "title": "Política de Privacidad"
   },
-  
+  "banner": {
     "largeText": "Obtén el backend en .NET 5 para un sitio",
     "smallText": "Obtén el backend en .NET 5",
     "thisWebsite": "como este"
+  }
 }
