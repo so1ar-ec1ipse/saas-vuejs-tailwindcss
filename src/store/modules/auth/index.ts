@@ -92,13 +92,13 @@ export const auth: Module<AuthState, RootState> = {
       state.token = "";
       localStorage.removeItem("id_token");
       localStorage.clear();
-      if (mixpanel) {
-        try {
-          mixpanel.track("Logout");
-        } catch (ex) {
-          // ignore
-        }
-      }
+      // if (mixpanel) {
+      //   try {
+      //     mixpanel.track("Logout");
+      //   } catch (ex) {
+      //     // ignore
+      //   }
+      // }
       SignalService.closeConnection();
       // store.commit("locale/reset");
       store.commit("account/reset");
