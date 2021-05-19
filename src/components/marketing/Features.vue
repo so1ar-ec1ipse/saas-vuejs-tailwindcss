@@ -240,7 +240,28 @@
 <script>
 import Vue from "vue";
 import VueLazyload from "vue-lazyload";
-Vue.use(VueLazyload);
+
+const img1 = "https://yahooder.sirv.com/netcoresaas/6-clean-dark.jpg";
+const img2 = "https://yahooder.sirv.com/netcoresaas/7-tests.jpg";
+const img3 = "https://yahooder.sirv.com/netcoresaas/3-workspaces.jpg";
+const img4 = "https://yahooder.sirv.com/netcoresaas/Multi-tenant.png";
+const img5 = "https://yahooder.sirv.com/netcoresaas/4-multi-theme.jpg";
+const img6 = "https://yahooder.sirv.com/netcoresaas/5-language.jpg";
+const img7 = "https://yahooder.sirv.com/netcoresaas/8-db.png";
+const img8 = "https://yahooder.sirv.com/netcoresaas/2-dashboard.jpg";
+const img9 = "https://yahooder.sirv.com/netcoresaas/1-pricing.jpg";
+const img10 = "https://yahooder.sirv.com/netcoresaas/9-resources.jpg";
+
+Vue.use(VueLazyload, {
+  // set observer to true
+  observer: true,
+  // optional
+  observerOptions: {
+    rootMargin: "0px",
+    threshold: 0.1
+  }
+});
+
 export default {
   components: {},
   data() {
@@ -249,7 +270,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature1.headline"),
           subheadline: this.$t("marketing.features.feature1.subheadline"),
-          image: "https://i.ibb.co/NS8xMjZ/NETCORESAAS-v1-3-0-4.png",
+          image: img1,
           features: [
             {
               title: this.$t("marketing.features.feature1.feature1"),
@@ -274,7 +295,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature2.headline"),
           subheadline: this.$t("marketing.features.feature2.subheadline"),
-          image: "https://i.ibb.co/WcMPvLw/image.png",
+          image: img2,
           features: [
             {
               title: this.$t("marketing.features.feature2.feature1"),
@@ -299,7 +320,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature3.headline"),
           subheadline: this.$t("marketing.features.feature3.subheadline"),
-          image: "https://i.ibb.co/zZs1G4Z/Member-management.png",
+          image: img3,
           features: [
             {
               title: this.$t("marketing.features.feature3.feature1"),
@@ -324,7 +345,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature4.headline"),
           subheadline: this.$t("marketing.features.feature4.subheadline"),
-          image: "https://i.ibb.co/NnBVLNR/Multi-tenant.png",
+          image: img4,
           features: [
             {
               title: this.$t("marketing.features.feature4.feature1"),
@@ -343,7 +364,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature5.headline"),
           subheadline: this.$t("marketing.features.feature5.subheadline"),
-          image: "https://i.ibb.co/GcdGMV3/Multi-theme.png",
+          image: img5,
           features: [
             {
               title: this.$t("marketing.features.feature5.feature1"),
@@ -362,7 +383,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature6.headline"),
           subheadline: this.$t("marketing.features.feature6.subheadline"),
-          image: "https://i.ibb.co/2NzQV10/Multi-language.png",
+          image: img6,
           features: [
             {
               title: this.$t("marketing.features.feature6.feature1"),
@@ -381,7 +402,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature7.headline"),
           subheadline: this.$t("marketing.features.feature7.subheadline"),
-          image: "https://i.ibb.co/RbzQ2Y9/Multi-db.png",
+          image: img7,
           features: [
             {
               title: this.$t("marketing.features.feature7.feature1"),
@@ -400,7 +421,7 @@ export default {
         {
           headline: this.$t("marketing.features.feature8.headline"),
           subheadline: this.$t("marketing.features.feature8.subheadline"),
-          image: "https://i.ibb.co/cDZn1fj/Resources.png",
+          image: img8,
           features: [
             {
               title: this.$t("marketing.features.feature8.feature1"),
@@ -418,6 +439,56 @@ export default {
               title: this.$t("marketing.features.feature8.feature3"),
               description: this.$t(
                 "marketing.features.feature8.feature3Description"
+              )
+            }
+          ]
+        },
+        {
+          headline: this.$t("marketing.features.feature9.headline"),
+          subheadline: this.$t("marketing.features.feature9.subheadline"),
+          image: img9,
+          features: [
+            {
+              title: this.$t("marketing.features.feature9.feature1"),
+              description: this.$t(
+                "marketing.features.feature9.feature1Description"
+              )
+            },
+            {
+              title: this.$t("marketing.features.feature9.feature2"),
+              description: this.$t(
+                "marketing.features.feature9.feature2Description"
+              )
+            },
+            {
+              title: this.$t("marketing.features.feature9.feature3"),
+              description: this.$t(
+                "marketing.features.feature9.feature3Description"
+              )
+            }
+          ]
+        },
+        {
+          headline: this.$t("marketing.features.feature10.headline"),
+          subheadline: this.$t("marketing.features.feature10.subheadline"),
+          image: img10,
+          features: [
+            {
+              title: this.$t("marketing.features.feature10.feature1"),
+              description: this.$t(
+                "marketing.features.feature10.feature1Description"
+              )
+            },
+            {
+              title: this.$t("marketing.features.feature10.feature2"),
+              description: this.$t(
+                "marketing.features.feature10.feature2Description"
+              )
+            },
+            {
+              title: this.$t("marketing.features.feature10.feature3"),
+              description: this.$t(
+                "marketing.features.feature10.feature3Description"
               )
             }
           ]

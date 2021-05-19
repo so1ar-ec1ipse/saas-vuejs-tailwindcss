@@ -1,4 +1,11 @@
 {
+    "demo": {
+        "login": "Crea una cuenta falsa primero. Tarjeta de prueba Stripe: 4242 4242 4242 4242, CVC 424, CP 42424.",
+        "register": "Las cuentas se eliminan periodicamente. Usa cualquier correo para registrarte, ingresa la tarjeta de prueba Stripe: 4242 4242 4242 4242, CVC 424, CP 42424.",
+        "coupon": "Cupón demo (-50%)",
+        "couponText": "Aplica este cupón de prueba para ver cómo te da un descuento del 50%: test50",
+        "cfdisWarning": "Ten en cuenta que la plantilla NO INCLUYE la implementación de los CFDis (Comprobante fiscal digital), este demo sí lo demuestra. Lo que significa que cuando subas un ticket, no podrás arrastrar un XML y PDF para convertirlo en transacción. Esto debido a que es la funcionalidad core de la página facturaesto.com."
+    },
     "shared": {
         "errors": {
             "noChanges": "No hubo cambios",

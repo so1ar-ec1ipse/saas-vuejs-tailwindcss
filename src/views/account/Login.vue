@@ -31,6 +31,7 @@
           </router-link>
         </p>
       </div>
+      <Warning title="Demo" :text="$t('app.demo.login')" />
       <form class="mt-8 space-y-6" @submit.prevent="login()" method="POST">
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-sm shadow-sm -space-y-px">

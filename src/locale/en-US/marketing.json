@@ -23,14 +23,15 @@
     "generator": "PRODUCT_NAME generator"
   },
   "hero": {
-    "headline1": "Open source frontend",
+    "headline1": "Free frontend",
     "headline2": "for",
     "headline3": "SaaS",
     "headline4": "apps",
     "feature1": "Free",
     "feature2": "Vue 2",
     "feature3": "Tailwind CSS 2",
-    "start": "Start today",
+    "start": "Download frontend",
+    "buy": "Buy backend",
     "startHint": "Start your free trial, no credit card necessary."
   },
   "benefits": {
@@ -138,8 +139,8 @@
       "feature3Description": "Test how your subscription mechanism will work against a real world API"
     },
     "feature3": {
-      "headline": "Multi-organization",
-      "subheadline": "Each user can create its own organizations",
+      "headline": "Multi-organization & multi-workspace",
+      "subheadline": "Each user can create its own organizations (tenants) and each organization has its own workspaces",
       "feature1": "Owner",
       "feature1Description": "The owner of the organization can update general settings",
       "feature2": "Admin",
@@ -182,6 +183,26 @@
       "feature3Description": ""
     },
     "feature8": {
+      "headline": "Dashboard",
+      "subheadline": "A better, data-driven dashboard to enlighten your customers",
+      "feature1": "Summary",
+      "feature1Description": "Count, sum or Average your most important entities (transactions, users, storage usage...)",
+      "feature2": "Quicklinks",
+      "feature2Description": "Give your customers a faster way to do things",
+      "feature3": "Workspaces",
+      "feature3Description": "Change the current workspace to load data related to it"
+    },
+    "feature9": {
+      "headline": "Dynamic pricing",
+      "subheadline": "3 simple steps to generate your Stripe subscriptions/products:",
+      "feature1": "1. Open default-pricing.ts file",
+      "feature1Description": "Modify your plans, currencies, billing periods, titles and more",
+      "feature2": "2. Generate them on DB and Stripe",
+      "feature2Description": "Go to /admin/products and click on 'Generate prices on database and stripe'",
+      "feature3": "3. Create development or production accounts",
+      "feature3Description": "Depending on your Database and Stripe environment variables, test however your app should work"
+    },
+    "feature10": {
       "headline": "And more!",
       "subheadline": "Features based on real world SaaS applications",
       "feature1": "Member managment",

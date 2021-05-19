@@ -1,4 +1,11 @@
 {
+    "demo": {
+        "login": "Create a fake account first. Stripe test card: 4242 4242 4242 4242, Code 424, Zip 42424.",
+        "register": "Accounts are deleted periodically. Feel free to use any email to register, enter a Stripe test card: 4242 4242 4242 4242, Code 424, Zip 42424.",
+        "coupon": "Demo coupon (-50%)",
+        "couponText": "Apply this test coupon to see how it gives you 50% discount, only 100 available: test50",
+        "cfdisWarning": "Keep in mind that the codebase DOES NOT INCLUDE CFDis implementation (Mexico digital invoices). Which means when you upload a receipt, you cannot drag an XML and PDF file to convert it to a transaction. This is because this is the core functionality of this website facturaesto.com. If you need it, you need to implement it yourself."
+    },
     "shared": {
         "errors": {
             "noChanges": "No changes",

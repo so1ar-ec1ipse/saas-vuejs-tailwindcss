@@ -144,19 +144,21 @@
         <div
           class="flex w-full space-x-2 max-w-3xl mx-auto mb-4 justify-center"
         >
-          <router-link
-            :to="{ name: 'contact' }"
+          <a
+            href="https://netcoresaas.com/pricing"
+            target="_blank"
             class="bg-white hover:bg-gray-50 inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-theme-600 transition duration-200 rounded-sm shadow-md focus:shadow-outline focus:outline-none"
           >
-            {{ $t("marketing.contact.title") }}
-          </router-link>
+            {{ $t("marketing.hero.buy") }}
+          </a>
 
-          <router-link
-            :to="{ name: 'prices' }"
+          <a
+            href="https://github.com/netcoresaas/saas-vuejs-tailwindcss"
+            target="_blank"
             class="bg-gray-800 hover:bg-gray-700 focus:bg-gray-900 inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-sm shadow-md focus:shadow-outline focus:outline-none"
           >
             {{ $t("marketing.hero.start") }}
-          </router-link>
+          </a>
         </div>
         <p
           v-if="true"

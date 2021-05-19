@@ -3,12 +3,15 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   prefix: '',
-  purge: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: {
+    enabled: true,
+    content: ['./src/**/*.{vue,js,ts,jsx,tsx,html}']
+  },
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
       textColor: {
         marketing: "var(--color-text-marketing)",
@@ -17,6 +20,8 @@ module.exports = {
         tertiary: "var(--color-text-tertiary)",
         focus: "var(--color-text-focus)",
         inverse: "var(--color-text-inverse)",
+        darker: "var(--color-bg-darker)",
+        lighter: "var(--color-bg-lighter)",
         "theme-50": "var(--color-text-theme-50)",
         "theme-100": "var(--color-text-theme-100)",
         "theme-200": "var(--color-text-theme-200)",
@@ -55,6 +60,8 @@ module.exports = {
         tertiary: "var(--color-bg-tertiary)",
         focus: "var(--color-bg-focus)",
         inverse: "var(--color-bg-inverse)",
+        darker: "var(--color-bg-darker)",
+        lighter: "var(--color-bg-lighter)",
         "theme-50": "var(--color-bg-theme-50)",
         "theme-100": "var(--color-bg-theme-100)",
         "theme-200": "var(--color-bg-theme-200)",
@@ -124,13 +131,14 @@ module.exports = {
       textColor: ["dark"],
       borderColor: ["dark"]
     },
-    scale: ['responsive', 'hover', 'focus', 'group-hover'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+    scale: ['responsive', 'hover', 'focus', 'group-hover', 'active'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'active'],
+    opacity: ['responsive', 'hover', 'focus', 'group-hover', 'active'],
   },
-  plugins: [
+   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio')
-  ]
+    ]
 };

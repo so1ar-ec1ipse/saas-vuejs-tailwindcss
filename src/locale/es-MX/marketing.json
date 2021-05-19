@@ -22,14 +22,15 @@
     "learnMore": "Ver más"
   },
   "hero": {
-    "headline1": "Frontend open source,",
-    "headline2": "la plantilla para",
+    "headline1": "Frontend gratis",
+    "headline2": "para tu",
     "headline3": "SaaS",
     "headline4": "",
     "feature1": "Gratis",
     "feature2": "Vue 2",
     "feature3": "Tailwind CSS 2",
-    "start": "Comenzar",
+    "start": "Descargar frontend",
+    "buy": "Comprar backend",
     "startHint": "Comienza tu prueba gratis, no se necesita tarjeta de crédito."
   },
   "benefits": {
@@ -121,8 +122,8 @@
       "feature3Description": "Prueba cómo tu mecanismo de subscripciones funcionará con una API del mundo real"
     },
     "feature3": {
-      "headline": "Multi-organización",
-      "subheadline": "Cada usuario puede crear su propia organización",
+      "headline": "Multi-organización y espacios de trabajo",
+      "subheadline": "Cada usuario puede crear su propia organización (tus clientes) y cada organización tiene sus espacios de trabajo",
       "feature1": "Propietario",
       "feature1Description": "El dueño o propietario puede actualizar ajustes generales",
       "feature2": "Administrador",
@@ -165,6 +166,26 @@
       "feature3Description": ""
     },
     "feature8": {
+      "headline": "Panel (dashboard)",
+      "subheadline": "A better, data-driven dashboard to enlighten your customers",
+      "feature1": "Resumen",
+      "feature1Description": "Count, sum or Average your most important entities (transactions, users, storage usage...)",
+      "feature2": "Links rápidos",
+      "feature2Description": "Give your customers a faster way to do things",
+      "feature3": "Espacios de trabajo",
+      "feature3Description": "Change the current workspace to load data related to it"
+    },
+    "feature9": {
+      "headline": "Precios dinámicos",
+      "subheadline": "3 pasos simples para generar tus suscripciones/productos:",
+      "feature1": "1. Abre el archivo default-pricing.ts",
+      "feature1Description": "Modify your plans, currencies, billing periods, titles and more",
+      "feature2": "2. Generalos en tu BD y Stripe",
+      "feature2Description": "Go to /admin/products and click on 'Generate prices on database and stripe'",
+      "feature3": "3. Crea cuentas de desarrollo o producción",
+      "feature3Description": "Depending on your Database and Stripe environment variables, test however your app should work"
+    },
+    "feature10": {
       "headline": "¡Y más!",
       "subheadline": "Características basadas en aplicaciones SaaS del mundo real",
       "feature1": "Administración de usuarios",
