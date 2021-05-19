@@ -50,22 +50,22 @@ export const auth: Module<AuthState, RootState> = {
             tenant: payload.user.currentTenant,
           });
         }
-        if (mixpanel) {
-          try {
-            mixpanel.identify(payload.user.id);
-            if (mixpanel.people) {
-              mixpanel.people.set({
-                USER_ID: payload.user.id,
-                $email: payload.user.email,
-                "First name": payload.user.firstName,
-                "Last name": payload.user.lastName,
-              });
-            }
-            mixpanel.track("Login");
-          } catch (ex) {
-            // ignore
-          }
-        }
+        // if (mixpanel) {
+        //   try {
+        //     mixpanel.identify(payload.user.id);
+        //     if (mixpanel.people) {
+        //       mixpanel.people.set({
+        //         USER_ID: payload.user.id,
+        //         $email: payload.user.email,
+        //         "First name": payload.user.firstName,
+        //         "Last name": payload.user.lastName,
+        //       });
+        //     }
+        //     mixpanel.track("Login");
+        //   } catch (ex) {
+        //     // ignore
+        //   }
+        // }
         // if (LogRocket) {
         //   LogRocket.identify(payload.user.email, {
         //     username: payload.user.username,
