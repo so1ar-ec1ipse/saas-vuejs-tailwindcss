@@ -3,7 +3,7 @@ import router from "@/router";
 import { Module } from "vuex";
 import { AuthState, RootState } from "@/types/stateTypes";
 import { SignalService } from "@/plugins/SignalR";
-import mixpanel from "mixpanel-browser";
+// import mixpanel from "mixpanel-browser";
 // import LogRocket from "logrocket";
 import { UserDto } from "@/application/dtos/master/users/UserDto";
 import { UserLoggedResponse } from "@/application/contracts/master/users/UserLoggedResponse";
@@ -21,7 +21,7 @@ export const auth: Module<AuthState, RootState> = {
     logout({ commit, rootState }, payload) {
       commit("logout");
       localStorage.clear();
-      router.push({name: "account.login"});
+      router.push({ name: "account.login" });
     },
   },
   mutations: {
@@ -82,9 +82,9 @@ export const auth: Module<AuthState, RootState> = {
         // ignore
       }
       if ((payload.user as UserDto).type === UserType.ADMIN) {
-        router.push({name: "admin"});
+        router.push({ name: "admin" });
       } else {
-        router.push({name: "app.dashboard"});
+        router.push({ name: "app.dashboard" });
       }
     },
     logout: (state: AuthState) => {

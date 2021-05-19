@@ -175,7 +175,6 @@
 <script lang="ts">
 import Component from "vue-class-component";
 import BaseComponent from "../../../components/shared/BaseComponent.vue";
-import Charts from "@/views/app/integrations/Charts.vue";
 import { mapGetters } from "vuex";
 import ProgressBar from "@/components/shared/progress/ProgressBar.vue";
 import { PeriodRequest } from "@/application/contracts/app/shared/PeriodRequest";
@@ -190,7 +189,6 @@ import { Watch } from "vue-property-decorator";
 
 @Component({
   components: {
-    Charts,
     ProgressBar,
     Loader,
     GeneralSummary,

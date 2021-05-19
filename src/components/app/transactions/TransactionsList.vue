@@ -9,12 +9,11 @@
 
       <div class="-mx-8">
         <Warning
-        class="mx-4 -mt-0.5"
-            v-if="!anyWorkspaces"
-            :text="$t('app.workspaces.askAdminToAddYou')"
-          />
+          class="mx-4 -mt-0.5"
+          v-if="!anyWorkspaces"
+          :text="$t('app.workspaces.askAdminToAddYou')"
+        />
         <div class="mx-4 flex items-center lg:space-y-0">
-          
           <div class="flex-1">
             <h1 class="flex-1 text-lg font-medium flex items-center">
               <span v-if="onlyTickets">{{ $t("models.ticket.plural") }}</span>
@@ -383,7 +382,9 @@
                               selectedStatusName
                             }}</span>
                             <span v-else>{{
-                              $t("models.invoice.plural").toString().toLowerCase()
+                              $t("models.invoice.plural")
+                                .toString()
+                                .toLowerCase()
                             }}</span>
                           </p>
                           <button
@@ -401,7 +402,9 @@
                               selectedStatusName
                             }}</span>
                             <span v-else>{{
-                              $t("models.invoice.plural").toString().toLowerCase()
+                              $t("models.invoice.plural")
+                                .toString()
+                                .toLowerCase()
                             }}</span>
                           </p>
                           <button
@@ -418,7 +421,9 @@
                             selectedStatusName
                           }}</span>
                           <span v-else>{{
-                            $t("models.transaction.plural").toString().toLowerCase()
+                            $t("models.transaction.plural")
+                              .toString()
+                              .toLowerCase()
                           }}</span>
                         </div>
                       </div>
@@ -442,108 +447,6 @@
                             (${{ totalItems | intFormat }})
                           </div>
                         </div>
-                      </div>
-                      <div v-if="false">
-                        <t-pagination
-                          v-if="false"
-                          class="mx-0 w-1/3"
-                          :total-items="queryResult.totalItems"
-                          :per-page="request.pageSize"
-                          :limit="5"
-                          :disabled="loading"
-                          v-model="queryResult.currentPage"
-                          @input="changedPage"
-                          :value="queryResult.currentPage"
-                        />
-                      </div>
-                      <div v-if="false">
-                        <nav
-                          class="relative z-0 inline-flex shadow-sm -space-x-px"
-                          aria-label="Pagination"
-                        >
-                          <button
-                            type="button"
-                            @click="addPage(-1)"
-                            class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                          >
-                            <span class="sr-only">{{
-                              $t("shared.previous")
-                            }}</span>
-                            <svg
-                              class="h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </button>
-                          <div
-                            v-for="(page, idx) in queryResult.totalPages"
-                            :key="'pre-' + idx"
-                          >
-                            <button
-                              v-if="page <= 2"
-                              type="button"
-                              @click="goToPage(page)"
-                              class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-                            >
-                              {{ page }}
-                            </button>
-                          </div>
-                          <span
-                            v-if="queryResult.totalPages > 4"
-                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"
-                          >
-                            ...
-                          </span>
-                          <div
-                            v-for="page in queryResult.totalPages"
-                            :key="'pos-' + page"
-                          >
-                            <button
-                              v-if="
-                                page > 2 && page >= queryResult.totalPages - 2
-                              "
-                              type="button"
-                              @click="goToPage(page)"
-                              class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-                            >
-                              {{ page }}
-                            </button>
-                          </div>
-                          <button
-                            :disabled="!nextPageEnabled"
-                            type="button"
-                            @click="addPage(1)"
-                            class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500"
-                            :class="{
-                              'bg-gray-100 cursor-not-allowed': !nextPageEnabled,
-                              'hover:bg-gray-50': !nextPageEnabled
-                            }"
-                          >
-                            <span class="sr-only">{{ $t("shared.next") }}</span>
-                            <!-- Heroicon name: chevron-right -->
-                            <svg
-                              class="h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              aria-hidden="true"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </button>
-                        </nav>
                       </div>
                     </div>
                   </div>

@@ -11,9 +11,9 @@ Vue.use(VueAnalytics, {
 
 // Mixpanel
 
-const mixpanel = require("mixpanel-browser");
-mixpanel.init(process.env.VUE_APP_INTEGRATIONS_ANALYTICS_MIXPANEL);
-Vue.use(mixpanel);
+// const mixpanel = require("mixpanel-browser");
+// mixpanel.init(process.env.VUE_APP_INTEGRATIONS_ANALYTICS_MIXPANEL);
+// Vue.use(mixpanel);
 
 // Hotjar
 // import Hotjar from "vue-hotjar";

@@ -1,6 +1,4 @@
-// import { appPermissionsRoutes } from "./appPermissionsRoutes";
 import { appSettingsRoutes } from "./appSettingsRoutes";
-// import { appIntegrationsRoutes } from "./appIntegrationsRoutes";
 import { i18n } from "@/plugins/vue-i18n";
 import { defaultProducts } from "@/store/modules/pricing/default-pricing";
 import { TenantUserRole } from "@/application/enums/master/tenants/TenantUserRole";
@@ -182,7 +180,8 @@ export const appRoutes = {
           name: "app.workspaces.new",
           path: "new",
           alias: "nueva",
-          component: require("@/views/app/workspaces/WorkspacesForm.vue").default,
+          component: require("@/views/app/workspaces/WorkspacesForm.vue")
+            .default,
           meta: {
             roles: [TenantUserRole.OWNER, TenantUserRole.ADMIN],
           },
@@ -191,7 +190,8 @@ export const appRoutes = {
           name: "app.workspaces.edit",
           path: "edit/:id",
           alias: "editar/:id",
-          component: require("@/views/app/workspaces/WorkspacesForm.vue").default,
+          component: require("@/views/app/workspaces/WorkspacesForm.vue")
+            .default,
           meta: {
             roles: [TenantUserRole.OWNER, TenantUserRole.ADMIN],
           },

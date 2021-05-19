@@ -1,6 +1,6 @@
 import { SideBarItem } from "./SidebarItem";
-import {i18n} from "@/plugins/vue-i18n";
-import {UserType} from "@/application/enums/master/users/UserType";
+import { i18n } from "@/plugins/vue-i18n";
+import { UserType } from "@/application/enums/master/users/UserType";
 
 export const AdminSidebar: SideBarItem[] = [
   {
@@ -9,45 +9,45 @@ export const AdminSidebar: SideBarItem[] = [
       {
         title: i18n.t("models.ticket.plural"),
         pathName: "admin.tickets",
-        icon: "receipt",
-        items: []
+        // icon: "receipt",
+        items: [],
       },
       {
         title: i18n.t("models.invoice.plural"),
         pathName: "admin.invoices",
-        icon: "file-invoice-dollar",
-        items: []
+        // icon: "file-invoice-dollar",
+        items: [],
       },
       {
         title: i18n.t("admin.support"),
         pathName: "admin.support",
-        icon: "toolbox",
-        items: []
+        // icon: "toolbox",
+        items: [],
       },
       {
         title: i18n.t("admin.tenants"),
         pathName: "admin.tenants",
-        icon: "users",
-        items: []
+        // icon: "users",
+        items: [],
       },
       {
         title: i18n.t("admin.users"),
         pathName: "admin.users",
-        icon: "user",
-        items: []
+        // icon: "user",
+        items: [],
       },
       {
         title: i18n.t("admin.pricing.title"),
         pathName: "admin.pricing",
-        icon: "tags",
-        items: []
+        // icon: "tags",
+        items: [],
       },
       {
         title: i18n.t("admin.switchToApp"),
         pathName: "app",
-        icon: "external-link-alt",
+        // icon: "external-link-alt",
         userTypes: [UserType.ADMIN],
-        items: []
+        items: [],
       },
     ],
   },

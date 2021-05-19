@@ -1,7 +1,7 @@
 import { i18n } from "../../plugins/vue-i18n";
 import { SideBarItem } from "./SidebarItem";
-import {TenantUserRole} from "@/application/enums/master/tenants/TenantUserRole";
-import {UserType} from "@/application/enums/master/users/UserType";
+import { TenantUserRole } from "@/application/enums/master/tenants/TenantUserRole";
+import { UserType } from "@/application/enums/master/users/UserType";
 
 export const AppSidebar: SideBarItem[] = [
   {
@@ -10,34 +10,38 @@ export const AppSidebar: SideBarItem[] = [
       {
         title: i18n.t("shared.dashboard"),
         pathName: "app.dashboard",
-        icon: "chart-line",
+        // icon: "chart-line",
         items: [],
       },
       {
         title: i18n.t("models.ticket.plural"),
         pathName: "app.tickets",
-        icon: "receipt",
+        // icon: "receipt",
         items: [],
       },
       {
         title: i18n.t("models.invoice.plural"),
         pathName: "app.invoices",
-        icon: "file-invoice-dollar",
+        // icon: "file-invoice-dollar",
         items: [],
       },
       {
         title: i18n.t("models.project.plural"),
         pathName: "app.projects",
-        icon: "clipboard-list",
-        userRoles: [TenantUserRole.OWNER, TenantUserRole.ADMIN, TenantUserRole.MEMBER],
+        // icon: "clipboard-list",
+        userRoles: [
+          TenantUserRole.OWNER,
+          TenantUserRole.ADMIN,
+          TenantUserRole.MEMBER,
+        ],
         items: [],
       },
       {
         title: i18n.t("app.reports.title"),
         pathName: "app.reports",
-        icon: "chart-pie",
+        // icon: "chart-pie",
         items: [],
-      }
+      },
     ],
   },
   {
@@ -86,7 +90,7 @@ export const AppSidebar: SideBarItem[] = [
       {
         title: i18n.t("admin.switchToAdmin"),
         pathName: "admin",
-        icon: "user-shield",
+        // icon: "user-shield",
         userTypes: [UserType.ADMIN],
         items: [],
       },

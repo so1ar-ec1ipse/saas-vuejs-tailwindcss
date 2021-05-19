@@ -308,8 +308,6 @@
                         class="col-span-2 sm:col-span-1 w-full"
                         v-on:updated="workspacesCount"
                         v-on:reloaded="reloaded"
-                        chartType="pie"
-                        :chartValueType="1"
                       ></summary-count-total>
                     </div>
                   </div>
@@ -340,8 +338,6 @@
                         class="col-span-2 sm:col-span-1 w-full"
                         v-on:reloaded="reloaded"
                         v-on:updated="projectsCount"
-                        chartType="pie"
-                        :chartValueType="1"
                       ></summary-count-total>
                     </div>
                   </div>
@@ -371,8 +367,6 @@
                       class="col-span-2 sm:col-span-1 w-full"
                       v-on:reloaded="reloaded"
                       v-on:updated="suppliersCount"
-                      chartType="none"
-                      :chartValueType="1"
                     ></summary-count-total>
                   </div>
                 </div>
@@ -402,8 +396,6 @@
                         class="col-span-2 sm:col-span-1 w-full"
                         v-on:reloaded="reloaded"
                         v-on:updated="customersCount"
-                        chartType="pie"
-                        :chartValueType="1"
                       ></summary-count-total>
                     </div>
                   </div>
@@ -434,8 +426,6 @@
                         class="col-span-2 sm:col-span-1 w-full"
                         v-on:reloaded="reloaded"
                         v-on:updated="categoriesCount"
-                        chartType="pie"
-                        :chartValueType="0"
                       ></summary-count-total>
                     </div>
                   </div>
@@ -466,7 +456,6 @@
                     class="col-span-2 sm:col-span-1 w-full"
                     v-on:reloaded="reloaded"
                     v-on:updated="usersCount"
-                    chartType="bar"
                   ></summary-count-total>
                 </div>
               </div>
@@ -487,7 +476,6 @@
                   class="col-span-2 sm:col-span-1 w-full"
                   v-on:reloaded="reloaded"
                   v-on:updated="yearsCount"
-                  chartType="line"
                 ></summary-count-total>
               </div>
             </div>
@@ -507,7 +495,6 @@
                   class="col-span-2 sm:col-span-1 w-full"
                   v-on:reloaded="reloaded"
                   v-on:updated="monthsCount"
-                  chartType="line"
                 ></summary-count-total>
               </div>
             </div>
@@ -527,7 +514,6 @@
                   class="col-span-2 sm:col-span-1 w-full"
                   v-on:reloaded="reloaded"
                   v-on:updated="weeksCount"
-                  chartType="line"
                 ></summary-count-total>
               </div>
             </div>

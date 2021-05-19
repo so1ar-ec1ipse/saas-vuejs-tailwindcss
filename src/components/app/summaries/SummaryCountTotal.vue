@@ -249,31 +249,6 @@
               </li>
             </ul>
           </div>
-          <div
-            v-if="false"
-            class="w-full items-center justify-center h-auto border-2 border-gray-400 border-dashed py-12 inline-flex"
-          >
-            <bar-chart
-              v-if="chartType === 'bar'"
-              :chart-data="barChartInfo"
-              :options="chartOptions"
-            ></bar-chart>
-            <line-chart
-              v-if="chartType === 'line'"
-              :chart-data="barChartInfo"
-              :options="chartOptions"
-            ></line-chart>
-            <doughnut-chart
-              v-if="chartType === 'doughnut'"
-              :chart-data="barChartInfo"
-              :options="chartOptions"
-            ></doughnut-chart>
-            <pie-chart
-              v-if="chartType === 'pie'"
-              :chart-data="barChartInfo"
-              :options="chartOptions"
-            ></pie-chart>
-          </div>
         </div>
       </div>
     </div>
@@ -301,10 +276,6 @@ import BadgeExpense from "../../../components/app/badges/BadgeExpense.vue";
 import BadgeIncome from "../../../components/app/badges/BadgeIncome.vue";
 import BadgeTicket from "../../../components/app/badges/BadgeTicket.vue";
 import { TransactionType } from "@/application/enums/app/transactions/TransactionType";
-import BarChart from "@/plugins/charts/BarChart";
-import LineChart from "@/plugins/charts/LineChart";
-import DoughnutChart from "@/plugins/charts/DoughnutChart";
-import PieChart from "@/plugins/charts/PieChart";
 import PeriodSelect from "@/components/shared/selectors/PeriodSelect.vue";
 import ErrorModalComponent from "@/components/shared/modals/NewErrorModal.vue";
 import { SummaryCountTotalType } from "@/application/enums/app/transactions/SummaryCountTotalType";
@@ -323,10 +294,6 @@ const numeral = require("numeral");
     BadgeExpense,
     BadgeIncome,
     BadgeTicket,
-    BarChart,
-    LineChart,
-    DoughnutChart,
-    PieChart,
     PeriodSelect
   }
 })
@@ -335,8 +302,6 @@ export default class SummaryCountTotalComponent extends BaseComponent {
   @Prop({ default: -1 }) tipo!: SummaryCountTotalType;
   @Prop({ default: true }) allowFilter!: boolean;
   @Prop({ default: true }) allowSearch!: boolean;
-  @Prop({ default: "bar" }) chartType!: string;
-  @Prop({ default: 0 }) chartValueType!: number;
   @Prop({ default: 0 }) initialPeriod!: Period;
   $refs!: {
     uploadTicketsModal: Modal;
@@ -467,85 +432,6 @@ export default class SummaryCountTotalComponent extends BaseComponent {
           (f.description &&
             f.description.toLowerCase().includes(this.searchText.toLowerCase()))
       );
-    }
-  }
-  get chartOptions() {
-    return {
-      // tooltips: {
-      //   callbacks: {
-      //     label: (tooltipItem, data) => {
-      //       return tooltipItem.yLabel
-      //         .toFixed(2)
-      //         .replace(/\d(?=(\d{3})+\.)/g, "$&,");
-      //     },
-      //   },
-      // },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              callback: value => {
-                if (this.chartType !== "pie") {
-                  return "$" + numeral(value).format("0,0");
-                }
-                return "";
-              }
-            }
-          }
-        ]
-      },
-      legend: {
-        display: this.filteredItems.length <= 10,
-        labels: {
-          // fontColor: 'rgb(255, 99, 132)'
-        }
-      }
-    };
-  }
-  get barChartInfo() {
-    const dataSets: any[] = [];
-    if (this.chartValueType === 1) {
-      this.filteredItems.forEach(element => {
-        dataSets.push({
-          label: element.name,
-          backgroundColor: ["#3B82F6", "#F87171"],
-          data: [element.incomeTotal, element.expenseTotal]
-        });
-        // dataSets.push({
-        //   label: "Egresos",
-        //   backgroundColor: "#F87171",
-        //   data: [element.expenseTotal],
-        // });
-        // dataSets.push({
-        //   label: "Egresos",
-        //   backgroundColor: "#F87171",
-        //   data: [element.expenseTotal],
-        // });
-      });
-      return {
-        labels: ["Ingresos", "Egresos"],
-        datasets: dataSets
-      };
-    } else {
-      this.filteredItems.forEach(element => {
-        if (dataSets.length <= 10) {
-          dataSets.push({
-            label: "Ingresos",
-            backgroundColor: "#3B82F6",
-            data: [element.incomeTotal]
-          });
-          dataSets.push({
-            label: "Egresos",
-            backgroundColor: "#F87171",
-            data: [element.expenseTotal]
-          });
-        }
-      });
-      return {
-        labels: this.filteredItems.map(f => f.name),
-        datasets: dataSets
-      };
     }
   }
   // deleted(data: SupplierBranchDto) {
