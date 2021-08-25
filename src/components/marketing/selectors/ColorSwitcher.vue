@@ -41,7 +41,7 @@ export default class ColorSwitcherComponent extends Vue {
     "emerald",
     "teal",
     "cyan",
-    "lightBlue",
+    "sky",
     "blue",
     "indigo",
     "violet",

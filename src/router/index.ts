@@ -30,9 +30,9 @@ function hasQueryParams(route) {
 }
 
 router.beforeEach((to, from, next) => {
-  if (!to.path.includes('app') && !to.path.includes('admin')) {
+  if (!to.path.includes("app") && !to.path.includes("admin")) {
     setTimeout(() => {
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     }, 100);
   }
   if (to.path === "/") {
@@ -65,16 +65,13 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  const userTypesAllowed = to.meta.userTypes as UserType[];
-  if (
-    to.matched.some((record) => record.meta && record.meta.userTypes) &&
-    userTypesAllowed
-  ) {
+  const userTypesAllowed = to?.meta?.userTypes as UserType[];
+  if (to.matched.some((record) => record.meta && record.meta.userTypes) && userTypesAllowed) {
     const currentType = store.state.account.user?.type as UserType;
     // if (debug) {
-      // console.log("WILL CHECK USER TYPES");
-      // console.log("USER TYPES ALLOWED:" + JSON.stringify(userTypesAllowed));
-      // console.log("CURRENT USER TYPE:" + JSON.stringify(currentType));
+    // console.log("WILL CHECK USER TYPES");
+    // console.log("USER TYPES ALLOWED:" + JSON.stringify(userTypesAllowed));
+    // console.log("CURRENT USER TYPE:" + JSON.stringify(currentType));
     // }
     if (userTypesAllowed.some((f) => f === currentType) === false) {
       console.log("unauthorized");
@@ -85,17 +82,13 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  const rolesAllowed = to.meta.roles as TenantUserRole[];
-  if (
-    to.matched.some((record) => record.meta && record.meta.roles) &&
-    rolesAllowed
-  ) {
-    const currentRole = store.state.tenant.current?.currentUser
-      .role as TenantUserRole;
+  const rolesAllowed = to?.meta?.roles as TenantUserRole[];
+  if (to.matched.some((record) => record.meta && record.meta.roles) && rolesAllowed) {
+    const currentRole = store.state.tenant.current?.currentUser.role as TenantUserRole;
     // if (debug) {
-      // console.log("WILL CHECK ROLE PERMISSIONS");
-      // console.log("ROLES ALLOWED:" + JSON.stringify(rolesAllowed));
-      // console.log("CURRENT ROLE:" + JSON.stringify(currentRole));
+    // console.log("WILL CHECK ROLE PERMISSIONS");
+    // console.log("ROLES ALLOWED:" + JSON.stringify(rolesAllowed));
+    // console.log("CURRENT ROLE:" + JSON.stringify(currentRole));
     // }
     if (rolesAllowed.some((f) => f === currentRole) === false) {
       // console.log("unauthorized");
@@ -106,14 +99,9 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  const productsAllowed = to.meta.subscriptions as SubscriptionProductDto[];
-  if (
-    to.matched.some((record) => record.meta && record.meta.subscriptions) &&
-    productsAllowed
-  ) {
-    const currentProduct = store.state.tenant.subscription?.activeProduct as
-      | TenantProductDto
-      | undefined;
+  const productsAllowed = to?.meta?.subscriptions as SubscriptionProductDto[];
+  if (to.matched.some((record) => record.meta && record.meta.subscriptions) && productsAllowed) {
+    const currentProduct = store.state.tenant.subscription?.activeProduct as TenantProductDto | undefined;
     // if (debug) {
     //   console.log("WILL CHECK SUBSCRIPTION PERMISSIONS");
     //   console.log(
@@ -130,12 +118,7 @@ router.beforeEach((to, from, next) => {
     //       )
     //   );
     // }
-    if (
-      !currentProduct ||
-      productsAllowed.some(
-        (f) => f.tier === currentProduct.subscriptionProduct.tier
-      ) === false
-    ) {
+    if (!currentProduct || productsAllowed.some((f) => f.tier === currentProduct.subscriptionProduct.tier) === false) {
       // if (debug) {
       //   console.log("unauthorized");
       // }

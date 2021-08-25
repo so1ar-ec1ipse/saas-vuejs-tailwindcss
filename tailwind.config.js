@@ -117,8 +117,7 @@ module.exports = {
         lime: colors.lime,
         emerald: colors.emerald,
         cyan: colors.cyan,
-        lightBlue: colors.lightBlue,
-          'light-blue': colors.lightBlue,
+        sky: colors.sky,
         violet: colors.violet,
         fuchsia: colors.fuchsia,
         rose: colors.rose

@@ -49,7 +49,7 @@ export function getProjectColor(itemColor, textWeight = 50, backgroundWeight = 3
       color = "cyan";
       break;
     case 15:
-      color = "lightBlue";
+      color = "sky";
       break;
     case 16:
       color = "blue";
@@ -70,7 +70,7 @@ export function getProjectColor(itemColor, textWeight = 50, backgroundWeight = 3
       color = "rose";
       break;
   }
-  const textColor = textWeight === 0 ? 'text-white' : `text-${color}-${textWeight}`;
+  const textColor = textWeight === 0 ? "text-white" : `text-${color}-${textWeight}`;
   return `${textColor} bg-${color}-${backgroundWeight} border border-${color}-${borderWeight}`;
 }
 
@@ -124,7 +124,7 @@ export const colors = [
     id: 14,
   },
   {
-    name: i18n.t("app.shared.colors.LIGHT_BLUE"),
+    name: i18n.t("app.shared.colors.SKY"),
     id: 15,
   },
   {

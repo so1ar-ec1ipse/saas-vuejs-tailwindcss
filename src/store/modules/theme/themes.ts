@@ -14,7 +14,7 @@ export const appColors = [
   { theme: "theme-emerald", name: "Emerald" },
   { theme: "theme-teal", name: "Teal" },
   { theme: "theme-cyan", name: "Cyan" },
-  { theme: "theme-lightBlue", name: "Light Blue" },
+  { theme: "theme-sky", name: "Light Blue" },
   { theme: "theme-blue", name: "Blue" },
   { theme: "theme-indigo", name: "Indigo" },
   { theme: "theme-violet", name: "Violet" },

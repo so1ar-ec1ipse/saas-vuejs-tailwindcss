@@ -14,7 +14,7 @@ export enum Colors {
   EMERALD,
   TEAL,
   CYAN,
-  LIGHT_BLUE,
+  SKY,
   BLUE,
   INDIGO,
   VIOLET,
